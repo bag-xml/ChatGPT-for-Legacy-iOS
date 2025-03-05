@@ -1,0 +1,958 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		49A1BBC72D351874002D9D00 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A1BBC62D351874002D9D00 /* Foundation.framework */; };
+		49A1BBC92D351874002D9D00 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A1BBC82D351874002D9D00 /* CoreGraphics.framework */; };
+		49A1BBCB2D351874002D9D00 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A1BBCA2D351874002D9D00 /* UIKit.framework */; };
+		49A1BBD12D351874002D9D00 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49A1BBCF2D351874002D9D00 /* InfoPlist.strings */; };
+		49A1BBDA2D351874002D9D00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49A1BBD82D351874002D9D00 /* Main.storyboard */; };
+		49A1BBE62D351874002D9D00 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A1BBE52D351874002D9D00 /* XCTest.framework */; };
+		49A1BBE72D351874002D9D00 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A1BBC62D351874002D9D00 /* Foundation.framework */; };
+		49A1BBE82D351874002D9D00 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A1BBCA2D351874002D9D00 /* UIKit.framework */; };
+		49A1BBF02D351874002D9D00 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49A1BBEE2D351874002D9D00 /* InfoPlist.strings */; };
+		49A1BBF22D351874002D9D00 /* ChatGPTTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A1BBF12D351874002D9D00 /* ChatGPTTests.m */; };
+		49A1BC0A2D3519DD002D9D00 /* ChatGPT-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49A1BC072D3519DD002D9D00 /* ChatGPT-Info.plist */; };
+		49A1BC0E2D3519E4002D9D00 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49A1BC0D2D3519E4002D9D00 /* Images.xcassets */; };
+		49A1BC142D3519E8002D9D00 /* CGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A1BC122D3519E8002D9D00 /* CGAppDelegate.m */; };
+		49A1BC152D3519E8002D9D00 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A1BC132D3519E8002D9D00 /* main.m */; };
+		49A1BC1A2D351B8D002D9D00 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49A1BC192D351B8D002D9D00 /* Settings.bundle */; };
+		49A1BC1D2D351C92002D9D00 /* CGMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A1BC1C2D351C92002D9D00 /* CGMessage.m */; };
+		49A1BC202D351DA6002D9D00 /* CGAPIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A1BC1F2D351DA6002D9D00 /* CGAPIHelper.m */; };
+		49A1BC272D352569002D9D00 /* CGAPICommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A1BC262D352569002D9D00 /* CGAPICommunicator.m */; };
+		5B0D4FE52D50019D0042D50A /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0D4FE42D50019D0042D50A /* Base64.m */; };
+		5B0D4FE82D5007300042D50A /* CGAuthorTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0D4FE72D5007300042D50A /* CGAuthorTableCell.m */; };
+		5B1AA2212D6A651D00FC07D5 /* hamburgerButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B1AA2202D6A651D00FC07D5 /* hamburgerButton@2x.png */; };
+		5B1AA2232D6A65E700FC07D5 /* hamburgerButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B1AA2222D6A65E700FC07D5 /* hamburgerButton.png */; };
+		5B1AA2252D6A699C00FC07D5 /* MoreGlyph@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B1AA2242D6A699C00FC07D5 /* MoreGlyph@2x.png */; };
+		5B1AA22C2D6A6AA700FC07D5 /* SVProgressHUD-15e9190d.o.tmp in Resources */ = {isa = PBXBuildFile; fileRef = 5B1AA2272D6A6AA700FC07D5 /* SVProgressHUD-15e9190d.o.tmp */; };
+		5B1AA22D2D6A6AA700FC07D5 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5B1AA2292D6A6AA700FC07D5 /* SVProgressHUD.bundle */; };
+		5B1AA22E2D6A6AA700FC07D5 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1AA22B2D6A6AA700FC07D5 /* SVProgressHUD.m */; };
+		5B203AD02D3C4A79004EEA20 /* bar-BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B203ACF2D3C4A79004EEA20 /* bar-BG@2x.png */; };
+		5B203AD22D3C4A81004EEA20 /* bar-BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B203AD12D3C4A81004EEA20 /* bar-BG.png */; };
+		5B203AD82D3C4ABA004EEA20 /* BarButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B203AD42D3C4ABA004EEA20 /* BarButton.png */; };
+		5B203AD92D3C4ABA004EEA20 /* BarButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B203AD52D3C4ABA004EEA20 /* BarButton@2x.png */; };
+		5B203ADA2D3C4ABA004EEA20 /* BarButtonPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B203AD62D3C4ABA004EEA20 /* BarButtonPressed.png */; };
+		5B203ADB2D3C4ABA004EEA20 /* BarButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B203AD72D3C4ABA004EEA20 /* BarButtonPressed@2x.png */; };
+		5B2E21CB2D354DEC0085E7BB /* TRMalleableFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2E21CA2D354DEC0085E7BB /* TRMalleableFrameView.m */; };
+		5B6296652D711517001D3C63 /* CGWelcomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6296642D711517001D3C63 /* CGWelcomeController.m */; };
+		5B6BAE2D2D69DDAE00B5E63B /* loadingToast.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6BAE2C2D69DDAE00B5E63B /* loadingToast.png */; };
+		5B6BAE312D6A02FE00B5E63B /* CGImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6BAE302D6A02FE00B5E63B /* CGImageViewController.m */; };
+		5B6BAE342D6A2C7400B5E63B /* defaultAssistantAvatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6BAE322D6A2C7400B5E63B /* defaultAssistantAvatar.png */; };
+		5B6BAE352D6A2C7400B5E63B /* defaultAssistantAvatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6BAE332D6A2C7400B5E63B /* defaultAssistantAvatar@2x.png */; };
+		5B7FCE322D6B05E100DF4899 /* CGChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7FCE312D6B05E100DF4899 /* CGChatViewController.m */; };
+		5B7FCE362D6B074000DF4899 /* CGSidebarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7FCE352D6B074000DF4899 /* CGSidebarController.m */; };
+		5B7FCE3C2D6B077100DF4899 /* APLSlideMenuSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7FCE392D6B077100DF4899 /* APLSlideMenuSegue.m */; };
+		5B7FCE3D2D6B077100DF4899 /* APLSlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7FCE3B2D6B077100DF4899 /* APLSlideMenuViewController.m */; };
+		5B7FCE402D6B0A4D00DF4899 /* CGConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7FCE3F2D6B0A4D00DF4899 /* CGConversation.m */; };
+		5B7FCE452D6B6C0600DF4899 /* CGConversationElementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B7FCE442D6B6C0600DF4899 /* CGConversationElementCell.m */; };
+		5B7FCE482D6B6FC600DF4899 /* SBSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B7FCE462D6B6FC600DF4899 /* SBSeparator.png */; };
+		5B7FCE492D6B6FC600DF4899 /* SBSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B7FCE472D6B6FC600DF4899 /* SBSeparator@2x.png */; };
+		5B7FCE512D6B92F800DF4899 /* headerSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B7FCE4F2D6B92F800DF4899 /* headerSeparator.png */; };
+		5B7FCE522D6B92F800DF4899 /* headerSeparator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B7FCE502D6B92F800DF4899 /* headerSeparator@2x.png */; };
+		5B7FCE552D6B932000DF4899 /* newConversationThumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B7FCE532D6B932000DF4899 /* newConversationThumbnail.png */; };
+		5B7FCE562D6B932000DF4899 /* newConversationThumbnail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B7FCE542D6B932000DF4899 /* newConversationThumbnail@2x.png */; };
+		5B808E382D665D7E00E6C66E /* ImageViewOL.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B808E362D665D7E00E6C66E /* ImageViewOL.png */; };
+		5B808E392D665D7E00E6C66E /* ImageViewOL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B808E372D665D7E00E6C66E /* ImageViewOL@2x.png */; };
+		5B8A222C2D3BB7F2001F84C3 /* avatarDepthMask.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8A222A2D3BB7F2001F84C3 /* avatarDepthMask.png */; };
+		5B8A222D2D3BB7F2001F84C3 /* avatarDepthMask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8A222B2D3BB7F2001F84C3 /* avatarDepthMask@2x.png */; };
+		5B8A222F2D3BBB0A001F84C3 /* separator.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8A222E2D3BBB0A001F84C3 /* separator.png */; };
+		5B8A22312D3BC318001F84C3 /* separator2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B8A22302D3BC318001F84C3 /* separator2.png */; };
+		5B9D66582D3C5624007BE404 /* Send.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B9D66562D3C5624007BE404 /* Send.png */; };
+		5B9D66592D3C5624007BE404 /* Send@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B9D66572D3C5624007BE404 /* Send@2x.png */; };
+		5B9D665B2D3D13C4007BE404 /* SendBarButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B9D665A2D3D13C4007BE404 /* SendBarButtonPressed@2x.png */; };
+		5B9D665D2D3D157F007BE404 /* SendBarButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B9D665C2D3D157F007BE404 /* SendBarButton@2x.png */; };
+		5BB0C9CE2D3B1FB4001D4575 /* CGChatTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BB0C9CD2D3B1FB4001D4575 /* CGChatTableCell.m */; };
+		5BB0C9D02D3B2182001D4575 /* CGChatTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BB0C9CF2D3B2182001D4575 /* CGChatTableCell.xib */; };
+		5BB0C9D22D3B22E5001D4575 /* CGAuthorChatTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BB0C9D12D3B22E5001D4575 /* CGAuthorChatTableCell.xib */; };
+		5BB7D95E2D731A8500C7C5AD /* searchbar-BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB7D95C2D731A8500C7C5AD /* searchbar-BG.png */; };
+		5BB7D95F2D731A8500C7C5AD /* searchbar-BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB7D95D2D731A8500C7C5AD /* searchbar-BG@2x.png */; };
+		5BB7D9612D733F3800C7C5AD /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BB7D9602D733F3800C7C5AD /* icon.png */; };
+		5BBCB02C2D3D32A30040A379 /* inputOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BBCB02A2D3D32A30040A379 /* inputOverlay.png */; };
+		5BBCB02D2D3D32A30040A379 /* inputOverlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BBCB02B2D3D32A30040A379 /* inputOverlay@2x.png */; };
+		5BBCB0312D3D48C70040A379 /* loadingToast@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BBCB0302D3D48C70040A379 /* loadingToast@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		49A1BBE92D351874002D9D00 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 49A1BBBB2D351874002D9D00 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 49A1BBC22D351874002D9D00;
+			remoteInfo = ChatGPT;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		49A1BBC32D351874002D9D00 /* ChatGPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatGPT.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		49A1BBC62D351874002D9D00 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		49A1BBC82D351874002D9D00 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		49A1BBCA2D351874002D9D00 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		49A1BBD02D351874002D9D00 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		49A1BBD92D351874002D9D00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		49A1BBE42D351874002D9D00 /* ChatGPTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatGPTTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		49A1BBE52D351874002D9D00 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		49A1BBED2D351874002D9D00 /* ChatGPTTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ChatGPTTests-Info.plist"; sourceTree = "<group>"; };
+		49A1BBEF2D351874002D9D00 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		49A1BBF12D351874002D9D00 /* ChatGPTTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatGPTTests.m; sourceTree = "<group>"; };
+		49A1BC072D3519DD002D9D00 /* ChatGPT-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ChatGPT-Info.plist"; sourceTree = "<group>"; };
+		49A1BC082D3519DD002D9D00 /* ChatGPT-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ChatGPT-Prefix.pch"; sourceTree = "<group>"; };
+		49A1BC0D2D3519E4002D9D00 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		49A1BC112D3519E8002D9D00 /* CGAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGAppDelegate.h; sourceTree = "<group>"; };
+		49A1BC122D3519E8002D9D00 /* CGAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGAppDelegate.m; sourceTree = "<group>"; };
+		49A1BC132D3519E8002D9D00 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		49A1BC192D351B8D002D9D00 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		49A1BC1B2D351C92002D9D00 /* CGMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGMessage.h; sourceTree = "<group>"; };
+		49A1BC1C2D351C92002D9D00 /* CGMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGMessage.m; sourceTree = "<group>"; };
+		49A1BC1E2D351DA6002D9D00 /* CGAPIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGAPIHelper.h; sourceTree = "<group>"; };
+		49A1BC1F2D351DA6002D9D00 /* CGAPIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGAPIHelper.m; sourceTree = "<group>"; };
+		49A1BC252D352569002D9D00 /* CGAPICommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGAPICommunicator.h; sourceTree = "<group>"; };
+		49A1BC262D352569002D9D00 /* CGAPICommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGAPICommunicator.m; sourceTree = "<group>"; };
+		5B0D4FE32D50019D0042D50A /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		5B0D4FE42D50019D0042D50A /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		5B0D4FE62D5007300042D50A /* CGAuthorTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGAuthorTableCell.h; sourceTree = "<group>"; };
+		5B0D4FE72D5007300042D50A /* CGAuthorTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGAuthorTableCell.m; sourceTree = "<group>"; };
+		5B1AA2202D6A651D00FC07D5 /* hamburgerButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hamburgerButton@2x.png"; sourceTree = "<group>"; };
+		5B1AA2222D6A65E700FC07D5 /* hamburgerButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hamburgerButton.png; path = "../Input Field/hamburgerButton.png"; sourceTree = "<group>"; };
+		5B1AA2242D6A699C00FC07D5 /* MoreGlyph@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MoreGlyph@2x.png"; sourceTree = "<group>"; };
+		5B1AA2272D6A6AA700FC07D5 /* SVProgressHUD-15e9190d.o.tmp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SVProgressHUD-15e9190d.o.tmp"; sourceTree = "<group>"; };
+		5B1AA2282D6A6AA700FC07D5 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		5B1AA2292D6A6AA700FC07D5 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		5B1AA22A2D6A6AA700FC07D5 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		5B1AA22B2D6A6AA700FC07D5 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		5B203ACF2D3C4A79004EEA20 /* bar-BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar-BG@2x.png"; sourceTree = "<group>"; };
+		5B203AD12D3C4A81004EEA20 /* bar-BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bar-BG.png"; sourceTree = "<group>"; };
+		5B203AD42D3C4ABA004EEA20 /* BarButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BarButton.png; sourceTree = "<group>"; };
+		5B203AD52D3C4ABA004EEA20 /* BarButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BarButton@2x.png"; sourceTree = "<group>"; };
+		5B203AD62D3C4ABA004EEA20 /* BarButtonPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BarButtonPressed.png; sourceTree = "<group>"; };
+		5B203AD72D3C4ABA004EEA20 /* BarButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BarButtonPressed@2x.png"; sourceTree = "<group>"; };
+		5B2E21C92D354DEC0085E7BB /* TRMalleableFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRMalleableFrameView.h; sourceTree = "<group>"; };
+		5B2E21CA2D354DEC0085E7BB /* TRMalleableFrameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRMalleableFrameView.m; sourceTree = "<group>"; };
+		5B6296632D711517001D3C63 /* CGWelcomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGWelcomeController.h; sourceTree = "<group>"; };
+		5B6296642D711517001D3C63 /* CGWelcomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGWelcomeController.m; sourceTree = "<group>"; };
+		5B6BAE2C2D69DDAE00B5E63B /* loadingToast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadingToast.png; sourceTree = "<group>"; };
+		5B6BAE2F2D6A02FE00B5E63B /* CGImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGImageViewController.h; sourceTree = "<group>"; };
+		5B6BAE302D6A02FE00B5E63B /* CGImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGImageViewController.m; sourceTree = "<group>"; };
+		5B6BAE322D6A2C7400B5E63B /* defaultAssistantAvatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultAssistantAvatar.png; sourceTree = "<group>"; };
+		5B6BAE332D6A2C7400B5E63B /* defaultAssistantAvatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "defaultAssistantAvatar@2x.png"; sourceTree = "<group>"; };
+		5B7FCE302D6B05E100DF4899 /* CGChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGChatViewController.h; sourceTree = "<group>"; };
+		5B7FCE312D6B05E100DF4899 /* CGChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGChatViewController.m; sourceTree = "<group>"; };
+		5B7FCE342D6B074000DF4899 /* CGSidebarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGSidebarController.h; sourceTree = "<group>"; };
+		5B7FCE352D6B074000DF4899 /* CGSidebarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGSidebarController.m; sourceTree = "<group>"; };
+		5B7FCE382D6B077100DF4899 /* APLSlideMenuSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APLSlideMenuSegue.h; sourceTree = "<group>"; };
+		5B7FCE392D6B077100DF4899 /* APLSlideMenuSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APLSlideMenuSegue.m; sourceTree = "<group>"; };
+		5B7FCE3A2D6B077100DF4899 /* APLSlideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APLSlideMenuViewController.h; sourceTree = "<group>"; };
+		5B7FCE3B2D6B077100DF4899 /* APLSlideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APLSlideMenuViewController.m; sourceTree = "<group>"; };
+		5B7FCE3E2D6B0A4D00DF4899 /* CGConversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGConversation.h; sourceTree = "<group>"; };
+		5B7FCE3F2D6B0A4D00DF4899 /* CGConversation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGConversation.m; sourceTree = "<group>"; };
+		5B7FCE432D6B6C0600DF4899 /* CGConversationElementCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGConversationElementCell.h; sourceTree = "<group>"; };
+		5B7FCE442D6B6C0600DF4899 /* CGConversationElementCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGConversationElementCell.m; sourceTree = "<group>"; };
+		5B7FCE462D6B6FC600DF4899 /* SBSeparator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SBSeparator.png; sourceTree = "<group>"; };
+		5B7FCE472D6B6FC600DF4899 /* SBSeparator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SBSeparator@2x.png"; sourceTree = "<group>"; };
+		5B7FCE4F2D6B92F800DF4899 /* headerSeparator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headerSeparator.png; sourceTree = "<group>"; };
+		5B7FCE502D6B92F800DF4899 /* headerSeparator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "headerSeparator@2x.png"; sourceTree = "<group>"; };
+		5B7FCE532D6B932000DF4899 /* newConversationThumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newConversationThumbnail.png; sourceTree = "<group>"; };
+		5B7FCE542D6B932000DF4899 /* newConversationThumbnail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newConversationThumbnail@2x.png"; sourceTree = "<group>"; };
+		5B808E362D665D7E00E6C66E /* ImageViewOL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ImageViewOL.png; sourceTree = "<group>"; };
+		5B808E372D665D7E00E6C66E /* ImageViewOL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ImageViewOL@2x.png"; sourceTree = "<group>"; };
+		5B8A222A2D3BB7F2001F84C3 /* avatarDepthMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatarDepthMask.png; sourceTree = "<group>"; };
+		5B8A222B2D3BB7F2001F84C3 /* avatarDepthMask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatarDepthMask@2x.png"; sourceTree = "<group>"; };
+		5B8A222E2D3BBB0A001F84C3 /* separator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = separator.png; sourceTree = "<group>"; };
+		5B8A22302D3BC318001F84C3 /* separator2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = separator2.png; sourceTree = "<group>"; };
+		5B9D66562D3C5624007BE404 /* Send.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Send.png; sourceTree = "<group>"; };
+		5B9D66572D3C5624007BE404 /* Send@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Send@2x.png"; sourceTree = "<group>"; };
+		5B9D665A2D3D13C4007BE404 /* SendBarButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SendBarButtonPressed@2x.png"; sourceTree = "<group>"; };
+		5B9D665C2D3D157F007BE404 /* SendBarButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SendBarButton@2x.png"; sourceTree = "<group>"; };
+		5BB0C9CC2D3B1FB4001D4575 /* CGChatTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGChatTableCell.h; sourceTree = "<group>"; };
+		5BB0C9CD2D3B1FB4001D4575 /* CGChatTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGChatTableCell.m; sourceTree = "<group>"; };
+		5BB0C9CF2D3B2182001D4575 /* CGChatTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CGChatTableCell.xib; sourceTree = "<group>"; };
+		5BB0C9D12D3B22E5001D4575 /* CGAuthorChatTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CGAuthorChatTableCell.xib; sourceTree = "<group>"; };
+		5BB7D95C2D731A8500C7C5AD /* searchbar-BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchbar-BG.png"; sourceTree = "<group>"; };
+		5BB7D95D2D731A8500C7C5AD /* searchbar-BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchbar-BG@2x.png"; sourceTree = "<group>"; };
+		5BB7D9602D733F3800C7C5AD /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		5BBCB02A2D3D32A30040A379 /* inputOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inputOverlay.png; sourceTree = "<group>"; };
+		5BBCB02B2D3D32A30040A379 /* inputOverlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inputOverlay@2x.png"; sourceTree = "<group>"; };
+		5BBCB0302D3D48C70040A379 /* loadingToast@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loadingToast@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		49A1BBC02D351874002D9D00 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49A1BBC92D351874002D9D00 /* CoreGraphics.framework in Frameworks */,
+				49A1BBCB2D351874002D9D00 /* UIKit.framework in Frameworks */,
+				49A1BBC72D351874002D9D00 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49A1BBE12D351874002D9D00 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49A1BBE62D351874002D9D00 /* XCTest.framework in Frameworks */,
+				49A1BBE82D351874002D9D00 /* UIKit.framework in Frameworks */,
+				49A1BBE72D351874002D9D00 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		49A1BBBA2D351874002D9D00 = {
+			isa = PBXGroup;
+			children = (
+				49A1BBCC2D351874002D9D00 /* ChatGPT */,
+				49A1BBEB2D351874002D9D00 /* ChatGPTTests */,
+				49A1BBC52D351874002D9D00 /* Frameworks */,
+				49A1BBC42D351874002D9D00 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		49A1BBC42D351874002D9D00 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				49A1BBC32D351874002D9D00 /* ChatGPT.app */,
+				49A1BBE42D351874002D9D00 /* ChatGPTTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		49A1BBC52D351874002D9D00 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				49A1BBC62D351874002D9D00 /* Foundation.framework */,
+				49A1BBC82D351874002D9D00 /* CoreGraphics.framework */,
+				49A1BBCA2D351874002D9D00 /* UIKit.framework */,
+				49A1BBE52D351874002D9D00 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		49A1BBCC2D351874002D9D00 /* ChatGPT */ = {
+			isa = PBXGroup;
+			children = (
+				49A1BC0F2D3519E8002D9D00 /* Classes */,
+				49A1BC0B2D3519E4002D9D00 /* Assets */,
+				49A1BC012D3519DD002D9D00 /* Libraries */,
+				49A1BC062D3519DD002D9D00 /* SupportingFiles */,
+				49A1BBCD2D351874002D9D00 /* Supporting Files */,
+			);
+			path = ChatGPT;
+			sourceTree = "<group>";
+		};
+		49A1BBCD2D351874002D9D00 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				49A1BBCF2D351874002D9D00 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		49A1BBEB2D351874002D9D00 /* ChatGPTTests */ = {
+			isa = PBXGroup;
+			children = (
+				49A1BBF12D351874002D9D00 /* ChatGPTTests.m */,
+				49A1BBEC2D351874002D9D00 /* Supporting Files */,
+			);
+			path = ChatGPTTests;
+			sourceTree = "<group>";
+		};
+		49A1BBEC2D351874002D9D00 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				49A1BBED2D351874002D9D00 /* ChatGPTTests-Info.plist */,
+				49A1BBEE2D351874002D9D00 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		49A1BC012D3519DD002D9D00 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				5B7FCE372D6B077100DF4899 /* APLSlideMenu */,
+				5B1AA2262D6A6AA700FC07D5 /* SVProgressHUD */,
+				5B0D4FE22D50019D0042D50A /* Base64 */,
+				5B2E21C82D354DEC0085E7BB /* TRMalleableFrameView */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		49A1BC062D3519DD002D9D00 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				49A1BC072D3519DD002D9D00 /* ChatGPT-Info.plist */,
+				49A1BC082D3519DD002D9D00 /* ChatGPT-Prefix.pch */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		49A1BC0B2D3519E4002D9D00 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				49A1BC282D35271A002D9D00 /* Images */,
+				49A1BC182D351B80002D9D00 /* Bundles */,
+				49A1BC162D351A30002D9D00 /* User Interfaces */,
+				49A1BC0C2D3519E4002D9D00 /* Catalogs */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		49A1BC0C2D3519E4002D9D00 /* Catalogs */ = {
+			isa = PBXGroup;
+			children = (
+				49A1BC0D2D3519E4002D9D00 /* Images.xcassets */,
+			);
+			path = Catalogs;
+			sourceTree = "<group>";
+		};
+		49A1BC0F2D3519E8002D9D00 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				49A1BC172D351B70002D9D00 /* API */,
+				49A1BC2B2D352861002D9D00 /* Cells */,
+				49A1BC212D352320002D9D00 /* View Controllers */,
+				49A1BC102D3519E8002D9D00 /* Delegate */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		49A1BC102D3519E8002D9D00 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				49A1BC112D3519E8002D9D00 /* CGAppDelegate.h */,
+				49A1BC122D3519E8002D9D00 /* CGAppDelegate.m */,
+				49A1BC132D3519E8002D9D00 /* main.m */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		49A1BC162D351A30002D9D00 /* User Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				49A1BBD82D351874002D9D00 /* Main.storyboard */,
+			);
+			name = "User Interfaces";
+			path = "ChatGPT/Classes/User Interfaces";
+			sourceTree = SOURCE_ROOT;
+		};
+		49A1BC172D351B70002D9D00 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				5B7FCE3E2D6B0A4D00DF4899 /* CGConversation.h */,
+				5B7FCE3F2D6B0A4D00DF4899 /* CGConversation.m */,
+				49A1BC1B2D351C92002D9D00 /* CGMessage.h */,
+				49A1BC1C2D351C92002D9D00 /* CGMessage.m */,
+				49A1BC1E2D351DA6002D9D00 /* CGAPIHelper.h */,
+				49A1BC1F2D351DA6002D9D00 /* CGAPIHelper.m */,
+				49A1BC252D352569002D9D00 /* CGAPICommunicator.h */,
+				49A1BC262D352569002D9D00 /* CGAPICommunicator.m */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		49A1BC182D351B80002D9D00 /* Bundles */ = {
+			isa = PBXGroup;
+			children = (
+				49A1BC192D351B8D002D9D00 /* Settings.bundle */,
+			);
+			path = Bundles;
+			sourceTree = "<group>";
+		};
+		49A1BC212D352320002D9D00 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5B6296622D711507001D3C63 /* Welcome View */,
+				5B7FCE332D6B05E800DF4899 /* Sidebar */,
+				5B7FCE2F2D6B05E100DF4899 /* Chat View */,
+				5B6BAE2E2D6A02DB00B5E63B /* Image View Controller */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		49A1BC282D35271A002D9D00 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5B7FCE4E2D6B92EF00DF4899 /* Sidebar Resources */,
+				5B203ACE2D3C4A72004EEA20 /* Bar Resources */,
+				5B8A22292D3BB7EB001F84C3 /* Cosmetical Helpers */,
+				5B8A22202D3BB502001F84C3 /* Default Avatars */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		49A1BC2B2D352861002D9D00 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5BB0C9CF2D3B2182001D4575 /* CGChatTableCell.xib */,
+				5BB0C9D12D3B22E5001D4575 /* CGAuthorChatTableCell.xib */,
+				5BB0C9CC2D3B1FB4001D4575 /* CGChatTableCell.h */,
+				5BB0C9CD2D3B1FB4001D4575 /* CGChatTableCell.m */,
+				5B0D4FE62D5007300042D50A /* CGAuthorTableCell.h */,
+				5B0D4FE72D5007300042D50A /* CGAuthorTableCell.m */,
+				5B7FCE432D6B6C0600DF4899 /* CGConversationElementCell.h */,
+				5B7FCE442D6B6C0600DF4899 /* CGConversationElementCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		5B0D4FE22D50019D0042D50A /* Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				5B0D4FE32D50019D0042D50A /* Base64.h */,
+				5B0D4FE42D50019D0042D50A /* Base64.m */,
+			);
+			path = Base64;
+			sourceTree = "<group>";
+		};
+		5B1AA2262D6A6AA700FC07D5 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				5B1AA2272D6A6AA700FC07D5 /* SVProgressHUD-15e9190d.o.tmp */,
+				5B1AA2282D6A6AA700FC07D5 /* SVProgressHUD-Prefix.pch */,
+				5B1AA2292D6A6AA700FC07D5 /* SVProgressHUD.bundle */,
+				5B1AA22A2D6A6AA700FC07D5 /* SVProgressHUD.h */,
+				5B1AA22B2D6A6AA700FC07D5 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		5B203ACE2D3C4A72004EEA20 /* Bar Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5BB7D95C2D731A8500C7C5AD /* searchbar-BG.png */,
+				5BB7D95D2D731A8500C7C5AD /* searchbar-BG@2x.png */,
+				5BBCB0292D3D326C0040A379 /* Input Field */,
+				5B203AD32D3C4AA0004EEA20 /* Bar Button */,
+				5B203AD12D3C4A81004EEA20 /* bar-BG.png */,
+				5B203ACF2D3C4A79004EEA20 /* bar-BG@2x.png */,
+			);
+			path = "Bar Resources";
+			sourceTree = "<group>";
+		};
+		5B203AD32D3C4AA0004EEA20 /* Bar Button */ = {
+			isa = PBXGroup;
+			children = (
+				5B1AA2242D6A699C00FC07D5 /* MoreGlyph@2x.png */,
+				5B1AA2222D6A65E700FC07D5 /* hamburgerButton.png */,
+				5B1AA2202D6A651D00FC07D5 /* hamburgerButton@2x.png */,
+				5B9D665C2D3D157F007BE404 /* SendBarButton@2x.png */,
+				5B9D665A2D3D13C4007BE404 /* SendBarButtonPressed@2x.png */,
+				5B9D66552D3C5608007BE404 /* Glyphs */,
+				5B203AD42D3C4ABA004EEA20 /* BarButton.png */,
+				5B203AD52D3C4ABA004EEA20 /* BarButton@2x.png */,
+				5B203AD62D3C4ABA004EEA20 /* BarButtonPressed.png */,
+				5B203AD72D3C4ABA004EEA20 /* BarButtonPressed@2x.png */,
+			);
+			path = "Bar Button";
+			sourceTree = "<group>";
+		};
+		5B2E21C82D354DEC0085E7BB /* TRMalleableFrameView */ = {
+			isa = PBXGroup;
+			children = (
+				5B2E21C92D354DEC0085E7BB /* TRMalleableFrameView.h */,
+				5B2E21CA2D354DEC0085E7BB /* TRMalleableFrameView.m */,
+			);
+			path = TRMalleableFrameView;
+			sourceTree = "<group>";
+		};
+		5B6296622D711507001D3C63 /* Welcome View */ = {
+			isa = PBXGroup;
+			children = (
+				5B6296632D711517001D3C63 /* CGWelcomeController.h */,
+				5B6296642D711517001D3C63 /* CGWelcomeController.m */,
+			);
+			path = "Welcome View";
+			sourceTree = "<group>";
+		};
+		5B6BAE2E2D6A02DB00B5E63B /* Image View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5B6BAE2F2D6A02FE00B5E63B /* CGImageViewController.h */,
+				5B6BAE302D6A02FE00B5E63B /* CGImageViewController.m */,
+			);
+			path = "Image View Controller";
+			sourceTree = "<group>";
+		};
+		5B7FCE2F2D6B05E100DF4899 /* Chat View */ = {
+			isa = PBXGroup;
+			children = (
+				5B7FCE302D6B05E100DF4899 /* CGChatViewController.h */,
+				5B7FCE312D6B05E100DF4899 /* CGChatViewController.m */,
+			);
+			path = "Chat View";
+			sourceTree = "<group>";
+		};
+		5B7FCE332D6B05E800DF4899 /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				5B7FCE342D6B074000DF4899 /* CGSidebarController.h */,
+				5B7FCE352D6B074000DF4899 /* CGSidebarController.m */,
+			);
+			path = Sidebar;
+			sourceTree = "<group>";
+		};
+		5B7FCE372D6B077100DF4899 /* APLSlideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				5B7FCE382D6B077100DF4899 /* APLSlideMenuSegue.h */,
+				5B7FCE392D6B077100DF4899 /* APLSlideMenuSegue.m */,
+				5B7FCE3A2D6B077100DF4899 /* APLSlideMenuViewController.h */,
+				5B7FCE3B2D6B077100DF4899 /* APLSlideMenuViewController.m */,
+			);
+			path = APLSlideMenu;
+			sourceTree = "<group>";
+		};
+		5B7FCE4E2D6B92EF00DF4899 /* Sidebar Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5B7FCE532D6B932000DF4899 /* newConversationThumbnail.png */,
+				5B7FCE542D6B932000DF4899 /* newConversationThumbnail@2x.png */,
+				5B7FCE4F2D6B92F800DF4899 /* headerSeparator.png */,
+				5B7FCE502D6B92F800DF4899 /* headerSeparator@2x.png */,
+			);
+			path = "Sidebar Resources";
+			sourceTree = "<group>";
+		};
+		5B8A22202D3BB502001F84C3 /* Default Avatars */ = {
+			isa = PBXGroup;
+			children = (
+				5B6BAE322D6A2C7400B5E63B /* defaultAssistantAvatar.png */,
+				5B6BAE332D6A2C7400B5E63B /* defaultAssistantAvatar@2x.png */,
+			);
+			path = "Default Avatars";
+			sourceTree = "<group>";
+		};
+		5B8A22292D3BB7EB001F84C3 /* Cosmetical Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5BB7D9602D733F3800C7C5AD /* icon.png */,
+				5B7FCE462D6B6FC600DF4899 /* SBSeparator.png */,
+				5B7FCE472D6B6FC600DF4899 /* SBSeparator@2x.png */,
+				5B6BAE2C2D69DDAE00B5E63B /* loadingToast.png */,
+				5BBCB0302D3D48C70040A379 /* loadingToast@2x.png */,
+				5B8A22302D3BC318001F84C3 /* separator2.png */,
+				5B8A222E2D3BBB0A001F84C3 /* separator.png */,
+				5B8A222A2D3BB7F2001F84C3 /* avatarDepthMask.png */,
+				5B8A222B2D3BB7F2001F84C3 /* avatarDepthMask@2x.png */,
+			);
+			path = "Cosmetical Helpers";
+			sourceTree = "<group>";
+		};
+		5B9D66552D3C5608007BE404 /* Glyphs */ = {
+			isa = PBXGroup;
+			children = (
+				5B9D66562D3C5624007BE404 /* Send.png */,
+				5B9D66572D3C5624007BE404 /* Send@2x.png */,
+			);
+			path = Glyphs;
+			sourceTree = "<group>";
+		};
+		5BBCB0292D3D326C0040A379 /* Input Field */ = {
+			isa = PBXGroup;
+			children = (
+				5B808E362D665D7E00E6C66E /* ImageViewOL.png */,
+				5B808E372D665D7E00E6C66E /* ImageViewOL@2x.png */,
+				5BBCB02A2D3D32A30040A379 /* inputOverlay.png */,
+				5BBCB02B2D3D32A30040A379 /* inputOverlay@2x.png */,
+			);
+			path = "Input Field";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		49A1BBC22D351874002D9D00 /* ChatGPT */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49A1BBF52D351874002D9D00 /* Build configuration list for PBXNativeTarget "ChatGPT" */;
+			buildPhases = (
+				49A1BBBF2D351874002D9D00 /* Sources */,
+				49A1BBC02D351874002D9D00 /* Frameworks */,
+				49A1BBC12D351874002D9D00 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChatGPT;
+			productName = ChatGPT;
+			productReference = 49A1BBC32D351874002D9D00 /* ChatGPT.app */;
+			productType = "com.apple.product-type.application";
+		};
+		49A1BBE32D351874002D9D00 /* ChatGPTTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49A1BBF82D351874002D9D00 /* Build configuration list for PBXNativeTarget "ChatGPTTests" */;
+			buildPhases = (
+				49A1BBE02D351874002D9D00 /* Sources */,
+				49A1BBE12D351874002D9D00 /* Frameworks */,
+				49A1BBE22D351874002D9D00 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				49A1BBEA2D351874002D9D00 /* PBXTargetDependency */,
+			);
+			name = ChatGPTTests;
+			productName = ChatGPTTests;
+			productReference = 49A1BBE42D351874002D9D00 /* ChatGPTTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		49A1BBBB2D351874002D9D00 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = CG;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = XML;
+				TargetAttributes = {
+					49A1BBE32D351874002D9D00 = {
+						TestTargetID = 49A1BBC22D351874002D9D00;
+					};
+				};
+			};
+			buildConfigurationList = 49A1BBBE2D351874002D9D00 /* Build configuration list for PBXProject "ChatGPT" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 49A1BBBA2D351874002D9D00;
+			productRefGroup = 49A1BBC42D351874002D9D00 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				49A1BBC22D351874002D9D00 /* ChatGPT */,
+				49A1BBE32D351874002D9D00 /* ChatGPTTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		49A1BBC12D351874002D9D00 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B1AA2232D6A65E700FC07D5 /* hamburgerButton.png in Resources */,
+				5BBCB02C2D3D32A30040A379 /* inputOverlay.png in Resources */,
+				5B9D665B2D3D13C4007BE404 /* SendBarButtonPressed@2x.png in Resources */,
+				5B203ADB2D3C4ABA004EEA20 /* BarButtonPressed@2x.png in Resources */,
+				5B1AA2252D6A699C00FC07D5 /* MoreGlyph@2x.png in Resources */,
+				5B203AD22D3C4A81004EEA20 /* bar-BG.png in Resources */,
+				5B203AD02D3C4A79004EEA20 /* bar-BG@2x.png in Resources */,
+				5BB7D95E2D731A8500C7C5AD /* searchbar-BG.png in Resources */,
+				49A1BC0A2D3519DD002D9D00 /* ChatGPT-Info.plist in Resources */,
+				5B7FCE512D6B92F800DF4899 /* headerSeparator.png in Resources */,
+				5B203ADA2D3C4ABA004EEA20 /* BarButtonPressed.png in Resources */,
+				5B8A222F2D3BBB0A001F84C3 /* separator.png in Resources */,
+				5B203AD92D3C4ABA004EEA20 /* BarButton@2x.png in Resources */,
+				5B7FCE552D6B932000DF4899 /* newConversationThumbnail.png in Resources */,
+				5B7FCE562D6B932000DF4899 /* newConversationThumbnail@2x.png in Resources */,
+				5B8A222D2D3BB7F2001F84C3 /* avatarDepthMask@2x.png in Resources */,
+				5B9D66592D3C5624007BE404 /* Send@2x.png in Resources */,
+				5B6BAE342D6A2C7400B5E63B /* defaultAssistantAvatar.png in Resources */,
+				5BB7D9612D733F3800C7C5AD /* icon.png in Resources */,
+				5B808E382D665D7E00E6C66E /* ImageViewOL.png in Resources */,
+				49A1BC0E2D3519E4002D9D00 /* Images.xcassets in Resources */,
+				5B6BAE2D2D69DDAE00B5E63B /* loadingToast.png in Resources */,
+				5B203AD82D3C4ABA004EEA20 /* BarButton.png in Resources */,
+				49A1BC1A2D351B8D002D9D00 /* Settings.bundle in Resources */,
+				5B7FCE482D6B6FC600DF4899 /* SBSeparator.png in Resources */,
+				5B1AA22D2D6A6AA700FC07D5 /* SVProgressHUD.bundle in Resources */,
+				5B8A222C2D3BB7F2001F84C3 /* avatarDepthMask.png in Resources */,
+				5B7FCE522D6B92F800DF4899 /* headerSeparator@2x.png in Resources */,
+				5BB7D95F2D731A8500C7C5AD /* searchbar-BG@2x.png in Resources */,
+				49A1BBD12D351874002D9D00 /* InfoPlist.strings in Resources */,
+				49A1BBDA2D351874002D9D00 /* Main.storyboard in Resources */,
+				5BB0C9D02D3B2182001D4575 /* CGChatTableCell.xib in Resources */,
+				5BBCB0312D3D48C70040A379 /* loadingToast@2x.png in Resources */,
+				5B6BAE352D6A2C7400B5E63B /* defaultAssistantAvatar@2x.png in Resources */,
+				5BBCB02D2D3D32A30040A379 /* inputOverlay@2x.png in Resources */,
+				5B808E392D665D7E00E6C66E /* ImageViewOL@2x.png in Resources */,
+				5B1AA22C2D6A6AA700FC07D5 /* SVProgressHUD-15e9190d.o.tmp in Resources */,
+				5B9D665D2D3D157F007BE404 /* SendBarButton@2x.png in Resources */,
+				5B7FCE492D6B6FC600DF4899 /* SBSeparator@2x.png in Resources */,
+				5B1AA2212D6A651D00FC07D5 /* hamburgerButton@2x.png in Resources */,
+				5BB0C9D22D3B22E5001D4575 /* CGAuthorChatTableCell.xib in Resources */,
+				5B8A22312D3BC318001F84C3 /* separator2.png in Resources */,
+				5B9D66582D3C5624007BE404 /* Send.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49A1BBE22D351874002D9D00 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49A1BBF02D351874002D9D00 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		49A1BBBF2D351874002D9D00 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B0D4FE82D5007300042D50A /* CGAuthorTableCell.m in Sources */,
+				5BB0C9CE2D3B1FB4001D4575 /* CGChatTableCell.m in Sources */,
+				5B7FCE322D6B05E100DF4899 /* CGChatViewController.m in Sources */,
+				5B7FCE3C2D6B077100DF4899 /* APLSlideMenuSegue.m in Sources */,
+				5B7FCE362D6B074000DF4899 /* CGSidebarController.m in Sources */,
+				49A1BC202D351DA6002D9D00 /* CGAPIHelper.m in Sources */,
+				49A1BC1D2D351C92002D9D00 /* CGMessage.m in Sources */,
+				5B7FCE402D6B0A4D00DF4899 /* CGConversation.m in Sources */,
+				5B2E21CB2D354DEC0085E7BB /* TRMalleableFrameView.m in Sources */,
+				5B7FCE3D2D6B077100DF4899 /* APLSlideMenuViewController.m in Sources */,
+				5B6296652D711517001D3C63 /* CGWelcomeController.m in Sources */,
+				5B0D4FE52D50019D0042D50A /* Base64.m in Sources */,
+				49A1BC272D352569002D9D00 /* CGAPICommunicator.m in Sources */,
+				5B7FCE452D6B6C0600DF4899 /* CGConversationElementCell.m in Sources */,
+				5B1AA22E2D6A6AA700FC07D5 /* SVProgressHUD.m in Sources */,
+				49A1BC142D3519E8002D9D00 /* CGAppDelegate.m in Sources */,
+				5B6BAE312D6A02FE00B5E63B /* CGImageViewController.m in Sources */,
+				49A1BC152D3519E8002D9D00 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49A1BBE02D351874002D9D00 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49A1BBF22D351874002D9D00 /* ChatGPTTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		49A1BBEA2D351874002D9D00 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 49A1BBC22D351874002D9D00 /* ChatGPT */;
+			targetProxy = 49A1BBE92D351874002D9D00 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		49A1BBCF2D351874002D9D00 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				49A1BBD02D351874002D9D00 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		49A1BBD82D351874002D9D00 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				49A1BBD92D351874002D9D00 /* Base */,
+			);
+			name = Main.storyboard;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		49A1BBEE2D351874002D9D00 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				49A1BBEF2D351874002D9D00 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		49A1BBF32D351874002D9D00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		49A1BBF42D351874002D9D00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		49A1BBF62D351874002D9D00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ChatGPT/SupportingFiles/ChatGPT-Prefix.pch";
+				INFOPLIST_FILE = "ChatGPT/SupportingFiles/ChatGPT-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ChatGPT/Libraries/SSL",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7 armv7s";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		49A1BBF72D351874002D9D00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ChatGPT/SupportingFiles/ChatGPT-Prefix.pch";
+				INFOPLIST_FILE = "ChatGPT/SupportingFiles/ChatGPT-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ChatGPT/Libraries/SSL",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7 armv7s";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		49A1BBF92D351874002D9D00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ChatGPT.app/ChatGPT";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ChatGPT/ChatGPT-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "ChatGPTTests/ChatGPTTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		49A1BBFA2D351874002D9D00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ChatGPT.app/ChatGPT";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ChatGPT/ChatGPT-Prefix.pch";
+				INFOPLIST_FILE = "ChatGPTTests/ChatGPTTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		49A1BBBE2D351874002D9D00 /* Build configuration list for PBXProject "ChatGPT" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49A1BBF32D351874002D9D00 /* Debug */,
+				49A1BBF42D351874002D9D00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49A1BBF52D351874002D9D00 /* Build configuration list for PBXNativeTarget "ChatGPT" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49A1BBF62D351874002D9D00 /* Debug */,
+				49A1BBF72D351874002D9D00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49A1BBF82D351874002D9D00 /* Build configuration list for PBXNativeTarget "ChatGPTTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49A1BBF92D351874002D9D00 /* Debug */,
+				49A1BBFA2D351874002D9D00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 49A1BBBB2D351874002D9D00 /* Project object */;
+}
