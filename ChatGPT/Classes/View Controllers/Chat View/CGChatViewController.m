@@ -32,6 +32,7 @@
     
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(handleAIResponse:) name:@"AI RESPONSE" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(saveCurrentChat:) name:@"SAVE CHAT" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(retrieveUserThings:) name:@"KEY IS VALID" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(cancelLoad) name:@"CANCEL LOAD" object:nil];
     self.slideMenuController.bouncing = YES;
     self.slideMenuController.gestureSupport = APLSlideMenuGestureSupportDrag;
@@ -41,12 +42,10 @@
     self.chatTableView.dataSource = self;
     self.messages = [NSMutableArray array];
     
-    /*
     bool firstLaunch = [[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"];
     if(firstLaunch == NO)
         [self prepareFirstLaunch];
-    */
-    
+     
     self.attachmentView.hidden = YES;
     self.attachmentImage.image = nil;
     self.attachmentImage.layer.cornerRadius = self.attachmentImage.frame.size.width / 8.0;
@@ -91,6 +90,9 @@
 
 }
 
+- (void)retrieveUserThings:(NSNotification *)notification {
+
+}
 - (void)saveCurrentChat:(NSNotification *)notification {
     if (self.messages.count > 0) {
         [CGAPIHelper saveConversationWithArray:self.messages withID:self.currentConversationID withTitle:self.navigationItem.title];
@@ -115,6 +117,9 @@
 }
 
 - (void)startNewConversation {
+    
+    [self.inputField resignFirstResponder];
+    self.inputField.text = @"";
     [self slideUpTypeView];
     [self setCurrentConversationUniqueID:nil];
     self.messages = NSMutableArray.new;
@@ -128,8 +133,25 @@
         if (imageData) {
             //Create the user's message
             CGMessage *ownMessage = CGMessage.new;
-            ownMessage.author = @"You";
-            ownMessage.avatar = [UIImage imageNamed:@"missingAvatar"];
+            
+            NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+            if (username.length >= 3) {
+                ownMessage.author = username;
+            } else if(username == nil) {
+                ownMessage.author = @"You";
+            } else {
+                ownMessage.author = @"You";
+            }
+            
+            NSString *tmpDirectory = NSTemporaryDirectory();
+            NSString *filePath = [tmpDirectory stringByAppendingPathComponent:@"avatar.png"];
+            UIImage *image = [UIImage imageWithContentsOfFile:filePath];
+            
+            if (image) {
+                ownMessage.avatar = image;
+            } else {
+                ownMessage.avatar = [UIImage imageNamed:@"defaultUserAvatar"];
+            }
             ownMessage.role = @"user";
             ownMessage.content = self.inputField.text;
             ownMessage.type = 1; // User message type
@@ -160,16 +182,40 @@
         [self removeAttachment];
         self.attachmentImage.image = nil;
     } else {
-        if ([self.inputField.text length] > 0 && [self.inputField.text length] < 3) {
+        if ([self.inputField.text length] > 0 && [self.inputField.text length] < 2) {
             [CGAPIHelper alert:@"Too short" withMessage:@"For the sake of preserving your API Credit you should ask the AI questions that are longer than just three characters."];
-        } else if([self.inputField.text length] > 3) {
+        } else if([self.inputField.text length] > 2) {
             
-            //Create the user's message
+            
+            
+            //regex regex regex regex make 'MERICUH GREAT AGAIN
+            //we will fuck regex here
+            NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\b(draw|illustrate|generate an image|create a picture of|show me an image of)\\b" options:NSRegularExpressionCaseInsensitive error:nil];
+            
+            NSRange range = NSMakeRange(0, [self.inputField.text length]);
+            NSUInteger matches = [regex numberOfMatchesInString:self.inputField.text options:0 range:range];
+            
+            //UNFUCKED part
             CGMessage *ownMessage = CGMessage.new;
-            //Nickname soon
-            ownMessage.author = @"You";
-            //also the PFP soon
-            ownMessage.avatar = [UIImage imageNamed:@"missingAvatar"];
+            
+            NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+            if (username.length >= 3) {
+                ownMessage.author = username;
+            } else if(username == nil) {
+                ownMessage.author = @"You";
+            } else {
+                ownMessage.author = @"You";
+            }
+
+            NSString *tmpDirectory = NSTemporaryDirectory();
+            NSString *filePath = [tmpDirectory stringByAppendingPathComponent:@"avatar.png"];
+            UIImage *image = [UIImage imageWithContentsOfFile:filePath];
+            
+            if (image) {
+                ownMessage.avatar = image;
+            } else {
+                ownMessage.avatar = [UIImage imageNamed:@"defaultUserAvatar"];
+            }
             
             
             ownMessage.role = @"user";
@@ -186,7 +232,17 @@
             [self.chatTableView reloadData];
             
             [self slideDownTypeView];
-            [CGAPICommunicator createChatCompletionwithContent:self.messages];
+            
+            if (matches > 0) {
+                // Route to image generation API (e.g., DALL·E)
+                [CGAPICommunicator createImageGenerationWithContent:self.messages];
+                NSLog(@"User wants to generate an image. Route to image generation API...");
+                [CGAPIHelper alert:@"SHock!" withMessage:@"user wnats to genraet image!!!"];
+                // You can implement the image generation logic here (DALL·E API call)
+            } else {
+                [CGAPICommunicator createChatCompletionwithContent:self.messages];
+                [CGAPIHelper alert:@"Ah shiet..." withMessage:@"Houston we have a problem..."];
+            }
             self.inputField.text = @"";
             self.inputFieldPlaceholder.hidden = NO;
             
@@ -391,12 +447,17 @@
         
         [cell.authorLabel setText:message.author];
         
-        [cell.contentTextView setText:message.content];
+        if(VERSION_MIN(@"6.0")) {
+            [cell configureWithMessage:message.content];
+            NSLog(@"Fired");
+        } else {
+            [cell.contentTextView setText:message.content];
+        }
         
         [cell.contentTextView setHeight:[cell.contentTextView sizeThatFits:CGSizeMake(cell.contentTextView.width, MAXFLOAT)].height];
         
         [cell.avatar setImage:message.avatar];
-        cell.avatar.layer.cornerRadius = cell.avatar.frame.size.width / 7.0;
+        cell.avatar.layer.cornerRadius = cell.avatar.frame.size.width / 6.0;
         cell.avatar.layer.masksToBounds = YES;
         
         if (indexPath.row == 0) {
@@ -418,7 +479,8 @@
         [cell.contentTextView setHeight:[cell.contentTextView sizeThatFits:CGSizeMake(cell.contentTextView.width, MAXFLOAT)].height];
         
         [cell.avatar setImage:message.avatar];
-        cell.avatar.layer.cornerRadius = cell.avatar.frame.size.width / 8.0;
+        cell.aOverlay.layer.cornerRadius = cell.aOverlay.frame.size.width / 6.0;
+        cell.avatar.layer.cornerRadius = cell.avatar.frame.size.width / 6.0;
         cell.avatar.layer.masksToBounds = YES;
         
         if (indexPath.row == 0) {
@@ -426,8 +488,7 @@
         } else {
             cell.separator.hidden = NO;
         }
-
-        
+            
         return cell;
     }
     return nil;

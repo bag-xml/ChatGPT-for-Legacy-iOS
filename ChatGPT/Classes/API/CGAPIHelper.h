@@ -30,7 +30,7 @@
 
 @interface CGAPIHelper : NSObject
 
-
+@property NSDictionary *currentAccount;
 
 + (CGMessage*)convertTextCompletionResponse:(NSDictionary*)jsonMessage;
 + (CGMessage*)loopErrorBack:(NSString*)errorMessage;
@@ -39,6 +39,7 @@
 
 + (void)checkForAppUpdate;
 + (void)checkForAPIKeyValidity;
++ (void)logInUserwithKey:(NSString*)key;
 //Miscellaneous functions
 + (void)alert:(NSString*)title withMessage:(NSString*)message;
 

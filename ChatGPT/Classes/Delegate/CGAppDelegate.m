@@ -16,14 +16,17 @@
     
     if(VERSION_MIN(@"7.0")) {
         bool useLegacyUI = [[NSUserDefaults standardUserDefaults] boolForKey:@"UIUseLegacyUI"];
-        if(useLegacyUI == NO)
+        if(useLegacyUI == NO) {
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"UIUseLegacyUI"];
+        }
+        
     }
     
+    //[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
     bool yougetwhatimean = [[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"];
     if(yougetwhatimean == YES)
-        [self checkAPIKey];
-    
+        [self checkAPICredentials];
+    //[self checkAPICredentials];
     return YES;
 }
 							
@@ -31,7 +34,9 @@
 {
     NSLog(@"Will resign active");
     [[NSUserDefaults standardUserDefaults] synchronize];
-    [self checkAPIKey];
+    bool yougetwhatimean = [[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"];
+    if(yougetwhatimean == YES)
+        [self checkAPICredentials];
     
 }
 
@@ -64,7 +69,7 @@
 }
 
 
-- (void)checkAPIKey {
+- (void)checkAPICredentials {
     if(apiKey == nil) {
         [CGAPIHelper alert:@"Warning" withMessage:@"Your API Key is missing, please double-check the settings pane and make sure you've inputted an OpenAI API Key."];
     } else if([apiKey isEqual:@""]) {

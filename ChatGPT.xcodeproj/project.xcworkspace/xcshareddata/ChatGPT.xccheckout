@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C1F4430A-E1DB-4B2F-975C-62FF1B13A5B0</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ChatGPT</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B690B00D-C672-475D-8EF7-EC64DBEEBE6B</key>
+		<string>https://github.com/bag-xml/ChatGPT-for-Legacy-iOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ChatGPT.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B690B00D-C672-475D-8EF7-EC64DBEEBE6B</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/bag-xml/ChatGPT-for-Legacy-iOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B690B00D-C672-475D-8EF7-EC64DBEEBE6B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B690B00D-C672-475D-8EF7-EC64DBEEBE6B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ChatGPT-for-Legacy-iOS</string>
+		</dict>
+	</array>
+</dict>
+</plist>

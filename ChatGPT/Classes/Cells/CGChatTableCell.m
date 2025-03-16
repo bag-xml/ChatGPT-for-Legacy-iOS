@@ -10,25 +10,32 @@
 
 @implementation CGChatTableCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
+- (void)configureWithMessage:(NSString *)messageText {
+    NSLog(@"Scott Forstall");
+    TSMarkdownParser *parser = [TSMarkdownParser standardParser];
+    NSLog(@"Scott Forstall 1");
+    
+    NSAttributedString *attributedText = [parser attributedStringFromMarkdown:messageText];
+    if (attributedText) {
+        NSLog(@"Attributed text created successfully.");
+    } else {
+        NSLog(@"Error: Attributed text creation failed.");
     }
-    return self;
+    
+    self.contentTextView.attributedText = attributedText;
+    NSLog(@"Scott Forstall 2");
+    [self adjustTextViewSize];
+    NSLog(@"Scott Forstall 3");
 }
 
-- (void)awakeFromNib
-{
-    // Initialization code
-}
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)adjustTextViewSize {
+    CGSize maxSize = CGSizeMake(self.contentTextView.frame.size.width, CGFLOAT_MAX);
+    CGSize newSize = [self.contentTextView sizeThatFits:maxSize];
+    
+    CGRect newFrame = self.contentTextView.frame;
+    newFrame.size.height = newSize.height;
+    self.contentTextView.frame = newFrame;
 }
 
 @end

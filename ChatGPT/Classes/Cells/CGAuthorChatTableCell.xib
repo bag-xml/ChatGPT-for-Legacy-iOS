@@ -19,6 +19,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.2643008181" green="0.20473077819999999" blue="0.3885722258" alpha="1" colorSpace="calibratedRGB"/>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="avatarOverlay.png" id="CXZ-EU-taj">
+                        <rect key="frame" x="258" y="7" width="55" height="55"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.2643008181" green="0.20473077819999999" blue="0.3885722258" alpha="0.0" colorSpace="calibratedRGB"/>
+                    </imageView>
                     <textView autoresizesSubviews="NO" opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" bouncesZoom="NO" editable="NO" text="Lore" textAlignment="right" id="102">
                         <rect key="frame" x="20" y="25" width="237" height="1485"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,6 +52,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.96999999999999997" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="aOverlay" destination="CXZ-EU-taj" id="dG5-al-fZX"/>
                 <outlet property="authorLabel" destination="38" id="SgM-3o-Zd0"/>
                 <outlet property="avatar" destination="99" id="Tax-q6-3uw"/>
                 <outlet property="contentTextView" destination="102" id="8f4-NY-nQr"/>
@@ -55,6 +61,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="avatarOverlay.png" width="57" height="57"/>
         <image name="missingAvatar.png" width="55" height="55"/>
         <image name="separator2.png" width="2" height="4"/>
     </resources>

@@ -64,21 +64,81 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [CGAPIHelper alert:@"Warning" withMessage:[NSString stringWithFormat:@"%@", [errorDict objectForKey:@"message"]]];
                 });
+                
                 return;
+            } else if(!errorDict) {
+                //[NSNotificationCenter.defaultCenter postNotificationName:@"KEY IS VALID" object:nil];
+                NSLog(@"Hooray");
             }
         } else if(!data) {
             if(error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                [CGAPIHelper alert:@"Fatal Error" withMessage:@"Please check your internet connection."];
+                    [CGAPIHelper alert:@"Fatal Error" withMessage:@"Please check your internet connection."];
                 });
                 return;
             } else {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                [CGAPIHelper alert:@"Fatal Error" withMessage:[NSString stringWithFormat:@"An unknown error has occured."]];
+                    [CGAPIHelper alert:@"Fatal Error" withMessage:[NSString stringWithFormat:@"An unknown error has occured."]];
                 });
                 return;
             }
         }
+    });
+}
+
++ (void)logInUserwithKey:(NSString*)key {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSURL *randomEndpoint = [NSURL URLWithString:[NSString stringWithFormat:@"%@/v1/me", domain]];
+        NSURLResponse *response;
+        NSError *error;
+        
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        [request setURL:randomEndpoint];
+        [request setHTTPMethod:@"GET"];
+        [request setHTTPBody:nil];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setValue:[NSString stringWithFormat:@"Bearer %@", key] forHTTPHeaderField:@"Authorization"];
+        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        
+        if(data) {
+            NSDictionary* parsedResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+            NSLog(@"%@", parsedResponse);
+            
+            NSDictionary *errorDict = [parsedResponse objectForKey:@"error"];
+            if(errorDict) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [CGAPIHelper alert:@"Warning" withMessage:[NSString stringWithFormat:@"%@", [errorDict objectForKey:@"message"]]];
+                    [NSNotificationCenter.defaultCenter postNotificationName:@"LOG-IN FAILURE" object:nil];
+                });
+                
+                return;
+            }
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasLoggedInUser"];
+            
+            [[NSUserDefaults standardUserDefaults] setObject:parsedResponse[@"email"] forKey:@"email"];
+            [[NSUserDefaults standardUserDefaults] setObject:parsedResponse[@"name"] forKey:@"username"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            NSURL *imageURL = [NSURL URLWithString:parsedResponse[@"picture"]];
+            NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+            if (imageData) {
+                // Get the temporary directory path
+                NSString *tmpDirectory = NSTemporaryDirectory();
+                NSString *filePath = [tmpDirectory stringByAppendingPathComponent:@"avatar.png"];
+                BOOL success = [imageData writeToFile:filePath options:NSDataWritingAtomic error:&error];
+                if (success) {
+                } else {
+                    [self alert:@"Error" withMessage:@"An error occured when trying to download the user avatar."];
+                }
+            }
+            
+            [[NSUserDefaults standardUserDefaults] setObject:key forKey:@"apiKey"];
+            [NSNotificationCenter.defaultCenter postNotificationName:@"LOG-IN VALID" object:nil];
+        } else if(!data) {
+            [NSNotificationCenter.defaultCenter postNotificationName:@"LOG-IN FAILURE" object:nil];
+            return;
+        }
+            
     });
 }
 
@@ -164,7 +224,15 @@
             
             message.author = messageDict[@"name"];
             if(message.type == 1) {
-                message.avatar = [UIImage imageNamed:@"missingAvatar"];
+                //hmm
+                NSString *filePath = [directoryPath stringByAppendingPathComponent:@"avatar.png"];
+                UIImage *image = [UIImage imageWithContentsOfFile:filePath];
+                
+                if (image) {
+                    message.avatar = image;
+                } else {
+                    message.avatar = [UIImage imageNamed:@"defaultUserAvatar"];
+                }
             } else if(message.type == 2) {
                 message.avatar = [UIImage imageNamed:@"defaultAssistantAvatar"];
             }
@@ -201,6 +269,7 @@
             [CGAPIHelper alert:@"Error" withMessage:@"An error occured when trying to delete this conversation."];
             return NO;
         }
+        
     } else {
         [CGAPIHelper alert:@"Error" withMessage:@"An error occured when trying to delete this conversation."];
         return NO;

@@ -92,13 +92,17 @@
         } else {
             [NSNotificationCenter.defaultCenter postNotificationName:@"CANCEL LOAD" object:nil];
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-            CGMessage *visualEM = [CGAPIHelper loopErrorBack:@"Please make sure you're connected to a Wi-Fi network or have cellular data enabled. ChatGPT cannot connect to OpenAI's services at the moment. Please try again later."];
+            CGMessage *visualEM = [CGAPIHelper loopErrorBack:@"Please make sure you're **connected to a Wi-Fi network or have cellular data enabled**. ChatGPT cannot connect to OpenAI's services at the moment. **Please try again later.**"];
             dispatch_async(dispatch_get_main_queue(), ^{
             [NSNotificationCenter.defaultCenter postNotificationName:@"AI RESPONSE" object:visualEM];
             });
             return;
         }
     });
+}
+
++ (void)createImageGenerationWithContent:(NSMutableArray*)content {
+    NSLog(@"IG?!");
 }
     
 @end
