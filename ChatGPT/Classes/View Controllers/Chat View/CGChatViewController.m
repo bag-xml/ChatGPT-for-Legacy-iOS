@@ -43,17 +43,25 @@
     self.messages = [NSMutableArray array];
     
     bool firstLaunch = [[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"];
-    if(firstLaunch == NO)
+    if(firstLaunch == NO) {
         [self prepareFirstLaunch];
+    } else {
+        bool yougetwhatimean = [[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"];
+        if(yougetwhatimean == YES)
+            [self checkAPICredentials];
+    }
      
     self.attachmentView.hidden = YES;
     self.attachmentImage.image = nil;
     self.attachmentImage.layer.cornerRadius = self.attachmentImage.frame.size.width / 8.0;
     self.attachmentImage.layer.masksToBounds = YES;
     
-    
     if(self.currentConversationID == nil) {
         [self setCurrentConversationUniqueID:nil];
+    }
+    self.welcomeView.alpha = 0.0;
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"aFL"] == YES) {
+        [self displayWelcomeLaunchView];
     }
 
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bar-BG"] forBarMetrics:UIBarMetricsDefault];
@@ -110,16 +118,37 @@
 - (void)loadChat:(NSMutableArray *)messages withUUID:(NSString *)uuid {
     self.messages = nil;
     self.messages = messages;
+    
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"aFL"];
+    self.welcomeView.alpha = 0.0; // Fade out
+    self.welcomeView = nil; // Release reference
+    
     if(messages.count < 6)
         self.done = NO;
     [self setCurrentConversationUniqueID:uuid];
     [self.chatTableView reloadData];
 }
 
+- (void)tappedImage:(UITapGestureRecognizer *)gesture {
+    UIView *tappedView = gesture.view; // totalThumbView
+    CGImageAttachment *cell = (CGImageAttachment *)tappedView.superview.superview;
+    UIImage *selectedImage = cell.thumbnail.image;
+    if (selectedImage) {
+        self.selectedImage = selectedImage;
+        [self performSegueWithIdentifier:@"to Viewer" sender:self];
+    }
+}
+
+
 - (void)startNewConversation {
     
     [self.inputField resignFirstResponder];
     self.inputField.text = @"";
+    
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"aFL"];
+    self.welcomeView.alpha = 0.0; // Fade out
+    self.welcomeView = nil; // Release reference
+    
     [self slideUpTypeView];
     [self setCurrentConversationUniqueID:nil];
     self.messages = NSMutableArray.new;
@@ -127,134 +156,106 @@
     self.done = NO;
 }
 
+- (void)displayWelcomeLaunchView {
+    [UIView animateWithDuration:0.33 animations:^{
+        self.welcomeView.alpha = 1.0;
+    }];
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"aFL"] == YES) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"aFL"];
+        [UIView animateWithDuration:0.33 animations:^{
+            self.welcomeView.alpha = 0.0; // Fade out
+        } completion:^(BOOL finished) {
+            if (finished) {
+                self.welcomeView = nil; // Release reference
+            }
+        }];
+    } else {
+        return;
+    }
+}
+
+
 - (IBAction)send:(id)sender {
+    NSString *trimmedText = [self.inputField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\b(draw|illustrate|generate an image|generate an|generate me an image|image of|create a picture of|show me an image of)\\b"
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:nil];
+    NSRange range = NSMakeRange(0, [trimmedText length]);
+    NSUInteger matches = [regex numberOfMatchesInString:trimmedText options:0 range:range];
+    
+    
+    //now for ruling out
+    if (trimmedText.length == 0) {
+        [self.inputField resignFirstResponder];
+        return;
+    }
+    
+    if (trimmedText.length < 3) {
+        [CGAPIHelper alert:@"Too short" withMessage:@"For the sake of preserving your API Credit, you should ask the AI questions that are longer than three characters."];
+        return;
+    }
+    
+    CGMessage *ownMessage = CGMessage.new;
+    
+    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
+    NSString *tmpDirectory = NSTemporaryDirectory();
+    NSString *filePath = [tmpDirectory stringByAppendingPathComponent:@"avatar.png"];
+    UIImage *image = [UIImage imageWithContentsOfFile:filePath];
+    
+    ownMessage.author = (username.length >= 3) ? username : @"You";
+    ownMessage.avatar = image ?: [UIImage imageNamed:@"defaultUserAvatar"];
+    ownMessage.role = @"user";
+    ownMessage.content = trimmedText;
+    ownMessage.type = 1; // User message type
+    ownMessage.imageHash = nil;
+    ownMessage.imageAttachment = nil;
+    
+
     if (self.attachmentImage.image != nil) {
         NSData *imageData = UIImagePNGRepresentation(self.attachmentImage.image);
         if (imageData) {
-            //Create the user's message
-            CGMessage *ownMessage = CGMessage.new;
-            
-            NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
-            if (username.length >= 3) {
-                ownMessage.author = username;
-            } else if(username == nil) {
-                ownMessage.author = @"You";
-            } else {
-                ownMessage.author = @"You";
-            }
-            
-            NSString *tmpDirectory = NSTemporaryDirectory();
-            NSString *filePath = [tmpDirectory stringByAppendingPathComponent:@"avatar.png"];
-            UIImage *image = [UIImage imageWithContentsOfFile:filePath];
-            
-            if (image) {
-                ownMessage.avatar = image;
-            } else {
-                ownMessage.avatar = [UIImage imageNamed:@"defaultUserAvatar"];
-            }
-            ownMessage.role = @"user";
-            ownMessage.content = self.inputField.text;
-            ownMessage.type = 1; // User message type
-            
-            float contentWidth = UIScreen.mainScreen.bounds.size.width - 63;
-            CGSize textSize = [ownMessage.content sizeWithFont:[UIFont systemFontOfSize:15]
-                                             constrainedToSize:CGSizeMake(contentWidth, MAXFLOAT)
-                                                 lineBreakMode:NSLineBreakByWordWrapping];
-            ownMessage.contentHeight = textSize.height + 50;
+            ownMessage.imageAttachment = self.attachmentImage.image;
+
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 NSString *encodedImage = [imageData base64EncodedString];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     ownMessage.imageHash = encodedImage;
                 });
             });
-            
-            
-            
-            [self.messages addObject:ownMessage];
-            [self.chatTableView reloadData];
-            
-            [self slideDownTypeView];
-            [CGAPICommunicator createChatCompletionwithContent:self.messages];
-            self.inputField.text = @"";
-            self.inputFieldPlaceholder.hidden = NO;
-        }
-        
-        [self removeAttachment];
-        self.attachmentImage.image = nil;
-    } else {
-        if ([self.inputField.text length] > 0 && [self.inputField.text length] < 2) {
-            [CGAPIHelper alert:@"Too short" withMessage:@"For the sake of preserving your API Credit you should ask the AI questions that are longer than just three characters."];
-        } else if([self.inputField.text length] > 2) {
-            
-            
-            
-            //regex regex regex regex make 'MERICUH GREAT AGAIN
-            //we will fuck regex here
-            NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\b(draw|illustrate|generate an image|create a picture of|show me an image of)\\b" options:NSRegularExpressionCaseInsensitive error:nil];
-            
-            NSRange range = NSMakeRange(0, [self.inputField.text length]);
-            NSUInteger matches = [regex numberOfMatchesInString:self.inputField.text options:0 range:range];
-            
-            //UNFUCKED part
-            CGMessage *ownMessage = CGMessage.new;
-            
-            NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
-            if (username.length >= 3) {
-                ownMessage.author = username;
-            } else if(username == nil) {
-                ownMessage.author = @"You";
-            } else {
-                ownMessage.author = @"You";
-            }
-
-            NSString *tmpDirectory = NSTemporaryDirectory();
-            NSString *filePath = [tmpDirectory stringByAppendingPathComponent:@"avatar.png"];
-            UIImage *image = [UIImage imageWithContentsOfFile:filePath];
-            
-            if (image) {
-                ownMessage.avatar = image;
-            } else {
-                ownMessage.avatar = [UIImage imageNamed:@"defaultUserAvatar"];
-            }
-            
-            
-            ownMessage.role = @"user";
-            ownMessage.content = self.inputField.text;
-            ownMessage.type = 1; //User message type
-            ownMessage.imageHash = nil;
-            
-            
-            float contentWidth = UIScreen.mainScreen.bounds.size.width - 63;
-            CGSize textSize = [ownMessage.content sizeWithFont:[UIFont systemFontOfSize:15] constrainedToSize:CGSizeMake(contentWidth, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
-            ownMessage.contentHeight = textSize.height + 50;
-            
-            [self.messages addObject:ownMessage];
-            [self.chatTableView reloadData];
-            
-            [self slideDownTypeView];
-            
-            if (matches > 0) {
-                // Route to image generation API (e.g., DALL·E)
-                [CGAPICommunicator createImageGenerationWithContent:self.messages];
-                NSLog(@"User wants to generate an image. Route to image generation API...");
-                [CGAPIHelper alert:@"SHock!" withMessage:@"user wnats to genraet image!!!"];
-                // You can implement the image generation logic here (DALL·E API call)
-            } else {
-                [CGAPICommunicator createChatCompletionwithContent:self.messages];
-                [CGAPIHelper alert:@"Ah shiet..." withMessage:@"Houston we have a problem..."];
-            }
-            self.inputField.text = @"";
-            self.inputFieldPlaceholder.hidden = NO;
-            
-        } else if([self.inputField.text length] < 1) {
-            [self.inputField resignFirstResponder];
-            
         }
     }
     
-    if(self.viewingPresentTime)
+    float contentWidth = UIScreen.mainScreen.bounds.size.width - 63;
+    CGSize textSize = [ownMessage.content sizeWithFont:[UIFont systemFontOfSize:15]
+                                     constrainedToSize:CGSizeMake(contentWidth, MAXFLOAT)
+                                         lineBreakMode:NSLineBreakByWordWrapping];
+    ownMessage.contentHeight = textSize.height + 50;
+    
+    [self.messages addObject:ownMessage];
+    [self.chatTableView reloadData];
+    
+    if (matches > 0) {
+        // Route to image generation API (e.g., DALL·E)
+        [CGAPICommunicator createImageGenerationWithContent:trimmedText];
+    } else {
+        [CGAPICommunicator createChatCompletionwithContent:self.messages];
+    }
+    
+    self.inputField.text = @"";
+    self.inputFieldPlaceholder.hidden = NO;
+    [self removeAttachment];
+    [self slideDownTypeView];
+    self.attachmentImage.image = nil;
+    
+    if (self.viewingPresentTime) {
         [self.chatTableView setContentOffset:CGPointMake(0, self.chatTableView.contentSize.height - self.chatTableView.frame.size.height) animated:YES];
+    }
 }
+
 
 - (IBAction)camera:(id)sender {
     [self.inputField resignFirstResponder];
@@ -403,6 +404,9 @@
 }
 
 - (void)invokeTitleChange {
+    if (self.notTheAlert) {  // Prevent multiple alerts from stacking up
+        return;
+    }
     self.done = YES;
     int randomDelay = arc4random_uniform(16) + 15;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(randomDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -433,98 +437,157 @@
 
 #pragma mark tableview
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+
+- (int)countOfMessages {
     return self.messages.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGMessage *message = self.messages[indexPath.row];
-    
-    if(message.type == 2) {
-        [tableView registerNib:[UINib nibWithNibName:@"CGChatTableCell" bundle:nil] forCellReuseIdentifier:@"Message Cell"];
-        CGChatTableCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Message Cell"];
-        
-        
-        [cell.authorLabel setText:message.author];
-        
-        if(VERSION_MIN(@"6.0")) {
-            [cell configureWithMessage:message.content];
-            NSLog(@"Fired");
-        } else {
-            [cell.contentTextView setText:message.content];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSInteger rowCount = 0;
+    for (CGMessage *message in self.messages) {
+        rowCount++;
+        if (message.imageAttachment != nil) {
+            rowCount++;
         }
-        
-        [cell.contentTextView setHeight:[cell.contentTextView sizeThatFits:CGSizeMake(cell.contentTextView.width, MAXFLOAT)].height];
-        
-        [cell.avatar setImage:message.avatar];
-        cell.avatar.layer.cornerRadius = cell.avatar.frame.size.width / 6.0;
-        cell.avatar.layer.masksToBounds = YES;
-        
-        if (indexPath.row == 0) {
-            cell.separator.hidden = YES;
-        } else {
-            cell.separator.hidden = NO;
-        }
-        
-
-        return cell;
-    } else if(message.type == 1) {
-        [tableView registerNib:[UINib nibWithNibName:@"CGAuthorChatTableCell" bundle:nil] forCellReuseIdentifier:@"Author Cell"];
-        CGAuthorTableCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Author Cell"];
-        
-        
-        [cell.authorLabel setText:message.author];
-        [cell.contentTextView setText:message.content];
-        
-        [cell.contentTextView setHeight:[cell.contentTextView sizeThatFits:CGSizeMake(cell.contentTextView.width, MAXFLOAT)].height];
-        
-        [cell.avatar setImage:message.avatar];
-        cell.aOverlay.layer.cornerRadius = cell.aOverlay.frame.size.width / 6.0;
-        cell.avatar.layer.cornerRadius = cell.avatar.frame.size.width / 6.0;
-        cell.avatar.layer.masksToBounds = YES;
-        
-        if (indexPath.row == 0) {
-            cell.separator.hidden = YES;
-        } else {
-            cell.separator.hidden = NO;
-        }
-            
-        return cell;
     }
+    return rowCount;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger messageIndex = 0;
+    
+    for (NSInteger i = 0; i < self.messages.count; i++) {
+        CGMessage *message = self.messages[i];
+        
+        if (indexPath.row == messageIndex) {
+            if (message.type == 2) {
+                [tableView registerNib:[UINib nibWithNibName:@"CGChatTableCell" bundle:nil] forCellReuseIdentifier:@"Message Cell"];
+                CGChatTableCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Message Cell"];
+                
+                [cell.authorLabel setText:message.author];
+                
+                if (VERSION_MIN(@"6.0")) {
+                    [cell configureWithMessage:message.content];
+                } else {
+                    [cell.contentTextView setText:message.content];
+                }
+                
+                [cell.contentTextView setHeight:[cell.contentTextView sizeThatFits:CGSizeMake(cell.contentTextView.width, MAXFLOAT)].height];
+                
+                [cell.avatar setImage:message.avatar];
+                cell.avatar.layer.cornerRadius = cell.avatar.frame.size.width / 6.0;
+                cell.avatar.layer.masksToBounds = YES;
+                
+                cell.separator.hidden = (indexPath.row == 0);
+                return cell;
+            } else if (message.type == 1) {
+                [tableView registerNib:[UINib nibWithNibName:@"CGAuthorChatTableCell" bundle:nil] forCellReuseIdentifier:@"Author Cell"];
+                CGAuthorTableCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Author Cell"];
+                
+                [cell.authorLabel setText:message.author];
+                [cell.contentTextView setText:message.content];
+                
+                [cell.contentTextView setHeight:[cell.contentTextView sizeThatFits:CGSizeMake(cell.contentTextView.width, MAXFLOAT)].height];
+                
+                [cell.avatar setImage:message.avatar];
+                cell.aOverlay.layer.cornerRadius = cell.aOverlay.frame.size.width / 6.0;
+                cell.avatar.layer.cornerRadius = cell.avatar.frame.size.width / 6.0;
+                cell.avatar.layer.masksToBounds = YES;
+                
+                cell.separator.hidden = (indexPath.row == 0);
+                return cell;
+            }
+        }
+        
+        messageIndex++; // Move to the next row
+        
+        if (message.imageAttachment != nil) {
+            // **Image attachment cell**
+            if (indexPath.row == messageIndex) {
+                if(message.type == 1) {
+                    [tableView registerNib:[UINib nibWithNibName:@"CGImageAttachment" bundle:nil] forCellReuseIdentifier:@"Image Cell"];
+                    CGImageAttachment *imageCell = [tableView dequeueReusableCellWithIdentifier:@"Image Cell"];
+                    imageCell.thumbnail.layer.cornerRadius = 10; // Adjust value as needed
+                    imageCell.thumbnail.layer.masksToBounds = YES;
+                    imageCell.thumbnail.clipsToBounds = YES;
+                    imageCell.thumbnail.contentMode = UIViewContentModeScaleAspectFill;
+
+                    [imageCell.thumbnail setImage:message.imageAttachment];
+                    
+                    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedImage:)];
+                    singleTap.numberOfTapsRequired = 1;
+                    imageCell.totalThumbView.userInteractionEnabled = YES;
+                    
+                    [imageCell.totalThumbView addGestureRecognizer:singleTap];
+                    return imageCell;
+                } else if(message.type == 2) {
+                    [tableView registerNib:[UINib nibWithNibName:@"CGAImageAttachment" bundle:nil] forCellReuseIdentifier:@"AImage Cell"];
+                    CGAImageAttachment *imageCell = [tableView dequeueReusableCellWithIdentifier:@"AImage Cell"];
+                    imageCell.thumbnail.layer.cornerRadius = 10; // Adjust value as needed
+                    imageCell.thumbnail.layer.masksToBounds = YES;
+                    imageCell.thumbnail.clipsToBounds = YES;
+                    imageCell.thumbnail.contentMode = UIViewContentModeScaleAspectFill;
+
+                    [imageCell.thumbnail setImage:message.imageAttachment];
+                    
+                    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedImage:)];
+                    singleTap.numberOfTapsRequired = 1;
+                    imageCell.totalThumbView.userInteractionEnabled = YES;
+                    
+                    [imageCell.totalThumbView addGestureRecognizer:singleTap];
+                    return imageCell;
+                }
+            }
+            messageIndex++;
+        }
+    }
+    
     return nil;
 }
+
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
 	self.viewingPresentTime = (scrollView.contentOffset.y >= scrollView.contentSize.height - scrollView.height - 10);
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-	CGMessage* messageAtRowIndex = [self.messages objectAtIndex:indexPath.row];
-	return messageAtRowIndex.contentHeight;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger messageIndex = 0;
+    
+    for (CGMessage *message in self.messages) {
+        if (indexPath.row == messageIndex) {
+            return message.contentHeight; // Height for text messages
+        }
+        messageIndex++;
+        
+        if (message.imageAttachment != nil) {
+            if (indexPath.row == messageIndex) {
+                return 140; // Fixed height for images
+            }
+            messageIndex++;
+        }
+    }
+    
+    return 44;
 }
 
 
 #pragma mark keyboard
 - (void)keyboardWillShow:(NSNotification *)notification {
 	if(self.notTheAlert == NO) {
-	//thx to Pierre Legrain
-	//http://pyl.io/2015/08/17/animating-in-sync-with-ios-keyboard/
-	
-	int keyboardHeight = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
-	float keyboardAnimationDuration = [[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
-	int keyboardAnimationCurve = [[notification.userInfo objectForKey: UIKeyboardAnimationCurveUserInfoKey] integerValue];
-	
-	[UIView beginAnimations:nil context:NULL];
-	[UIView setAnimationDuration:keyboardAnimationDuration];
-	[UIView setAnimationCurve:keyboardAnimationCurve];
-	[UIView setAnimationBeginsFromCurrentState:YES];
-	[self.chatTableView setHeight:self.view.height - keyboardHeight - self.toolbar.height];
-	[self.toolbar setY:self.view.height - keyboardHeight - self.toolbar.height];
-	[UIView commitAnimations];
-	
-	
-	if(self.viewingPresentTime)
-		[self.chatTableView setContentOffset:CGPointMake(0, self.chatTableView.contentSize.height - self.chatTableView.frame.size.height) animated:NO];
+        int keyboardHeight = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
+        float keyboardAnimationDuration = [[notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+        int keyboardAnimationCurve = [[notification.userInfo objectForKey: UIKeyboardAnimationCurveUserInfoKey] integerValue];
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:keyboardAnimationDuration];
+        [UIView setAnimationCurve:keyboardAnimationCurve];
+        [UIView setAnimationBeginsFromCurrentState:YES];
+        [self.chatTableView setHeight:self.view.height - keyboardHeight - self.toolbar.height];
+        [self.toolbar setY:self.view.height - keyboardHeight - self.toolbar.height];
+        [UIView commitAnimations];
+        
+        if(self.viewingPresentTime)
+            [self.chatTableView setContentOffset:CGPointMake(0, self.chatTableView.contentSize.height - self.chatTableView.frame.size.height) animated:NO];
     }
 }
 
@@ -563,12 +626,27 @@
 	if ([segue.identifier isEqualToString:@"to Viewer"]){
 		CGImageViewController *imageViewController = [segue destinationViewController];
 		UIImage *selectedImage = self.attachmentImage.image;
+        
+        if(self.selectedImage != nil) {
+            selectedImage = self.selectedImage;
+        }
 		if ([imageViewController isKindOfClass:CGImageViewController.class]){
 			dispatch_async(dispatch_get_main_queue(), ^{
 				[imageViewController.imageView setImage:selectedImage];
+                self.selectedImage = nil;
 			});
 		}
 	}
+}
+
+- (void)checkAPICredentials {
+    if(apiKey == nil) {
+        [CGAPIHelper alert:@"Warning" withMessage:@"Your API Key is missing, please double-check the settings pane and make sure you've inputted an OpenAI API Key."];
+    } else if([apiKey isEqual:@""]) {
+        [CGAPIHelper alert:@"Warning" withMessage:@"Your API Key is missing, please double-check the settings pane and make sure you've inputted an OpenAI API Key."];
+    } else {
+        [CGAPIHelper checkForAPIKeyValidity];
+    }
 }
 @end
 

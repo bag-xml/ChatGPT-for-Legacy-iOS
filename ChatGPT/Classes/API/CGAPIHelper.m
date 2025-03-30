@@ -68,7 +68,6 @@
                 return;
             } else if(!errorDict) {
                 //[NSNotificationCenter.defaultCenter postNotificationName:@"KEY IS VALID" object:nil];
-                NSLog(@"Hooray");
             }
         } else if(!data) {
             if(error) {
@@ -102,8 +101,6 @@
         
         if(data) {
             NSDictionary* parsedResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-            NSLog(@"%@", parsedResponse);
-            
             NSDictionary *errorDict = [parsedResponse objectForKey:@"error"];
             if(errorDict) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -145,25 +142,20 @@
 + (void)saveConversationWithArray:(NSMutableArray *)conversationArray withID:(NSString *)uuid withTitle:(NSString *)title{
     NSMutableArray *messagesArray = [NSMutableArray array];
     for (CGMessage *message in conversationArray) {
-        NSDictionary *messageDict = @{
-                                      @"name": message.author ?: @"You",
-                                      @"role": message.role ?: @"user",
-                                      @"type": @(message.type),
-                                      @"message": message.content ?: @""
-                                      };
-        [messagesArray addObject:messageDict];
+        NSMutableDictionary *messageDict = [@{
+                                              @"name": message.author ?: @"You",
+                                              @"role": message.role ?: @"user",
+                                              @"type": @(message.type),
+                                              @"message": message.content ?: @""
+                                              } mutableCopy];
         
         if (message.imageHash) {
-            NSDictionary *imageContentDict = @{
-                                               @"name": message.author ?: @"You",
-                                               @"role": message.role ?: @"user",
-                                               @"type": @(message.type),
-                                               @"message": message.content ?: @"",
-                                               @"image": @{@"url": [NSString stringWithFormat:@"data:image/jpeg;base64,%@", message.imageHash]}
-                                               };
-            [messagesArray addObject:imageContentDict];
+            messageDict[@"image"] = @{@"url": [NSString stringWithFormat:@"data:image/jpeg;base64,%@", message.imageHash]};
         }
+        
+        [messagesArray addObject:messageDict];
     }
+
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd-MM-yyyy"];
@@ -276,6 +268,30 @@
     }
 }
 
++ (BOOL)deleteAllConversations {
+    NSString *tempDirectory = NSTemporaryDirectory();
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSError *error;
+    
+    NSArray *files = [fileManager contentsOfDirectoryAtPath:tempDirectory error:&error];
+    BOOL allDeleted = YES;
+    
+    for(NSString *file in files) {
+        if([file.pathExtension isEqualToString:@"json"]) {
+            NSString *filePath = [tempDirectory stringByAppendingPathComponent:file];
+            BOOL success = [fileManager  removeItemAtPath:filePath error:&error];
+            
+            if(!success) {
+                allDeleted = NO;
+            }
+        }
+    }
+    
+    if(!allDeleted) {
+        [CGAPIHelper alert:@"Error" withMessage:@"An error occured while trying to delete conversations."];
+    }
+    return allDeleted;
+}
 + (CGMessage*)convertTextCompletionResponse:(NSDictionary*)jsonMessage {
     NSDictionary *firstChoice = jsonMessage[@"choices"][0];
     NSDictionary *messageDict = firstChoice[@"message"];
@@ -296,6 +312,31 @@
     return newAssistantResponseMessage;
 }
 
++ (CGMessage*)convertImageGenerationResponse:(NSDictionary*)jsonMessage {
+    NSDictionary *firstData = jsonMessage[@"data"][0];
+    
+    
+    CGMessage *newAssistantResponseMessage = CGMessage.new;
+    
+    newAssistantResponseMessage.author = @"ChatGPT";
+    newAssistantResponseMessage.content = firstData[@"revised_prompt"];
+    newAssistantResponseMessage.imageHash = firstData[@"b64_json"];
+    
+    NSData *imageData = [NSData dataWithBase64EncodedString:firstData[@"b64_json"]];
+    newAssistantResponseMessage.imageAttachment = [UIImage imageWithData:imageData];
+    
+    newAssistantResponseMessage.role = @"assistant";
+    newAssistantResponseMessage.avatar = [UIImage imageNamed:@"defaultAssistantAvatar"];
+    newAssistantResponseMessage.type = 2; //AI Message is 2, user 1, errors 3
+    newAssistantResponseMessage.indestructible = YES;
+    
+    float contentWidth = UIScreen.mainScreen.bounds.size.width - 63;
+    CGSize textSize = [newAssistantResponseMessage.content sizeWithFont:[UIFont systemFontOfSize:15] constrainedToSize:CGSizeMake(contentWidth, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
+    newAssistantResponseMessage.contentHeight = textSize.height + 50;
+    
+    return newAssistantResponseMessage;
+    
+}
 + (CGMessage*)loopErrorBack:(NSString*)errorMessage {
     CGMessage *newError = CGMessage.new;
     

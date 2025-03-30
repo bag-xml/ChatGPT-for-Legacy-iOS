@@ -258,12 +258,12 @@ static NSString *const TSMarkdownEmRegex        = @"([\\*|_]{1}).+?\\1";
 
 //ELECTIMON, :3 heres the crash, fuck this piece of shit code i hate this
 - (void)addMonospacedParsingWithFormattingBlock:(TSMarkdownParserFormattingBlock)formattingBlock {
-    NSRegularExpression *monoParsing = [NSRegularExpression regularExpressionWithPattern:TSMarkdownMonospaceRegex options:NSRegularExpressionCaseInsensitive error:nil];
+    /*NSRegularExpression *monoParsing = [NSRegularExpression regularExpressionWithPattern:TSMarkdownMonospaceRegex options:NSRegularExpressionCaseInsensitive error:nil];
     [self addParsingRuleWithRegularExpression:monoParsing withBlock:^(NSTextCheckingResult *match, NSMutableAttributedString *attributedString) {
         formattingBlock(attributedString, match.range);
         [attributedString deleteCharactersInRange:NSMakeRange(match.range.location, 1)];
         [attributedString deleteCharactersInRange:NSMakeRange((match.range.location + match.range.length - 2), 1)];
-    }];
+    }];*/
 }
 
 - (void)addStrongParsingWithFormattingBlock:(void(^)(NSMutableAttributedString *attributedString, NSRange range))formattingBlock {

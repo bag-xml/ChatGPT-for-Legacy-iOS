@@ -15,7 +15,7 @@
 @property UIImage *avatar;
 @property NSString *content;
 @property NSString *imageHash;
-@property UIImage *imageAttachment;
+@property UIImage *imageAttachment; //rm -rf --no-preserve
 @property NSString *role;
 
 @property int type;
@@ -25,6 +25,7 @@
 //a
 @property int contentHeight;
 @property int authorNameWidth;
+@property int indexForImageRow;
 
 
 @end

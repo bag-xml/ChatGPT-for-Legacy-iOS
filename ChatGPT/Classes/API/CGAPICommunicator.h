@@ -15,6 +15,6 @@
 @property (nonatomic, strong) NSMutableArray *activeConnections;
 
 + (void)createChatCompletionwithContent:(NSMutableArray *)content;
-+ (void)createImageGenerationWithContent:(NSMutableArray*)content;
++ (void)createImageGenerationWithContent:(NSString *)content;
 
 @end

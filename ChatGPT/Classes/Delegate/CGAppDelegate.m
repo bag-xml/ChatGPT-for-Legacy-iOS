@@ -13,7 +13,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    
     if(VERSION_MIN(@"7.0")) {
         bool useLegacyUI = [[NSUserDefaults standardUserDefaults] boolForKey:@"UIUseLegacyUI"];
         if(useLegacyUI == NO) {
@@ -21,12 +20,7 @@
         }
         
     }
-    
-    //[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
-    bool yougetwhatimean = [[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"];
-    if(yougetwhatimean == YES)
-        [self checkAPICredentials];
-    //[self checkAPICredentials];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"aFL"];
     return YES;
 }
 							

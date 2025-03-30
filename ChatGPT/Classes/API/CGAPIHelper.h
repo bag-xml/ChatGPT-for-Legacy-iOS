@@ -33,6 +33,7 @@
 @property NSDictionary *currentAccount;
 
 + (CGMessage*)convertTextCompletionResponse:(NSDictionary*)jsonMessage;
++ (CGMessage*)convertImageGenerationResponse:(NSDictionary*)jsonMessage;
 + (CGMessage*)loopErrorBack:(NSString*)errorMessage;
 
 + (NSMutableArray*)loadConversations;
@@ -46,4 +47,6 @@
 //Conversation saving, updating, loading and listing logic
 + (void)saveConversationWithArray:(NSMutableArray *)conversationArray withID:(NSString *)uuid withTitle:(NSString *)title;
 + (BOOL)deleteConversationWithUUID:(NSString *)uuid;
++ (BOOL)deleteAllConversations;
+
 @end

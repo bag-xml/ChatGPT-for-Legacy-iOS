@@ -16,16 +16,21 @@
 #import "CGAPICommunicator.h"
 
 #import "CGImageViewController.h"
+
+#import "CGImageAttachment.h"
+#import "CGAImageAttachment.h"
+
 #import "CGChatTableCell.h"
 #import "CGAuthorTableCell.h"
 
 
-@interface CGChatViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface CGChatViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *chatTableView;
 @property (weak, nonatomic) IBOutlet UIView *typeView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 
+@property (weak, nonatomic) IBOutlet UIView *welcomeView;
 
 @property (weak, nonatomic) IBOutlet UIView *inputView;
 @property (weak, nonatomic) IBOutlet UITextView *inputField;
@@ -43,6 +48,10 @@
 
 @property (strong, nonatomic) NSString *currentImage;
 
+//welcom
+
+
+@property UIImage *selectedImage;
 @property NSString *currentConversationID;
 //@property NSString
 @property NSMutableArray* messages;
@@ -56,5 +65,7 @@
 
 - (void)loadChat:(NSMutableArray *)messages withUUID:(NSString *)uuid;
 - (void)startNewConversation;
+
+- (int)countOfMessages;
 
 @end

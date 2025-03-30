@@ -18,6 +18,7 @@
     [super viewDidLoad];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recheckandReload:) name:@"RE-CHECK CONVOS" object:nil];
     self.allConversations = [CGAPIHelper loadConversations];
+    
     [self.tableView reloadData];
 
 }
@@ -39,6 +40,38 @@
             //input field
             [alertView setTag:1];
             [alertView show];
+        } else if(indexPath.section == 0) {
+            UINavigationController *navigationController = (UINavigationController *)self.slideMenuController.contentViewController;
+            CGChatViewController *contentViewController = navigationController.viewControllers.firstObject;
+            int curMes = [contentViewController countOfMessages];
+            NSLog(@"%i penis", curMes);
+            if(self.allConversations.count < 1) {
+                if([contentViewController countOfMessages] < 1) {
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Quick action panel" message:@"You don't have any conversations yet, you should chat more and save this conversation!" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+                    //input field
+                    [alertView setTag:3];
+                    [alertView show];
+                } else {
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Quick action panel" message:@"Save your conversation now" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Save", nil];
+                    //input field
+                    [alertView setTag:3];
+                    [alertView show];
+                }
+            } else if(self.allConversations.count > 0) {
+                if([contentViewController countOfMessages] < 1) {
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Quick action panel" message:@"You need to start sending messages in order to be able to save your conversations." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete all conversations", nil];
+                    //input field
+                    [alertView setTag:4];
+                    [alertView show];
+                } else {
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Quick action panel" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Save conversation", @"Delete all conversations", nil];
+                    //input field
+                    [alertView setTag:3];
+                    [alertView show];
+                }
+            }
+            
+            
         }
     }
 }
@@ -86,9 +119,30 @@
         if (buttonIndex == alertView.firstOtherButtonIndex) {
             NSString *enteredText = [alertView textFieldAtIndex:0].text;
             CGConversation *selectedConv = self.allConversations[self.selectedIndexPath.row];
+            UINavigationController *navigationController = (UINavigationController *)self.slideMenuController.contentViewController;
+            CGChatViewController *contentViewController = navigationController.viewControllers.firstObject;
+            [contentViewController setTitle:enteredText];
             [CGAPIHelper saveConversationWithArray:selectedConv.messages withID:selectedConv.uuid withTitle:enteredText]; //should overwrite the other uuid post, so its always uptodate
             [NSNotificationCenter.defaultCenter postNotificationName:@"RE-CHECK CONVOS" object:nil];
             self.selectedIndexPath = nil;
+        }
+    } else if(alertView.tag == 3) {
+        if(buttonIndex == 1) {
+            [NSNotificationCenter.defaultCenter postNotificationName:@"SAVE CHAT" object:nil];
+            [self recheckandReload:nil];
+        } else if(buttonIndex == 2) {
+            NSLog(@"2");
+            BOOL success = [CGAPIHelper deleteAllConversations];
+            if(success) {
+                [NSNotificationCenter.defaultCenter postNotificationName:@"RE-CHECK CONVOS" object:nil];
+            }
+        }
+    } else if(alertView.tag == 4) {
+        if(buttonIndex == 1) {
+            BOOL success = [CGAPIHelper deleteAllConversations];
+            if(success) {
+                [NSNotificationCenter.defaultCenter postNotificationName:@"RE-CHECK CONVOS" object:nil];
+            }
         }
     }
 }
@@ -185,6 +239,7 @@
     
     return nil;
 }
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && indexPath.row == 0) {
