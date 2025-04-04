@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A2F848F2DA06F2000337B46 /* NSURLConnection+FoundationCompletions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2F847E2DA06F2000337B46 /* NSURLConnection+FoundationCompletions.m */; };
+		0A2F84902DA06F2000337B46 /* NSURLConnection+FoundationCompletions.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2F847F2DA06F2000337B46 /* NSURLConnection+FoundationCompletions.o */; };
+		0A2F84912DA06F2000337B46 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2F848B2DA06F2000337B46 /* libcrypto.a */; };
+		0A2F84922DA06F2000337B46 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2F848C2DA06F2000337B46 /* libcurl.a */; };
+		0A2F84932DA06F2000337B46 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2F848D2DA06F2000337B46 /* libssl.a */; };
+		0A2F84942DA06F2000337B46 /* libz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2F848E2DA06F2000337B46 /* libz.a */; };
 		0A3722072D89777100EA788B /* CGImageAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3722052D89777100EA788B /* CGImageAttachment.m */; };
 		0A3722082D89777100EA788B /* CGImageAttachment.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3722062D89777100EA788B /* CGImageAttachment.xib */; };
 		0A53FA712D80BCEE00081FE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A53FA6F2D80BCEE00081FE9 /* Main.storyboard */; };
@@ -113,6 +119,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A2F847D2DA06F2000337B46 /* NSURLConnection+FoundationCompletions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLConnection+FoundationCompletions.h"; sourceTree = "<group>"; };
+		0A2F847E2DA06F2000337B46 /* NSURLConnection+FoundationCompletions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLConnection+FoundationCompletions.m"; sourceTree = "<group>"; };
+		0A2F847F2DA06F2000337B46 /* NSURLConnection+FoundationCompletions.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "NSURLConnection+FoundationCompletions.o"; sourceTree = "<group>"; };
+		0A2F84822DA06F2000337B46 /* curl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curl.h; sourceTree = "<group>"; };
+		0A2F84832DA06F2000337B46 /* curlver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlver.h; sourceTree = "<group>"; };
+		0A2F84842DA06F2000337B46 /* easy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = easy.h; sourceTree = "<group>"; };
+		0A2F84852DA06F2000337B46 /* mprintf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mprintf.h; sourceTree = "<group>"; };
+		0A2F84862DA06F2000337B46 /* multi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = multi.h; sourceTree = "<group>"; };
+		0A2F84872DA06F2000337B46 /* stdcheaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdcheaders.h; sourceTree = "<group>"; };
+		0A2F84882DA06F2000337B46 /* system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system.h; sourceTree = "<group>"; };
+		0A2F84892DA06F2000337B46 /* typecheck-gcc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "typecheck-gcc.h"; sourceTree = "<group>"; };
+		0A2F848A2DA06F2000337B46 /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
+		0A2F848B2DA06F2000337B46 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		0A2F848C2DA06F2000337B46 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcurl.a; sourceTree = "<group>"; };
+		0A2F848D2DA06F2000337B46 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
+		0A2F848E2DA06F2000337B46 /* libz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libz.a; sourceTree = "<group>"; };
 		0A3722042D89777100EA788B /* CGImageAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGImageAttachment.h; sourceTree = "<group>"; };
 		0A3722052D89777100EA788B /* CGImageAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGImageAttachment.m; sourceTree = "<group>"; };
 		0A3722062D89777100EA788B /* CGImageAttachment.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CGImageAttachment.xib; sourceTree = "<group>"; };
@@ -238,8 +260,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				49A1BBC92D351874002D9D00 /* CoreGraphics.framework in Frameworks */,
+				0A2F84912DA06F2000337B46 /* libcrypto.a in Frameworks */,
+				0A2F84932DA06F2000337B46 /* libssl.a in Frameworks */,
 				49A1BBCB2D351874002D9D00 /* UIKit.framework in Frameworks */,
 				49A1BBC72D351874002D9D00 /* Foundation.framework in Frameworks */,
+				0A2F84902DA06F2000337B46 /* NSURLConnection+FoundationCompletions.o in Frameworks */,
+				0A2F84942DA06F2000337B46 /* libz.a in Frameworks */,
+				0A2F84922DA06F2000337B46 /* libcurl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +283,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A2F847C2DA06F2000337B46 /* NSURLConnection-Curl */ = {
+			isa = PBXGroup;
+			children = (
+				0A2F847D2DA06F2000337B46 /* NSURLConnection+FoundationCompletions.h */,
+				0A2F847E2DA06F2000337B46 /* NSURLConnection+FoundationCompletions.m */,
+				0A2F847F2DA06F2000337B46 /* NSURLConnection+FoundationCompletions.o */,
+			);
+			path = "NSURLConnection-Curl";
+			sourceTree = "<group>";
+		};
+		0A2F84802DA06F2000337B46 /* SSL */ = {
+			isa = PBXGroup;
+			children = (
+				0A2F84812DA06F2000337B46 /* curl */,
+				0A2F848B2DA06F2000337B46 /* libcrypto.a */,
+				0A2F848C2DA06F2000337B46 /* libcurl.a */,
+				0A2F848D2DA06F2000337B46 /* libssl.a */,
+				0A2F848E2DA06F2000337B46 /* libz.a */,
+			);
+			path = SSL;
+			sourceTree = "<group>";
+		};
+		0A2F84812DA06F2000337B46 /* curl */ = {
+			isa = PBXGroup;
+			children = (
+				0A2F84822DA06F2000337B46 /* curl.h */,
+				0A2F84832DA06F2000337B46 /* curlver.h */,
+				0A2F84842DA06F2000337B46 /* easy.h */,
+				0A2F84852DA06F2000337B46 /* mprintf.h */,
+				0A2F84862DA06F2000337B46 /* multi.h */,
+				0A2F84872DA06F2000337B46 /* stdcheaders.h */,
+				0A2F84882DA06F2000337B46 /* system.h */,
+				0A2F84892DA06F2000337B46 /* typecheck-gcc.h */,
+				0A2F848A2DA06F2000337B46 /* types.h */,
+			);
+			path = curl;
+			sourceTree = "<group>";
+		};
 		0ABEF9A62D873D3200A5ADA9 /* TSMarkdownParser */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,6 +402,8 @@
 		49A1BC012D3519DD002D9D00 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				0A2F847C2DA06F2000337B46 /* NSURLConnection-Curl */,
+				0A2F84802DA06F2000337B46 /* SSL */,
 				0ABEF9A62D873D3200A5ADA9 /* TSMarkdownParser */,
 				5B7FCE372D6B077100DF4899 /* APLSlideMenu */,
 				5B1AA2262D6A6AA700FC07D5 /* SVProgressHUD */,
@@ -824,6 +891,7 @@
 				5B7FCE3D2D6B077100DF4899 /* APLSlideMenuViewController.m in Sources */,
 				5B6296652D711517001D3C63 /* CGWelcomeController.m in Sources */,
 				0AF6A7392D8CBF070060F3F8 /* CGAImageAttachment.m in Sources */,
+				0A2F848F2DA06F2000337B46 /* NSURLConnection+FoundationCompletions.m in Sources */,
 				5B0D4FE52D50019D0042D50A /* Base64.m in Sources */,
 				49A1BC272D352569002D9D00 /* CGAPICommunicator.m in Sources */,
 				5B7FCE452D6B6C0600DF4899 /* CGConversationElementCell.m in Sources */,
