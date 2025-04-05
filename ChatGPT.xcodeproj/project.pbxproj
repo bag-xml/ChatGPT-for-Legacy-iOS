@@ -105,7 +105,6 @@
 		5B9D665B2D3D13C4007BE404 /* SendBarButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B9D665A2D3D13C4007BE404 /* SendBarButtonPressed@2x.png */; };
 		5B9D665D2D3D157F007BE404 /* SendBarButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B9D665C2D3D157F007BE404 /* SendBarButton@2x.png */; };
 		5BA6F9592DA16A3B00D0E66D /* NSURLConnection+FoundationCompletions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA6F9462DA16A3B00D0E66D /* NSURLConnection+FoundationCompletions.m */; };
-		5BA6F95A2DA16A3B00D0E66D /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BA6F94A2DA16A3B00D0E66D /* Base64.m */; };
 		5BA6F95B2DA16A3B00D0E66D /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA6F9552DA16A3B00D0E66D /* libcrypto.a */; };
 		5BA6F95C2DA16A3B00D0E66D /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA6F9562DA16A3B00D0E66D /* libcurl.a */; };
 		5BA6F95D2DA16A3B00D0E66D /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BA6F9572DA16A3B00D0E66D /* libssl.a */; };
@@ -255,8 +254,6 @@
 		5B9D665C2D3D157F007BE404 /* SendBarButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SendBarButton@2x.png"; sourceTree = "<group>"; };
 		5BA6F9452DA16A3B00D0E66D /* NSURLConnection+FoundationCompletions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLConnection+FoundationCompletions.h"; sourceTree = "<group>"; };
 		5BA6F9462DA16A3B00D0E66D /* NSURLConnection+FoundationCompletions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLConnection+FoundationCompletions.m"; sourceTree = "<group>"; };
-		5BA6F9492DA16A3B00D0E66D /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
-		5BA6F94A2DA16A3B00D0E66D /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		5BA6F94C2DA16A3B00D0E66D /* curl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curl.h; sourceTree = "<group>"; };
 		5BA6F94D2DA16A3B00D0E66D /* curlver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlver.h; sourceTree = "<group>"; };
 		5BA6F94E2DA16A3B00D0E66D /* easy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = easy.h; sourceTree = "<group>"; };
@@ -719,7 +716,6 @@
 		5BA6F9472DA16A3B00D0E66D /* SSL */ = {
 			isa = PBXGroup;
 			children = (
-				5BA6F9482DA16A3B00D0E66D /* Base64 */,
 				5BA6F94B2DA16A3B00D0E66D /* curl */,
 				5BA6F9552DA16A3B00D0E66D /* libcrypto.a */,
 				5BA6F9562DA16A3B00D0E66D /* libcurl.a */,
@@ -727,15 +723,6 @@
 				5BA6F9582DA16A3B00D0E66D /* libz.a */,
 			);
 			path = SSL;
-			sourceTree = "<group>";
-		};
-		5BA6F9482DA16A3B00D0E66D /* Base64 */ = {
-			isa = PBXGroup;
-			children = (
-				5BA6F9492DA16A3B00D0E66D /* Base64.h */,
-				5BA6F94A2DA16A3B00D0E66D /* Base64.m */,
-			);
-			path = Base64;
 			sourceTree = "<group>";
 		};
 		5BA6F94B2DA16A3B00D0E66D /* curl */ = {
@@ -949,7 +936,6 @@
 				5B7FCE362D6B074000DF4899 /* CGSidebarController.m in Sources */,
 				49A1BC202D351DA6002D9D00 /* CGAPIHelper.m in Sources */,
 				49A1BC1D2D351C92002D9D00 /* CGMessage.m in Sources */,
-				5BA6F95A2DA16A3B00D0E66D /* Base64.m in Sources */,
 				5B7FCE402D6B0A4D00DF4899 /* CGConversation.m in Sources */,
 				5B2E21CB2D354DEC0085E7BB /* TRMalleableFrameView.m in Sources */,
 				5B7FCE3D2D6B077100DF4899 /* APLSlideMenuViewController.m in Sources */,

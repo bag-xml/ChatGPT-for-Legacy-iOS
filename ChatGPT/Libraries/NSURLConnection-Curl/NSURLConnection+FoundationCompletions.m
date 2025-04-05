@@ -184,7 +184,7 @@ ReadMemoryCallback(void* ptr, size_t size, size_t nitems, void* data) {
 			NSLog(@"returned data");
 			return data;
 		} else {
-			return NULL;
+			return data;
 		}
 	} else {
 		NSLog(@"--- NSURLConnection+LibCurl Wrapper Error --- ret = %i", ret);		
