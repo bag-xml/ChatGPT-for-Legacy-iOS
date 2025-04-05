@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A2F848F2DA06F2000337B46 /* NSURLConnection+FoundationCompletions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2F847E2DA06F2000337B46 /* NSURLConnection+FoundationCompletions.m */; };
-		0A2F84902DA06F2000337B46 /* NSURLConnection+FoundationCompletions.o in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2F847F2DA06F2000337B46 /* NSURLConnection+FoundationCompletions.o */; };
-		0A2F84912DA06F2000337B46 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2F848B2DA06F2000337B46 /* libcrypto.a */; };
-		0A2F84922DA06F2000337B46 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2F848C2DA06F2000337B46 /* libcurl.a */; };
-		0A2F84932DA06F2000337B46 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2F848D2DA06F2000337B46 /* libssl.a */; };
-		0A2F84942DA06F2000337B46 /* libz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2F848E2DA06F2000337B46 /* libz.a */; };
+		0A0CE21C2DA134BD0069EA09 /* iOS7SendGlyph.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0CE21B2DA134BD0069EA09 /* iOS7SendGlyph.png */; };
+		0A0CE2222DA139170069EA09 /* IOS7HamburgerGlyph.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0CE2212DA139170069EA09 /* IOS7HamburgerGlyph.png */; };
+		0A0CE2252DA13C8A0069EA09 /* iOS7InputOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0CE2232DA13C8A0069EA09 /* iOS7InputOverlay.png */; };
+		0A0CE2262DA13C8A0069EA09 /* iOS7InputOverlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0CE2242DA13C8A0069EA09 /* iOS7InputOverlay@2x.png */; };
+		0A0CE2292DA13DED0069EA09 /* iOS7ImageViewOL.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0CE2272DA13DED0069EA09 /* iOS7ImageViewOL.png */; };
+		0A0CE22A2DA13DED0069EA09 /* iOS7ImageViewOL@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A0CE2282DA13DED0069EA09 /* iOS7ImageViewOL@2x.png */; };
 		0A3722072D89777100EA788B /* CGImageAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3722052D89777100EA788B /* CGImageAttachment.m */; };
 		0A3722082D89777100EA788B /* CGImageAttachment.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A3722062D89777100EA788B /* CGImageAttachment.xib */; };
 		0A53FA712D80BCEE00081FE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A53FA6F2D80BCEE00081FE9 /* Main.storyboard */; };
@@ -32,6 +32,13 @@
 		0AAF4D832D837585008086AC /* defaultUserAvatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AAF4D812D837585008086AC /* defaultUserAvatar.png */; };
 		0AAF4D842D837585008086AC /* defaultUserAvatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AAF4D822D837585008086AC /* defaultUserAvatar@2x.png */; };
 		0AAF4D862D83758B008086AC /* avatarOverlay@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AAF4D852D83758B008086AC /* avatarOverlay@2x.png */; };
+		0AB69E072DA14A1A00FC1619 /* iOS7Separator.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AB69E052DA14A1A00FC1619 /* iOS7Separator.png */; };
+		0AB69E082DA14A1A00FC1619 /* iOS7Separator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AB69E062DA14A1A00FC1619 /* iOS7Separator@2x.png */; };
+		0AB69E0A2DA14D3400FC1619 /* iOS7AssistantAvatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AB69E092DA14D3400FC1619 /* iOS7AssistantAvatar.png */; };
+		0AB69E0C2DA14FA900FC1619 /* iOS7AvatarOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AB69E0B2DA14FA900FC1619 /* iOS7AvatarOverlay.png */; };
+		0AB69E0E2DA1600800FC1619 /* iOS7SCT.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AB69E0D2DA1600800FC1619 /* iOS7SCT.png */; };
+		0AB69E102DA1613300FC1619 /* iOS7WEL.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AB69E0F2DA1613300FC1619 /* iOS7WEL.png */; };
+		0AB69E122DA162F700FC1619 /* iOS7KIF.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AB69E112DA162F700FC1619 /* iOS7KIF.png */; };
 		0ABEF9AA2D873D3200A5ADA9 /* TSMarkdownParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABEF9A92D873D3200A5ADA9 /* TSMarkdownParser.m */; };
 		0AD494842D8F5B85008B1F22 /* welcomeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AD494822D8F5B85008B1F22 /* welcomeButton.png */; };
 		0AD494852D8F5B85008B1F22 /* welcomeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AD494832D8F5B85008B1F22 /* welcomeButton@2x.png */; };
@@ -119,22 +126,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0A2F847D2DA06F2000337B46 /* NSURLConnection+FoundationCompletions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLConnection+FoundationCompletions.h"; sourceTree = "<group>"; };
-		0A2F847E2DA06F2000337B46 /* NSURLConnection+FoundationCompletions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLConnection+FoundationCompletions.m"; sourceTree = "<group>"; };
-		0A2F847F2DA06F2000337B46 /* NSURLConnection+FoundationCompletions.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "NSURLConnection+FoundationCompletions.o"; sourceTree = "<group>"; };
-		0A2F84822DA06F2000337B46 /* curl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curl.h; sourceTree = "<group>"; };
-		0A2F84832DA06F2000337B46 /* curlver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlver.h; sourceTree = "<group>"; };
-		0A2F84842DA06F2000337B46 /* easy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = easy.h; sourceTree = "<group>"; };
-		0A2F84852DA06F2000337B46 /* mprintf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mprintf.h; sourceTree = "<group>"; };
-		0A2F84862DA06F2000337B46 /* multi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = multi.h; sourceTree = "<group>"; };
-		0A2F84872DA06F2000337B46 /* stdcheaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdcheaders.h; sourceTree = "<group>"; };
-		0A2F84882DA06F2000337B46 /* system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system.h; sourceTree = "<group>"; };
-		0A2F84892DA06F2000337B46 /* typecheck-gcc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "typecheck-gcc.h"; sourceTree = "<group>"; };
-		0A2F848A2DA06F2000337B46 /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
-		0A2F848B2DA06F2000337B46 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
-		0A2F848C2DA06F2000337B46 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcurl.a; sourceTree = "<group>"; };
-		0A2F848D2DA06F2000337B46 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
-		0A2F848E2DA06F2000337B46 /* libz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libz.a; sourceTree = "<group>"; };
+		0A0CE20E2DA10F030069EA09 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		0A0CE21B2DA134BD0069EA09 /* iOS7SendGlyph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iOS7SendGlyph.png; sourceTree = "<group>"; };
+		0A0CE2212DA139170069EA09 /* IOS7HamburgerGlyph.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IOS7HamburgerGlyph.png; sourceTree = "<group>"; };
+		0A0CE2232DA13C8A0069EA09 /* iOS7InputOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iOS7InputOverlay.png; sourceTree = "<group>"; };
+		0A0CE2242DA13C8A0069EA09 /* iOS7InputOverlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS7InputOverlay@2x.png"; sourceTree = "<group>"; };
+		0A0CE2272DA13DED0069EA09 /* iOS7ImageViewOL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iOS7ImageViewOL.png; sourceTree = "<group>"; };
+		0A0CE2282DA13DED0069EA09 /* iOS7ImageViewOL@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS7ImageViewOL@2x.png"; sourceTree = "<group>"; };
 		0A3722042D89777100EA788B /* CGImageAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGImageAttachment.h; sourceTree = "<group>"; };
 		0A3722052D89777100EA788B /* CGImageAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGImageAttachment.m; sourceTree = "<group>"; };
 		0A3722062D89777100EA788B /* CGImageAttachment.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CGImageAttachment.xib; sourceTree = "<group>"; };
@@ -155,6 +153,13 @@
 		0AAF4D812D837585008086AC /* defaultUserAvatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultUserAvatar.png; sourceTree = "<group>"; };
 		0AAF4D822D837585008086AC /* defaultUserAvatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "defaultUserAvatar@2x.png"; sourceTree = "<group>"; };
 		0AAF4D852D83758B008086AC /* avatarOverlay@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatarOverlay@2x.png"; sourceTree = "<group>"; };
+		0AB69E052DA14A1A00FC1619 /* iOS7Separator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iOS7Separator.png; sourceTree = "<group>"; };
+		0AB69E062DA14A1A00FC1619 /* iOS7Separator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS7Separator@2x.png"; sourceTree = "<group>"; };
+		0AB69E092DA14D3400FC1619 /* iOS7AssistantAvatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iOS7AssistantAvatar.png; sourceTree = "<group>"; };
+		0AB69E0B2DA14FA900FC1619 /* iOS7AvatarOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iOS7AvatarOverlay.png; sourceTree = "<group>"; };
+		0AB69E0D2DA1600800FC1619 /* iOS7SCT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iOS7SCT.png; sourceTree = "<group>"; };
+		0AB69E0F2DA1613300FC1619 /* iOS7WEL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iOS7WEL.png; sourceTree = "<group>"; };
+		0AB69E112DA162F700FC1619 /* iOS7KIF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iOS7KIF.png; sourceTree = "<group>"; };
 		0ABEF9A72D873D3200A5ADA9 /* TSMarkdownParser-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TSMarkdownParser-Prefix.pch"; sourceTree = "<group>"; };
 		0ABEF9A82D873D3200A5ADA9 /* TSMarkdownParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSMarkdownParser.h; sourceTree = "<group>"; };
 		0ABEF9A92D873D3200A5ADA9 /* TSMarkdownParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSMarkdownParser.m; sourceTree = "<group>"; };
@@ -260,13 +265,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				49A1BBC92D351874002D9D00 /* CoreGraphics.framework in Frameworks */,
-				0A2F84912DA06F2000337B46 /* libcrypto.a in Frameworks */,
-				0A2F84932DA06F2000337B46 /* libssl.a in Frameworks */,
 				49A1BBCB2D351874002D9D00 /* UIKit.framework in Frameworks */,
 				49A1BBC72D351874002D9D00 /* Foundation.framework in Frameworks */,
-				0A2F84902DA06F2000337B46 /* NSURLConnection+FoundationCompletions.o in Frameworks */,
-				0A2F84942DA06F2000337B46 /* libz.a in Frameworks */,
-				0A2F84922DA06F2000337B46 /* libcurl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,44 +283,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0A2F847C2DA06F2000337B46 /* NSURLConnection-Curl */ = {
-			isa = PBXGroup;
-			children = (
-				0A2F847D2DA06F2000337B46 /* NSURLConnection+FoundationCompletions.h */,
-				0A2F847E2DA06F2000337B46 /* NSURLConnection+FoundationCompletions.m */,
-				0A2F847F2DA06F2000337B46 /* NSURLConnection+FoundationCompletions.o */,
-			);
-			path = "NSURLConnection-Curl";
-			sourceTree = "<group>";
-		};
-		0A2F84802DA06F2000337B46 /* SSL */ = {
-			isa = PBXGroup;
-			children = (
-				0A2F84812DA06F2000337B46 /* curl */,
-				0A2F848B2DA06F2000337B46 /* libcrypto.a */,
-				0A2F848C2DA06F2000337B46 /* libcurl.a */,
-				0A2F848D2DA06F2000337B46 /* libssl.a */,
-				0A2F848E2DA06F2000337B46 /* libz.a */,
-			);
-			path = SSL;
-			sourceTree = "<group>";
-		};
-		0A2F84812DA06F2000337B46 /* curl */ = {
-			isa = PBXGroup;
-			children = (
-				0A2F84822DA06F2000337B46 /* curl.h */,
-				0A2F84832DA06F2000337B46 /* curlver.h */,
-				0A2F84842DA06F2000337B46 /* easy.h */,
-				0A2F84852DA06F2000337B46 /* mprintf.h */,
-				0A2F84862DA06F2000337B46 /* multi.h */,
-				0A2F84872DA06F2000337B46 /* stdcheaders.h */,
-				0A2F84882DA06F2000337B46 /* system.h */,
-				0A2F84892DA06F2000337B46 /* typecheck-gcc.h */,
-				0A2F848A2DA06F2000337B46 /* types.h */,
-			);
-			path = curl;
-			sourceTree = "<group>";
-		};
 		0ABEF9A62D873D3200A5ADA9 /* TSMarkdownParser */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,6 +315,7 @@
 		49A1BBC52D351874002D9D00 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A0CE20E2DA10F030069EA09 /* libz.dylib */,
 				49A1BBC62D351874002D9D00 /* Foundation.framework */,
 				49A1BBC82D351874002D9D00 /* CoreGraphics.framework */,
 				49A1BBCA2D351874002D9D00 /* UIKit.framework */,
@@ -402,8 +365,6 @@
 		49A1BC012D3519DD002D9D00 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				0A2F847C2DA06F2000337B46 /* NSURLConnection-Curl */,
-				0A2F84802DA06F2000337B46 /* SSL */,
 				0ABEF9A62D873D3200A5ADA9 /* TSMarkdownParser */,
 				5B7FCE372D6B077100DF4899 /* APLSlideMenu */,
 				5B1AA2262D6A6AA700FC07D5 /* SVProgressHUD */,
@@ -658,6 +619,8 @@
 		5B8A22202D3BB502001F84C3 /* Default Avatars */ = {
 			isa = PBXGroup;
 			children = (
+				0AB69E0B2DA14FA900FC1619 /* iOS7AvatarOverlay.png */,
+				0AB69E092DA14D3400FC1619 /* iOS7AssistantAvatar.png */,
 				0AAF4D852D83758B008086AC /* avatarOverlay@2x.png */,
 				0AAF4D812D837585008086AC /* defaultUserAvatar.png */,
 				0AAF4D822D837585008086AC /* defaultUserAvatar@2x.png */,
@@ -670,6 +633,11 @@
 		5B8A22292D3BB7EB001F84C3 /* Cosmetical Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				0AB69E112DA162F700FC1619 /* iOS7KIF.png */,
+				0AB69E0F2DA1613300FC1619 /* iOS7WEL.png */,
+				0AB69E0D2DA1600800FC1619 /* iOS7SCT.png */,
+				0AB69E052DA14A1A00FC1619 /* iOS7Separator.png */,
+				0AB69E062DA14A1A00FC1619 /* iOS7Separator@2x.png */,
 				0AD494822D8F5B85008B1F22 /* welcomeButton.png */,
 				0AD494832D8F5B85008B1F22 /* welcomeButton@2x.png */,
 				0AF6A7692D8EA6B50060F3F8 /* big-icon.png */,
@@ -702,6 +670,8 @@
 		5B9D66552D3C5608007BE404 /* Glyphs */ = {
 			isa = PBXGroup;
 			children = (
+				0A0CE2212DA139170069EA09 /* IOS7HamburgerGlyph.png */,
+				0A0CE21B2DA134BD0069EA09 /* iOS7SendGlyph.png */,
 				5B9D66562D3C5624007BE404 /* Send.png */,
 				5B9D66572D3C5624007BE404 /* Send@2x.png */,
 			);
@@ -711,6 +681,10 @@
 		5BBCB0292D3D326C0040A379 /* Input Field */ = {
 			isa = PBXGroup;
 			children = (
+				0A0CE2272DA13DED0069EA09 /* iOS7ImageViewOL.png */,
+				0A0CE2282DA13DED0069EA09 /* iOS7ImageViewOL@2x.png */,
+				0A0CE2232DA13C8A0069EA09 /* iOS7InputOverlay.png */,
+				0A0CE2242DA13C8A0069EA09 /* iOS7InputOverlay@2x.png */,
 				5B808E362D665D7E00E6C66E /* ImageViewOL.png */,
 				5B808E372D665D7E00E6C66E /* ImageViewOL@2x.png */,
 				5BBCB02A2D3D32A30040A379 /* inputOverlay.png */,
@@ -799,6 +773,7 @@
 				5B1AA2232D6A65E700FC07D5 /* hamburgerButton.png in Resources */,
 				5BBCB02C2D3D32A30040A379 /* inputOverlay.png in Resources */,
 				0A9563622D82166F00CF99EC /* defaultAssistantAvatar@2x.png in Resources */,
+				0AB69E0C2DA14FA900FC1619 /* iOS7AvatarOverlay.png in Resources */,
 				5B9D665B2D3D13C4007BE404 /* SendBarButtonPressed@2x.png in Resources */,
 				5B203ADB2D3C4ABA004EEA20 /* BarButtonPressed@2x.png in Resources */,
 				5B1AA2252D6A699C00FC07D5 /* MoreGlyph@2x.png in Resources */,
@@ -808,6 +783,7 @@
 				49A1BC0A2D3519DD002D9D00 /* ChatGPT-Info.plist in Resources */,
 				0A3722082D89777100EA788B /* CGImageAttachment.xib in Resources */,
 				0AF6A7352D8CB5D50060F3F8 /* attachmentCellMask@2x.png in Resources */,
+				0AB69E082DA14A1A00FC1619 /* iOS7Separator@2x.png in Resources */,
 				5B7FCE512D6B92F800DF4899 /* headerSeparator.png in Resources */,
 				0AF6A7342D8CB5D50060F3F8 /* attachmentCellMask.png in Resources */,
 				0AAF4D692D836760008086AC /* Keychain.png in Resources */,
@@ -816,14 +792,19 @@
 				0AD494842D8F5B85008B1F22 /* welcomeButton.png in Resources */,
 				5B203AD92D3C4ABA004EEA20 /* BarButton@2x.png in Resources */,
 				0A53FA712D80BCEE00081FE9 /* Main.storyboard in Resources */,
+				0AB69E122DA162F700FC1619 /* iOS7KIF.png in Resources */,
 				5B7FCE552D6B932000DF4899 /* newConversationThumbnail.png in Resources */,
 				0AAF4D552D8333DC008086AC /* WELInSlide@2x.png in Resources */,
 				5B7FCE562D6B932000DF4899 /* newConversationThumbnail@2x.png in Resources */,
+				0A0CE2222DA139170069EA09 /* IOS7HamburgerGlyph.png in Resources */,
+				0A0CE2262DA13C8A0069EA09 /* iOS7InputOverlay@2x.png in Resources */,
 				0AAF4D542D8333DC008086AC /* WELInSlide.png in Resources */,
+				0AB69E102DA1613300FC1619 /* iOS7WEL.png in Resources */,
 				5B8A222D2D3BB7F2001F84C3 /* avatarDepthMask@2x.png in Resources */,
 				0AD494852D8F5B85008B1F22 /* welcomeButton@2x.png in Resources */,
 				5B9D66592D3C5624007BE404 /* Send@2x.png in Resources */,
 				5BB7D9612D733F3800C7C5AD /* icon.png in Resources */,
+				0AB69E072DA14A1A00FC1619 /* iOS7Separator.png in Resources */,
 				5B808E382D665D7E00E6C66E /* ImageViewOL.png in Resources */,
 				49A1BC0E2D3519E4002D9D00 /* Images.xcassets in Resources */,
 				0AAF4D862D83758B008086AC /* avatarOverlay@2x.png in Resources */,
@@ -831,6 +812,8 @@
 				5B203AD82D3C4ABA004EEA20 /* BarButton.png in Resources */,
 				49A1BC1A2D351B8D002D9D00 /* Settings.bundle in Resources */,
 				0AAF4D582D835084008086AC /* SCThumbnail.png in Resources */,
+				0A0CE2292DA13DED0069EA09 /* iOS7ImageViewOL.png in Resources */,
+				0AB69E0A2DA14D3400FC1619 /* iOS7AssistantAvatar.png in Resources */,
 				5B7FCE482D6B6FC600DF4899 /* SBSeparator.png in Resources */,
 				0AAF4D672D83653D008086AC /* KeyInputField@2x.png in Resources */,
 				0AAF4D5C2D835ADF008086AC /* ConvHistory.png in Resources */,
@@ -839,6 +822,8 @@
 				0A95635F2D8215E200CF99EC /* defaultAssistantAvatar.png in Resources */,
 				5B8A222C2D3BB7F2001F84C3 /* avatarDepthMask.png in Resources */,
 				5B7FCE522D6B92F800DF4899 /* headerSeparator@2x.png in Resources */,
+				0AB69E0E2DA1600800FC1619 /* iOS7SCT.png in Resources */,
+				0A0CE21C2DA134BD0069EA09 /* iOS7SendGlyph.png in Resources */,
 				5BB7D95F2D731A8500C7C5AD /* searchbar-BG@2x.png in Resources */,
 				49A1BBD12D351874002D9D00 /* InfoPlist.strings in Resources */,
 				5BB0C9D02D3B2182001D4575 /* CGChatTableCell.xib in Resources */,
@@ -848,6 +833,7 @@
 				5B808E392D665D7E00E6C66E /* ImageViewOL@2x.png in Resources */,
 				0AAF4D832D837585008086AC /* defaultUserAvatar.png in Resources */,
 				0AAF4D612D835E73008086AC /* Avatar@2x.png in Resources */,
+				0A0CE22A2DA13DED0069EA09 /* iOS7ImageViewOL@2x.png in Resources */,
 				0AAF4D5D2D835ADF008086AC /* ConvHistory@2x.png in Resources */,
 				0AF6A73A2D8CBF070060F3F8 /* CGAImageAttachment.xib in Resources */,
 				5B1AA22C2D6A6AA700FC07D5 /* SVProgressHUD-15e9190d.o.tmp in Resources */,
@@ -860,6 +846,7 @@
 				5BB0C9D22D3B22E5001D4575 /* CGAuthorChatTableCell.xib in Resources */,
 				5B8A22312D3BC318001F84C3 /* separator2.png in Resources */,
 				5B9D66582D3C5624007BE404 /* Send.png in Resources */,
+				0A0CE2252DA13C8A0069EA09 /* iOS7InputOverlay.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -891,7 +878,6 @@
 				5B7FCE3D2D6B077100DF4899 /* APLSlideMenuViewController.m in Sources */,
 				5B6296652D711517001D3C63 /* CGWelcomeController.m in Sources */,
 				0AF6A7392D8CBF070060F3F8 /* CGAImageAttachment.m in Sources */,
-				0A2F848F2DA06F2000337B46 /* NSURLConnection+FoundationCompletions.m in Sources */,
 				5B0D4FE52D50019D0042D50A /* Base64.m in Sources */,
 				49A1BC272D352569002D9D00 /* CGAPICommunicator.m in Sources */,
 				5B7FCE452D6B6C0600DF4899 /* CGConversationElementCell.m in Sources */,
@@ -984,6 +970,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -1015,8 +1002,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -1032,6 +1021,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ChatGPT/Libraries/SSL",
+					/Users/virtuellady/Downloads/WOW,
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1055,6 +1045,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ChatGPT/Libraries/SSL",
+					/Users/virtuellady/Downloads/WOW,
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1084,6 +1075,7 @@
 				INFOPLIST_FILE = "ChatGPTTests/ChatGPTTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -1102,6 +1094,7 @@
 				INFOPLIST_FILE = "ChatGPTTests/ChatGPTTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;

@@ -15,21 +15,57 @@
 @implementation CGWelcomeController
 
 - (void)viewWillAppear:(BOOL)animated {
-    NSDictionary *titleTextAttributes = @{
-                                          UITextAttributeTextColor: [UIColor colorWithRed:74/255.0 green:125/255.0 blue:112/255.0 alpha:1.0],
-                                          UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0, 1)],
-                                          UITextAttributeTextShadowColor: [UIColor whiteColor]
-                                          };
-    [self.navBar setTitleTextAttributes:titleTextAttributes];
+    if(VERSION_MIN(@"7.0")) {
+        
+    } else {
+        NSDictionary *titleTextAttributes = @{
+                                              UITextAttributeTextColor: [UIColor colorWithRed:74/255.0 green:125/255.0 blue:112/255.0 alpha:1.0],
+                                              UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0, 1)],
+                                              UITextAttributeTextShadowColor: [UIColor whiteColor]
+                                              };
+        [self.navigationController.navigationBar setTitleTextAttributes:titleTextAttributes];
+
+    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if(VERSION_MIN(@"7.0")) {
+        self.tableView.backgroundColor = [UIColor colorWithWhite:0.98 alpha:1.0];
+        self.mainView.backgroundColor = [UIColor colorWithWhite:0.98 alpha:1.0];
+        
+        self.secondaryView1.backgroundColor = [UIColor colorWithWhite:0.98 alpha:1.0];
+        self.secondaryView2.backgroundColor = [UIColor colorWithWhite:0.98 alpha:1.0];
+        self.secondaryView3.backgroundColor = [UIColor colorWithWhite:0.98 alpha:1.0];
+        
+        self.separator1.hidden = YES;
+        self.separator3.hidden = YES;
+        self.separator2.hidden = YES;
+        self.separator4.hidden = YES;
+        
+        self.head1.layer.shadowOpacity = 0.0;
+        self.head2.layer.shadowOpacity = 0.0;
+        self.head3.layer.shadowOpacity = 0.0;
+        self.head4.layer.shadowOpacity = 0.0;
+        self.slideLabel.layer.shadowOpacity = 0.0;
+        
+        self.inputFieldBackground.image = [UIImage imageNamed:@"iOS7KIF"];
+        self.SCTImage.image = [UIImage imageNamed:@"iOS7SCT"];
+        self.realWELSlideIcon.image = [UIImage imageNamed:@"iOS7WEL"];
+
+    } else {
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bar-BG"] forBarMetrics:UIBarMetricsDefault];
+        self.i7sep1.hidden = YES;
+        self.i7sep2.hidden = YES;
+        self.i7sep3.hidden = YES;
+        self.i7sep4.hidden = YES;
+    }
     self.authenticated = NO;
     self.WLBoxView.alpha = 0.0;
     self.KeyInputField.delegate = self;
-    [self.navBar setBackgroundImage:[UIImage imageNamed:@"bar-BG"] forBarMetrics:UIBarMetricsDefault];
+    
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(endOOBE:) name:@"LOG-IN VALID" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(abruptFailure:) name:@"LOG-IN FAILURE" object:nil];
     // Do any additional setup after loading the view.

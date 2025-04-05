@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatGPT/Classes/View Controllers/Chat View/CGChatViewController.m"
-            timestampString = "764429453.591733"
+            timestampString = "765541929.361641"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "396"
-            endingLineNumber = "396"
+            startingLineNumber = "423"
+            endingLineNumber = "423"
             landmarkName = "@implementation CGChatViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatGPT/Classes/View Controllers/Welcome View/CGWelcomeController.h"
-            timestampString = "763586903.739507"
+            timestampString = "765549383.947239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "SCThumbnailView"
             landmarkType = "19">
             <Locations>
@@ -72,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatGPT/Classes/View Controllers/Welcome View/CGWelcomeController.h"
-            timestampString = "763586903.739507"
+            timestampString = "765549383.947239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "KeyInputField"
             landmarkType = "19">
          </BreakpointContent>
@@ -88,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatGPT/Classes/View Controllers/Chat View/CGChatViewController.m"
-            timestampString = "764429453.591733"
+            timestampString = "765541929.361641"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "441"
-            endingLineNumber = "441"
+            startingLineNumber = "468"
+            endingLineNumber = "468"
             landmarkName = "-countOfMessages"
             landmarkType = "5">
          </BreakpointContent>
@@ -104,11 +104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatGPT/Classes/View Controllers/Sidebar/CGSidebarController.m"
-            timestampString = "764162300.228376"
+            timestampString = "765534926.251199"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "-didLongPressCell:"
             landmarkType = "5">
          </BreakpointContent>

@@ -14,10 +14,10 @@
 {
     
     if(VERSION_MIN(@"7.0")) {
-        bool useLegacyUI = [[NSUserDefaults standardUserDefaults] boolForKey:@"UIUseLegacyUI"];
+        /*bool useLegacyUI = [[NSUserDefaults standardUserDefaults] boolForKey:@"UIUseLegacyUI"];
         if(useLegacyUI == NO) {
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"UIUseLegacyUI"];
-        }
+        }*/
         
     }
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"aFL"];

@@ -11,5 +11,6 @@
 @interface CGImageViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @end

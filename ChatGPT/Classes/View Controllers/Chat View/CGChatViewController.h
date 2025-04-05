@@ -28,6 +28,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *chatTableView;
 @property (weak, nonatomic) IBOutlet UIView *typeView;
+@property (weak, nonatomic) IBOutlet UIImageView *IVOverlayImage;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 
 @property (weak, nonatomic) IBOutlet UIView *welcomeView;
@@ -57,6 +58,7 @@
 @property NSMutableArray* messages;
 @property bool viewingPresentTime;
 @property bool done;
+@property bool thinkingStatus;
 @property bool notTheAlert;
 
 @property UIRefreshControl *reloadControl;

@@ -15,12 +15,15 @@
 @implementation CGChatViewController
 
 - (void)viewWillAppear:(BOOL)animated {
-    NSDictionary *titleTextAttributes = @{
-                                          UITextAttributeTextColor: [UIColor colorWithRed:74/255.0 green:125/255.0 blue:112/255.0 alpha:1.0],
-                                          UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0, 1)],
-                                          UITextAttributeTextShadowColor: [UIColor whiteColor]
-                                          };
-    [self.navigationController.navigationBar setTitleTextAttributes:titleTextAttributes];
+    if(VERSION_MIN(@"7.0")) {
+    } else {
+        NSDictionary *titleTextAttributes = @{
+                                              UITextAttributeTextColor: [UIColor colorWithRed:74/255.0 green:125/255.0 blue:112/255.0 alpha:1.0],
+                                              UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0, 1)],
+                                              UITextAttributeTextShadowColor: [UIColor whiteColor]
+                                              };
+        [self.navigationController.navigationBar setTitleTextAttributes:titleTextAttributes];
+    }
 }
 
 - (void)viewDidLoad
@@ -31,6 +34,7 @@
 	[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(handleAIResponse:) name:@"AI RESPONSE" object:nil];
+    //[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(handleThinkingStatus:) name:@"THINK STATUS" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(saveCurrentChat:) name:@"SAVE CHAT" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(retrieveUserThings:) name:@"KEY IS VALID" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(cancelLoad) name:@"CANCEL LOAD" object:nil];
@@ -64,29 +68,46 @@
         [self displayWelcomeLaunchView];
     }
 
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bar-BG"] forBarMetrics:UIBarMetricsDefault];
-    [self.sendButton setBackgroundImage:[UIImage imageNamed:@"SendBarButton"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    [self.sendButton setBackgroundImage:[UIImage imageNamed:@"SendBarButtonPressed"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
-    
-    [self.hamburgerButton setBackgroundImage:[UIImage imageNamed:@"BarButton"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    [self.hamburgerButton setBackgroundImage:[UIImage imageNamed:@"BarButtonPressed"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
-    
-    [self.topRightButton setBackgroundImage:[UIImage imageNamed:@"BarButton"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    [self.topRightButton setBackgroundImage:[UIImage imageNamed:@"BarButtonPressed"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
-    
-    [self.photoButton setBackgroundImage:[UIImage imageNamed:@"BarButton"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    [self.photoButton setBackgroundImage:[UIImage imageNamed:@"BarButtonPressed"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
-    [self.toolbar setBackgroundImage:[UIImage imageNamed:@"bar-BG"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
     [self.inputField setDelegate:self];
     [[self.inputView layer] setMasksToBounds:YES];
-    [[self.inputView layer] setCornerRadius:14.5f];
+    
+    if(VERSION_MIN(@"7.0")) {
+        self.chatTableView.backgroundColor = [UIColor colorWithWhite:0.98 alpha:1.0];
+            [[self.inputView layer] setCornerRadius:7.25f];
+        self.IVOverlayImage.image = [UIImage imageNamed:@"iOS7InputOverlay"];
+        self.inputFieldPlaceholder.textColor = [UIColor colorWithRed:174/255.0 green:174/255.0 blue:174/255.0 alpha:1.0];
+        self.inputField.textColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1.0];
+        [self.sendButton setImage:nil];
+        //[self.hamburgerButton setImage:[UIImage imageNamed:@"IOS7HamburgerGlyph.png"]];
+        [self.hamburgerButton setImage:[[UIImage imageNamed:@"hamburgerButton"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        [self.sendButton setTitle:@"Send"];//iOS7HamburgerGlyph
+        self.attachmentMask.image = [UIImage imageNamed:@"iOS7ImageViewOL"];
+
+    } else {
+        //[self.hamburgerButton setImage:[[UIImage imageNamed:@"IOS7HamburgerGlyph.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bar-BG"] forBarMetrics:UIBarMetricsDefault];
+        [self.sendButton setBackgroundImage:[UIImage imageNamed:@"SendBarButton"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+        [self.sendButton setBackgroundImage:[UIImage imageNamed:@"SendBarButtonPressed"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+        
+        [self.hamburgerButton setBackgroundImage:[UIImage imageNamed:@"BarButton"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+        [self.hamburgerButton setBackgroundImage:[UIImage imageNamed:@"BarButtonPressed"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+        
+        [self.topRightButton setBackgroundImage:[UIImage imageNamed:@"BarButton"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+        [self.topRightButton setBackgroundImage:[UIImage imageNamed:@"BarButtonPressed"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+        
+        [self.photoButton setBackgroundImage:[UIImage imageNamed:@"BarButton"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+        [self.photoButton setBackgroundImage:[UIImage imageNamed:@"BarButtonPressed"] forState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
+        [self.toolbar setBackgroundImage:[UIImage imageNamed:@"bar-BG"] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
+        [[self.inputView layer] setCornerRadius:14.5f];
+    }
+
     self.inputFieldPlaceholder.hidden = NO;
 }
 
 - (void)handleAIResponse:(NSNotification *)notification {
     CGMessage *Response = notification.object;
-    [self.messages addObject:Response];
     [self slideUpTypeView];
+    [self.messages addObject:Response];
     [self.chatTableView reloadData];
     if(self.viewingPresentTime)
         [self.chatTableView setContentOffset:CGPointMake(0, self.chatTableView.contentSize.height - self.chatTableView.frame.size.height) animated:YES];
@@ -145,11 +166,15 @@
     [self.inputField resignFirstResponder];
     self.inputField.text = @"";
     
+    if (self.typeView.frame.origin.y == 30) {
+        [self slideUpTypeView];
+    }
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"aFL"];
     self.welcomeView.alpha = 0.0; // Fade out
     self.welcomeView = nil; // Release reference
     
-    [self slideUpTypeView];
+    
+   
     [self setCurrentConversationUniqueID:nil];
     self.messages = NSMutableArray.new;
     [self.chatTableView reloadData];
@@ -299,7 +324,9 @@
 }
 
 - (IBAction)showSidebar:(id)sender {
+    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     [self.slideMenuController showLeftMenu:YES];
+
 }
 
 
@@ -463,13 +490,19 @@
             if (message.type == 2) {
                 [tableView registerNib:[UINib nibWithNibName:@"CGChatTableCell" bundle:nil] forCellReuseIdentifier:@"Message Cell"];
                 CGChatTableCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Message Cell"];
-                
+
                 [cell.authorLabel setText:message.author];
-                
+
+                if(VERSION_MIN(@"7.0")) {
+                    [cell.contentView setBackgroundColor:[UIColor colorWithWhite:0.96 alpha:1.0]];
+                    [cell.separator setImage:nil];
+                }
                 if (VERSION_MIN(@"6.0")) {
                     [cell configureWithMessage:message.content];
+                    cell.iOS7Separator.hidden = YES;
                 } else {
                     [cell.contentTextView setText:message.content];
+                    cell.iOS7Separator.hidden = YES;
                 }
                 
                 [cell.contentTextView setHeight:[cell.contentTextView sizeThatFits:CGSizeMake(cell.contentTextView.width, MAXFLOAT)].height];
@@ -483,11 +516,20 @@
             } else if (message.type == 1) {
                 [tableView registerNib:[UINib nibWithNibName:@"CGAuthorChatTableCell" bundle:nil] forCellReuseIdentifier:@"Author Cell"];
                 CGAuthorTableCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Author Cell"];
-                
                 [cell.authorLabel setText:message.author];
+                
                 [cell.contentTextView setText:message.content];
                 
                 [cell.contentTextView setHeight:[cell.contentTextView sizeThatFits:CGSizeMake(cell.contentTextView.width, MAXFLOAT)].height];
+                if(VERSION_MIN(@"7.0")) {
+                    [cell.contentView setBackgroundColor:[UIColor colorWithWhite:0.98 alpha:1.0]];
+                    
+                    [cell.aOverlay setImage:[UIImage imageNamed:@"iOS7AvatarOverlay"]];
+                    [cell.separator setImage:nil];
+                    cell.iOS7Separator.hidden = (indexPath.row == 0);
+                } else {
+                    cell.iOS7Separator.hidden = YES;
+                }
                 
                 [cell.avatar setImage:message.avatar];
                 cell.aOverlay.layer.cornerRadius = cell.aOverlay.frame.size.width / 6.0;
@@ -501,8 +543,9 @@
         
         messageIndex++; // Move to the next row
         
+        
+        //IMAGE THING
         if (message.imageAttachment != nil) {
-            // **Image attachment cell**
             if (indexPath.row == messageIndex) {
                 if(message.type == 1) {
                     [tableView registerNib:[UINib nibWithNibName:@"CGImageAttachment" bundle:nil] forCellReuseIdentifier:@"Image Cell"];
@@ -638,6 +681,7 @@
 		}
 	}
 }
+
 
 - (void)checkAPICredentials {
     if(apiKey == nil) {

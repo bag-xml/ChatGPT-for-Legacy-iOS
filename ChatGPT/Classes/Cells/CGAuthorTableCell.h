@@ -15,4 +15,5 @@
 @property (weak, nonatomic) IBOutlet UIImageView *aOverlay;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *separator;
+@property (weak, nonatomic) IBOutlet UIImageView *iOS7Separator;
 @end

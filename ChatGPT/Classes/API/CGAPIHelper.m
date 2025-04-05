@@ -301,7 +301,11 @@
     newAssistantResponseMessage.author = @"ChatGPT";
     newAssistantResponseMessage.content = [messageDict objectForKey:@"content"];
     newAssistantResponseMessage.role = [messageDict objectForKey:@"role"];
-    newAssistantResponseMessage.avatar = [UIImage imageNamed:@"defaultAssistantAvatar"];
+    if(VERSION_MIN(@"7.0")) {
+        newAssistantResponseMessage.avatar = [UIImage imageNamed:@"iOS7AssistantAvatar"];
+    } else {
+        newAssistantResponseMessage.avatar = [UIImage imageNamed:@"defaultAssistantAvatar"];
+    }
     newAssistantResponseMessage.type = 2; //AI Message is 2, user 1, errors 3
     newAssistantResponseMessage.indestructible = YES;
     
@@ -326,7 +330,11 @@
     newAssistantResponseMessage.imageAttachment = [UIImage imageWithData:imageData];
     
     newAssistantResponseMessage.role = @"assistant";
-    newAssistantResponseMessage.avatar = [UIImage imageNamed:@"defaultAssistantAvatar"];
+    if(VERSION_MIN(@"7.0")) {
+        newAssistantResponseMessage.avatar = [UIImage imageNamed:@"iOS7AssistantAvatar"];
+    } else {
+        newAssistantResponseMessage.avatar = [UIImage imageNamed:@"defaultAssistantAvatar"];
+    }
     newAssistantResponseMessage.type = 2; //AI Message is 2, user 1, errors 3
     newAssistantResponseMessage.indestructible = YES;
     
@@ -344,7 +352,12 @@
     newError.content = errorMessage;
     newError.type = 2; //AI Message is 2, user 1, errors 3 //temporary at 2
     newError.indestructible = YES;
-    newError.avatar = [UIImage imageNamed:@"defaultAssistantAvatar"];
+    
+    if(VERSION_MIN(@"7.0")) {
+        newError.avatar = [UIImage imageNamed:@"iOS7AssistantAvatar"];
+    } else {
+        newError.avatar = [UIImage imageNamed:@"defaultAssistantAvatar"];
+    }
     
     float contentWidth = UIScreen.mainScreen.bounds.size.width - 63;
     CGSize textSize = [newError.content sizeWithFont:[UIFont systemFontOfSize:15] constrainedToSize:CGSizeMake(contentWidth, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];

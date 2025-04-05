@@ -39,6 +39,10 @@
                         <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <size key="shadowOffset" width="0.0" height="1"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iOS7Separator.png" id="0I5-IJ-AA4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="separator.png" id="md2-zp-Tao">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="2"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -51,12 +55,14 @@
                 <outlet property="authorLabel" destination="38" id="rFP-LX-izB"/>
                 <outlet property="avatar" destination="99" id="oXi-Us-9pp"/>
                 <outlet property="contentTextView" destination="102" id="nxt-aM-inE"/>
+                <outlet property="iOS7Separator" destination="0I5-IJ-AA4" id="wWs-Cz-vUI"/>
                 <outlet property="separator" destination="md2-zp-Tao" id="VYU-82-lF9"/>
             </connections>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="assistantAvatar.png" width="55" height="55"/>
+        <image name="assistantAvatar.png" width="160" height="123"/>
+        <image name="iOS7Separator.png" width="1" height="1"/>
         <image name="separator.png" width="2" height="4"/>
     </resources>
 </document>

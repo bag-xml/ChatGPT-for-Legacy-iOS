@@ -19,6 +19,11 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recheckandReload:) name:@"RE-CHECK CONVOS" object:nil];
     self.allConversations = [CGAPIHelper loadConversations];
     
+    if(VERSION_MIN(@"7.0")) {
+        if ([self respondsToSelector:@selector(topLayoutGuide)]) {
+            self.tableView.contentInset = UIEdgeInsetsMake(20., 0., 0., 0.);
+        }
+    }
     [self.tableView reloadData];
 
 }
@@ -43,8 +48,6 @@
         } else if(indexPath.section == 0) {
             UINavigationController *navigationController = (UINavigationController *)self.slideMenuController.contentViewController;
             CGChatViewController *contentViewController = navigationController.viewControllers.firstObject;
-            int curMes = [contentViewController countOfMessages];
-            NSLog(@"%i penis", curMes);
             if(self.allConversations.count < 1) {
                 if([contentViewController countOfMessages] < 1) {
                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Quick action panel" message:@"You don't have any conversations yet, you should chat more and save this conversation!" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];

@@ -5,16 +5,31 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Welcome Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="M7q-AN-Mop">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="uaa-nM-3fo" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KKJ-VE-oyL">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="gEy-Fc-CY1" kind="relationship" relationship="rootViewController" id="l50-cg-hVu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oz0-jA-UgA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="218" y="-1221"/>
+        </scene>
+        <!--Welcome Controller - Welcome-->
         <scene sceneID="GVW-ph-3Zb">
             <objects>
                 <viewController id="gEy-Fc-CY1" customClass="CGWelcomeController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LlX-MT-EWT">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Wqr-8A-Fbl">
-                                <rect key="frame" x="0.0" y="44" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.95000000000000007" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="FPR-po-b6i">
@@ -73,6 +88,10 @@
                                                     <rect key="frame" x="0.0" y="254" width="320" height="2"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iOS7Separator.png" id="d7P-A2-vvr">
+                                                    <rect key="frame" x="0.0" y="254" width="320" height="1"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smart Conversations" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" id="hbb-5p-QDJ">
                                                     <rect key="frame" x="75" y="264" width="190" height="62"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -106,6 +125,10 @@
                                                     <rect key="frame" x="0.0" y="419" width="320" height="2"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iOS7Separator.png" id="f5r-Bo-FUg">
+                                                    <rect key="frame" x="0.0" y="419" width="320" height="1"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contextual Memory" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" id="vW2-Z5-JWb">
                                                     <rect key="frame" x="55" y="433" width="190" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -137,6 +160,10 @@
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="separator.png" id="kSz-7y-c4G">
                                                     <rect key="frame" x="0.0" y="584" width="320" height="2"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iOS7Separator.png" id="73b-xN-Sbd">
+                                                    <rect key="frame" x="0.0" y="584" width="320" height="1"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visual intelligence" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" id="rrK-44-tm9">
@@ -215,6 +242,10 @@
                                                     <rect key="frame" x="0.0" y="749" width="320" height="2"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iOS7Separator.png" id="tH3-6T-KET">
+                                                    <rect key="frame" x="0.0" y="749" width="320" height="1"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="KeyInputField.png" id="SeD-Tv-IvT">
                                                     <rect key="frame" x="0.0" y="1020" width="320" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -237,26 +268,38 @@
                                     <color key="backgroundColor" white="0.95000000000000007" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" translucent="NO" id="FDF-v3-mRV">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <gestureRecognizers/>
-                                <items>
-                                    <navigationItem title="Welcome" id="y2m-ee-Rbc"/>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Welcome" id="ZoL-3V-Wqf"/>
                     <connections>
                         <outlet property="CONVThumbnailView" destination="wdL-wk-zRh" id="pok-3E-5u9"/>
                         <outlet property="KeyInputField" destination="Y9M-tB-2TS" id="DwL-g8-b6Y"/>
+                        <outlet property="SCTImage" destination="ISL-gr-htg" id="xNW-F2-LNy"/>
                         <outlet property="SCThumbnailView" destination="pXl-Hs-0Hq" id="XOR-99-Dtj"/>
                         <outlet property="WLBoxView" destination="yqa-GS-gAV" id="XEF-Bo-gbh"/>
-                        <outlet property="navBar" destination="FDF-v3-mRV" id="osd-MS-Guw"/>
+                        <outlet property="head1" destination="hbb-5p-QDJ" id="bXW-Bn-OCs"/>
+                        <outlet property="head2" destination="vW2-Z5-JWb" id="WHE-O0-ipq"/>
+                        <outlet property="head3" destination="rrK-44-tm9" id="71O-aR-TLH"/>
+                        <outlet property="head4" destination="fgv-cF-dbY" id="C1w-E3-bKN"/>
+                        <outlet property="i7sep1" destination="f5r-Bo-FUg" id="cZQ-Aw-XDL"/>
+                        <outlet property="i7sep2" destination="d7P-A2-vvr" id="Hgl-aG-kqQ"/>
+                        <outlet property="i7sep3" destination="tH3-6T-KET" id="jeb-nC-WuV"/>
+                        <outlet property="i7sep4" destination="73b-xN-Sbd" id="of8-aE-Ut3"/>
+                        <outlet property="inputFieldBackground" destination="SeD-Tv-IvT" id="daI-LD-Zfm"/>
+                        <outlet property="mainView" destination="FPR-po-b6i" id="Hf2-aX-HPe"/>
                         <outlet property="pickThumbnailView" destination="9AV-u3-FgR" id="b1x-ig-Diq"/>
-                        <outlet property="slideLabel" destination="W22-J4-rOi" id="3tC-79-WoP"/>
+                        <outlet property="realWELSlideIcon" destination="UzT-cE-AGh" id="BbF-Qn-GFS"/>
+                        <outlet property="secondaryView1" destination="W22-J4-rOi" id="km5-yb-cJw"/>
+                        <outlet property="secondaryView2" destination="d00-qF-xuF" id="g5C-6W-mpt"/>
+                        <outlet property="secondaryView3" destination="yqa-GS-gAV" id="VKq-5T-IDt"/>
+                        <outlet property="separator1" destination="w9n-ej-elf" id="RYE-YV-L1c"/>
+                        <outlet property="separator2" destination="DfA-dg-wMa" id="FtP-2Z-xiF"/>
+                        <outlet property="separator3" destination="yZv-05-pnZ" id="Uhu-It-Py5"/>
+                        <outlet property="separator4" destination="kSz-7y-c4G" id="mbA-ob-Prz"/>
+                        <outlet property="slideLabel" destination="0BF-eC-raa" id="g9z-rk-Lfg"/>
                         <outlet property="slideicon" destination="d00-qF-xuF" id="bAc-ng-8wr"/>
+                        <outlet property="tableView" destination="Wqr-8A-Fbl" id="w6T-In-ADY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bIS-N4-ad4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -266,7 +309,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="561" y="-699"/>
+            <point key="canvasLocation" x="641" y="-1221"/>
         </scene>
         <!--Sidebar Controller-->
         <scene sceneID="RhX-jU-Lx4">
@@ -444,6 +487,9 @@
                 <navigationController definesPresentationContext="YES" id="62t-L8-fi4" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="QQI-ca-aW5">
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.2901960784" green="0.49019607840000001" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="sFN-9E-021" kind="relationship" relationship="rootViewController" id="GUh-IN-ERR"/>
@@ -499,7 +545,7 @@
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="JlC-LS-4oK"/>
                                     <barButtonItem systemItem="camera" id="SfZ-WD-YL5">
-                                        <color key="tintColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="0.2901960784" green="0.49019607840000001" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="camera:" destination="sFN-9E-021" id="7ob-BK-3Ta"/>
                                         </connections>
@@ -551,20 +597,19 @@
                                                     </connections>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                         </view>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="tXV-5u-FlX"/>
                                     <barButtonItem image="Send.png" id="R5d-s9-Nll">
-                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.2901960784" green="0.49019607840000001" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="send:" destination="sFN-9E-021" id="pzd-VM-39j"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="VqX-uy-IRt"/>
                                 </items>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                <color key="barTintColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                             </toolbar>
                             <view appearanceType="aqua" contentMode="scaleToFill" id="JuU-TP-ubS">
                                 <rect key="frame" x="0.0" y="-30" width="320" height="30"/>
@@ -610,6 +655,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="IVOverlayImage" destination="wWz-xe-Tkk" id="BEZ-Er-a5d"/>
                         <outlet property="attachmentImage" destination="K0H-VS-ect" id="FXh-ef-Q9D"/>
                         <outlet property="attachmentMask" destination="MCJ-zb-As4" id="Mlc-1c-sML"/>
                         <outlet property="attachmentView" destination="pFJ-qF-G2Y" id="dcc-fX-pFI"/>
@@ -624,7 +670,7 @@
                         <outlet property="typeView" destination="JuU-TP-ubS" id="Bzb-as-xCv"/>
                         <outlet property="welcomeView" destination="ARO-76-yLK" id="Pdz-5E-Mcw"/>
                         <segue destination="vJK-f2-NUR" kind="modal" identifier="to Viewer" id="IVE-eN-Aae"/>
-                        <segue destination="gEy-Fc-CY1" kind="modal" identifier="welcome" id="ZGX-jC-jbB"/>
+                        <segue destination="uaa-nM-3fo" kind="modal" identifier="welcome" id="jic-8k-MRI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8cJ-9r-yDP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -675,6 +721,7 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="RHT-JT-e7Y" id="uPI-M7-fsI"/>
+                        <outlet property="navigationBar" destination="1Rw-6y-1ir" id="Fr1-q1-MsP"/>
                         <outlet property="scrollView" destination="Si1-ev-UlY" id="edL-TD-64i"/>
                     </connections>
                 </viewController>
@@ -714,6 +761,7 @@
         <image name="big-icon.png" width="160" height="160"/>
         <image name="defaultAssistantAvatar.png" width="55" height="55"/>
         <image name="hamburgerButton.png" width="19" height="16"/>
+        <image name="iOS7Separator.png" width="1" height="1"/>
         <image name="inputOverlay.png" width="206" height="30"/>
         <image name="loadingToast.png" width="320" height="30"/>
         <image name="missingAvatar.png" width="55" height="55"/>

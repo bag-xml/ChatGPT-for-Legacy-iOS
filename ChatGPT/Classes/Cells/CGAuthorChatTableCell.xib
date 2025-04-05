@@ -44,6 +44,10 @@
                         <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <size key="shadowOffset" width="0.0" height="1"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iOS7Separator.png" id="XyV-na-2LV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="separator2.png" id="PaJ-Mz-DzC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="2"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -56,13 +60,15 @@
                 <outlet property="authorLabel" destination="38" id="SgM-3o-Zd0"/>
                 <outlet property="avatar" destination="99" id="Tax-q6-3uw"/>
                 <outlet property="contentTextView" destination="102" id="8f4-NY-nQr"/>
+                <outlet property="iOS7Separator" destination="XyV-na-2LV" id="ZYr-Dw-amw"/>
                 <outlet property="separator" destination="PaJ-Mz-DzC" id="x4X-q7-b7Q"/>
             </connections>
         </tableViewCell>
     </objects>
     <resources>
         <image name="avatarOverlay.png" width="57" height="57"/>
-        <image name="missingAvatar.png" width="55" height="55"/>
+        <image name="iOS7Separator.png" width="1" height="1"/>
+        <image name="missingAvatar.png" width="160" height="123"/>
         <image name="separator2.png" width="2" height="4"/>
     </resources>
 </document>
