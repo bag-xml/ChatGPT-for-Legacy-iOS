@@ -13,12 +13,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    if(VERSION_MIN(@"7.0")) {
-        /*bool useLegacyUI = [[NSUserDefaults standardUserDefaults] boolForKey:@"UIUseLegacyUI"];
-        if(useLegacyUI == NO) {
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"UIUseLegacyUI"];
-        }*/
+    bool nFL = [[NSUserDefaults standardUserDefaults] boolForKey:@"nFL"];
+    
+    if(nFL == NO) {
+        [[NSUserDefaults standardUserDefaults] setObject:@"gpt-4o-mini" forKey:@"c-aiModel"];
+        [[NSUserDefaults standardUserDefaults] setObject:@"dall-e-3" forKey:@"i-aiModel"];
         
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"nFL"];
     }
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"aFL"];
     return YES;

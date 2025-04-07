@@ -20,6 +20,34 @@
 			<key>Key</key>
 			<string>apiKey</string>
 		</dict>
+		<dict>
+			<key>FooterText</key>
+			<string>Here you can choose the model you&apos;d like to use for chat completions or image generation. I recommend not changing anything if you don&apos;t know what you&apos;re doing.</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Advanced Settings</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>gpt-4o-mini</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Completion-Model</string>
+			<key>Key</key>
+			<string>c-aiModel</string>
+		</dict>
+		<dict>
+			<key>DefaultValue</key>
+			<string>dall-e-3</string>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Image-Model</string>
+			<key>Key</key>
+			<string>i-aiModel</string>
+		</dict>
 	</array>
 	<key>StringsTable</key>
 	<string>Root</string>
