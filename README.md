@@ -1,37 +1,33 @@
-# Discord Classic
-## The definitive way of using Discord on legacy iOS.
-![siteBanner](https://github.com/user-attachments/assets/ea272fc6-c230-4579-a81c-a8e28d941ace)
-Discord Classic is a Discord client for iOS 5+. Created in 2018, it allows you to message users, and do the rest of what people can do on modern Discord minus some features like VC's or Activities.
+# ChatGPT for Legacy iOS
+## The only ChatGPT application for old iOS that you'll need.
+![siteBanner](https://chatgptlegacy.com/assets/img/banner.png)
+ChatGPT for Legacy iOS is a client for older versions of iOS that allow you to interact with the OpenAI API in many ways. ChatGPT for Legacy iOS supports most things that you already know from modern chatbot apps, such as thorough text conversations with context, image analysis by ChatGPT and image generation. Your conversations are also always saved automatically and can always be returned to whenever you want to.
 
 # Compatiblilty
 
 | Compatibility  | iOS version | Remarks |
 | ------------- | ------------- | ------------- |
-| Compatible  | 5.0.x  | SSL issues prevent a successful connection |
-| Compatible  | 5.1.x  | None |
+| Incompatible  | 5.x  | Not at release |
 | Compatible  | 6.x  | None |
-| Compatible  | 7.x  | No native UI yet |
-| Compatible  | 8+  | UI starts to break |
+| Compatible  | 7.x  | None |
+| Compatible  | 8+  | Not optimized for iPhone 6 and 6+ |
 # How do I log in?
-You need your Discord token as of right now to authenticate with the app. Login via E-Mail and Password has not yet been implemented so this is the only way. Information on how to obtain your token can be found [here](https://www.youtube.com/watch?v=LnBnm_tZlyU).
+Logging into ChatGPT for Legacy iOS is only possible via an API key. That API key can be obtained from https://platform.openai.com/ and depending on what you want to do, or if you're doing this for the first time it can cost money. Please read through OpenAI's API platform for more information.
 
 # Encountering issues, or need support?
-If you're encountering issues you should always take note of what happens, how you triggered it, what your iOS version is, what device type (Doesn't matter if iPod but iPad is more important) you're using Discord Classic on and then open a new issue on the [issues tab](https://github.com/bag-xml/Discord-Classic/issues).
+If you're encountering issues you should always take note of what happens, how you triggered it, what your iOS version is, what device type (iPads aren't supported) you're using Discord Classic on and then open a new issue on the [issues tab](https://github.com/bag-xml/ChatGPT-for-Legacy-iOS/issues).
 
-Additionally to that, you can join the bag.xml community discord on https://discord.gg/eE3XTCEMqr. This is the project server of Discord Classic, and you can get real-time help at any time if you're having issues regarding the app or more. You'll find that most contributors are actually active there.
+Additionally to that, you can join the bag.xml community discord on https://discord.gg/eE3XTCEMqr. This is the project server of ChatGPT for Legacy iOS, and you can get real-time help at any time if you're having issues regarding the app or more. 
 # Credits
 
 ### Contributors
-- [trevir](https://github.com/trev3d) (Project creator)
-- [bag.xml](https://github.com/bag-xml) (Current project leader)
-- [ObscureMosquito (Requis)](https://github.com/ObscureMosquito) (Project contributor)
-- [Toru](https://github.com/ToruTheRedFox) (Project contributor)
+- [bag.xml](https://github.com/bag-xml) 
 
 ### Libraries used
 
-- [UIColor+Hex](https://github.com/bag-xml/UIColor-Hex)
 - [APLSlideMenu](https://github.com/apploft/APLSlideMenu)
-- [WSWebSocket](https://github.com/ndcube/WebSocket-for-Objective-C)
-- NSString+Emojize
-- UIImage+animatedGIF
+- Base64
+- NSURLConnection+FoundationCompletions.m (Also Updated OpenSSL Libraries and cURL headers)
+- [TSMarkdownParser](https://github.com/laptobbe/TSMarkdownParser)
+- [SVProgressHUD](https://github.com/SVProgressHUD/SVProgressHUD)
 - [BButton](https://github.com/mattlawer/BButton)
