@@ -45,11 +45,11 @@
         self.separator2.hidden = YES;
         self.separator4.hidden = YES;
         
-        self.head1.layer.shadowOpacity = 0.0;
-        self.head2.layer.shadowOpacity = 0.0;
-        self.head3.layer.shadowOpacity = 0.0;
-        self.head4.layer.shadowOpacity = 0.0;
-        self.slideLabel.layer.shadowOpacity = 0.0;
+        self.head1.shadowColor = nil;
+        self.head2.shadowColor = nil;
+        self.head3.shadowColor = nil;
+        self.head4.shadowColor = nil;
+        self.realWELSlideLabel.shadowColor = nil;
         
         self.inputFieldBackground.image = [UIImage imageNamed:@"iOS7KIF"];
         self.SCTImage.image = [UIImage imageNamed:@"iOS7SCT"];

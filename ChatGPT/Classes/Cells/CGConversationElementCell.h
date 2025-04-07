@@ -11,6 +11,9 @@
 @interface CGConversationElementCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *conversationName;
+@property (weak, nonatomic) IBOutlet UIImageView *separator;
+@property (weak, nonatomic) IBOutlet UIImageView *iOS7Separator;
 
+@property (weak, nonatomic) IBOutlet UIImageView *thumbnail;
 @property (weak, nonatomic) IBOutlet UILabel *accessoryLabel;
 @end

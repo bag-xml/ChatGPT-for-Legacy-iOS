@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CGAPIHelper.h"
 
 @interface CGAImageAttachment : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnail;
 @property (weak, nonatomic) IBOutlet UIView *totalThumbView;
+@property (weak, nonatomic) IBOutlet UIImageView *thumbMask;
 
 @end

@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIView *slideLabel; //IMPv2
 @property (weak, nonatomic) IBOutlet UIView *slideicon; //IMP
 @property (weak, nonatomic) IBOutlet UIImageView *realWELSlideIcon;
+@property (weak, nonatomic) IBOutlet UILabel *realWELSlideLabel;
 
 @property (weak, nonatomic) IBOutlet UIView *WLBoxView;
 

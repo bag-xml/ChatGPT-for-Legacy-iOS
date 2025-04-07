@@ -32,6 +32,7 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="thumbMask" destination="HeL-Tt-fDj" id="0nu-rS-52C"/>
                 <outlet property="thumbnail" destination="foK-EW-WY8" id="cpr-jh-TKb"/>
                 <outlet property="totalThumbView" destination="dES-KX-F5J" id="Jbb-jM-zUR"/>
             </connections>

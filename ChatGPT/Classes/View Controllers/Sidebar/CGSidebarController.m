@@ -34,6 +34,7 @@
     [self.tableView reloadData];
 }
 
+
 - (IBAction)didLongPressCell:(UILongPressGestureRecognizer *)sender {
     if (sender.state == UIGestureRecognizerStateBegan) {
         CGPoint location = [sender locationInView:self.tableView];
@@ -167,16 +168,22 @@
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 28)];
     UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:headerView.bounds];
     backgroundImageView.contentMode = UIViewContentModeScaleToFill;
-
-    backgroundImageView.image = [UIImage imageNamed:@"headerSeparator"];
-    [headerView addSubview:backgroundImageView];
+    
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, tableView.frame.size.width - 20, 18)];
     label.textColor = [UIColor colorWithRed:158.0/255.0 green:159.0/255.0 blue:159.0/255.0 alpha:1.0];
-    label.layer.shadowColor = [UIColor blackColor].CGColor;
-    label.layer.shadowOffset = CGSizeMake(0, 1);
-    label.backgroundColor = [UIColor clearColor];
-    label.font = [UIFont boldSystemFontOfSize:16];
     
+    if (VERSION_MIN(@"7.0")) {
+        backgroundImageView.image = [UIImage imageNamed:@"iOS7HeaderSeparator"];
+        label.font = [UIFont boldSystemFontOfSize:16];
+    } else if (VERSION_MIN(@"5.0")) {
+        backgroundImageView.image = [UIImage imageNamed:@"headerSeparator"];
+        label.layer.shadowColor = [UIColor blackColor].CGColor;
+        label.layer.shadowOffset = CGSizeMake(0, 1);
+        label.backgroundColor = [UIColor clearColor];
+        label.font = [UIFont boldSystemFontOfSize:16];
+    }
+    
+    [headerView addSubview:backgroundImageView];
     if (section == 1) {
         label.text = @"Chats";
     }
@@ -207,11 +214,19 @@
     if (indexPath.section == 1) {
         if (self.allConversations.count == 0) {
             // Display "Nothing" Cell when no conversations exist
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Nothing"];
+            CGConversationElementCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Nothing"];
             if (cell == nil) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Nothing"];
+                cell = [[CGConversationElementCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Nothing"];
             }
-
+            
+            if(VERSION_MIN(@"7.0")) {
+                [cell.separator setImage:nil];
+                cell.accessoryLabel.shadowColor = nil;
+                cell.conversationName.shadowColor = nil;
+                
+            } else {
+                [cell.iOS7Separator setHidden:YES]; // hide it only here
+            }
             return cell;
         } else if(self.allConversations.count > 0) {
             // Display conversations in "ConvoCell"
@@ -221,6 +236,14 @@
                 cell = [[CGConversationElementCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ConvoCell"];
             }
             
+            if(VERSION_MIN(@"7.0")) {
+                [cell.separator setImage:nil];
+                cell.accessoryLabel.shadowColor = nil;
+                cell.conversationName.shadowColor = nil;
+
+            } else {
+                [cell.iOS7Separator setHidden:YES]; // hide it only here
+            }
             cell.conversationName.text = conversation.title;
             if (conversation.messageCount < 2) {
                 cell.accessoryLabel.text = [NSString stringWithFormat:@"%i message, created on %@", conversation.messageCount, conversation.creationDate];
@@ -232,12 +255,23 @@
         }
     } else if (indexPath.section == 0) {
         // Display "New Chat" Cell
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewChat"];
+        CGConversationElementCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewChat"];
         if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NewChat"];
+            cell = [[CGConversationElementCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NewChat"];
         }
-
+        
+        if(VERSION_MIN(@"7.0")) {
+            [cell.separator setImage:nil];
+            [cell.thumbnail setImage:[UIImage imageNamed:@"iOS7newConversationThumbnail"]];
+            cell.accessoryLabel.shadowColor = nil;
+            cell.conversationName.shadowColor = nil;
+            
+        } else {
+            [cell.iOS7Separator setHidden:YES]; // hide it only here
+        }
+        
         return cell;
+        
     }
     
     return nil;

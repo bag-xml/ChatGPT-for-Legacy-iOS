@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatGPT/Classes/View Controllers/Chat View/CGChatViewController.m"
-            timestampString = "765541929.361641"
+            timestampString = "765721639.145053"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "423"
-            endingLineNumber = "423"
+            startingLineNumber = "437"
+            endingLineNumber = "437"
             landmarkName = "@implementation CGChatViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatGPT/Classes/View Controllers/Welcome View/CGWelcomeController.h"
-            timestampString = "765549383.947239"
+            timestampString = "765582054.433437"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "SCThumbnailView"
             landmarkType = "19">
             <Locations>
@@ -72,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatGPT/Classes/View Controllers/Welcome View/CGWelcomeController.h"
-            timestampString = "765549383.947239"
+            timestampString = "765582054.433437"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "KeyInputField"
             landmarkType = "19">
          </BreakpointContent>
@@ -88,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatGPT/Classes/View Controllers/Chat View/CGChatViewController.m"
-            timestampString = "765541929.361641"
+            timestampString = "765721639.145053"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "468"
-            endingLineNumber = "468"
+            startingLineNumber = "482"
+            endingLineNumber = "482"
             landmarkName = "-countOfMessages"
             landmarkType = "5">
          </BreakpointContent>
@@ -104,13 +104,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatGPT/Classes/View Controllers/Sidebar/CGSidebarController.m"
-            timestampString = "765534926.251199"
+            timestampString = "765580147.265722"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "-didLongPressCell:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatGPT/Classes/Cells/CGConversationElementCell.h"
+            timestampString = "765636426.1965539"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "@interface CGConversationElementCell"
+            landmarkType = "2">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

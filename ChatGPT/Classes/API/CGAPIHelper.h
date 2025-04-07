@@ -19,7 +19,7 @@
 //User settable params
 #define updateChecks YES
 
-#define UDCheckServer @"http://5.230.249.85:7530"
+#define UDCheckServer @"http://api.chatgptlegacy.com"
 #define appVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 
 #define VERSION_MIN(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)

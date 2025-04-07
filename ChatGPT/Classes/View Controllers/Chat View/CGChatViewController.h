@@ -49,6 +49,16 @@
 
 @property (strong, nonatomic) NSString *currentImage;
 
+
+//Labels && Different things
+@property (weak, nonatomic) IBOutlet UILabel *WelcomeHead;
+@property (weak, nonatomic) IBOutlet UIImageView *WelcomeImage;
+
+@property (weak, nonatomic) IBOutlet UIImageView *LoadingToast;
+@property (weak, nonatomic) IBOutlet UIImageView *LAvatar;
+@property (weak, nonatomic) IBOutlet UILabel *LUserLabel;
+@property (weak, nonatomic) IBOutlet UILabel *LThinkLabel;
+
 //welcom
 
 

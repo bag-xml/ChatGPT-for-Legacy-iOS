@@ -46,14 +46,14 @@
     self.chatTableView.dataSource = self;
     self.messages = [NSMutableArray array];
     
-    bool firstLaunch = [[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"];
+    /*bool firstLaunch = [[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"];
     if(firstLaunch == NO) {
         [self prepareFirstLaunch];
     } else {
         bool yougetwhatimean = [[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"];
         if(yougetwhatimean == YES)
             [self checkAPICredentials];
-    }
+    }*/
      
     self.attachmentView.hidden = YES;
     self.attachmentImage.image = nil;
@@ -82,6 +82,14 @@
         [self.hamburgerButton setImage:[[UIImage imageNamed:@"hamburgerButton"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
         [self.sendButton setTitle:@"Send"];//iOS7HamburgerGlyph
         self.attachmentMask.image = [UIImage imageNamed:@"iOS7ImageViewOL"];
+        
+        self.WelcomeImage.image = [UIImage imageNamed:@"iOS7icon"];
+
+        self.LThinkLabel.shadowColor = nil;
+        self.LUserLabel.shadowColor = nil;
+        self.LAvatar.image = [UIImage imageNamed:@"iOS7AssistantAvatar"];
+        
+        self.WelcomeHead.shadowColor = nil;
 
     } else {
         //[self.hamburgerButton setImage:[[UIImage imageNamed:@"IOS7HamburgerGlyph.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
@@ -152,13 +160,15 @@
 
 - (void)tappedImage:(UITapGestureRecognizer *)gesture {
     UIView *tappedView = gesture.view; // totalThumbView
-    CGImageAttachment *cell = (CGImageAttachment *)tappedView.superview.superview;
+    UIView *cellView = VERSION_MIN(@"7.0") ? tappedView.superview.superview.superview : tappedView.superview.superview;
+    CGImageAttachment *cell = (CGImageAttachment *)cellView;
     UIImage *selectedImage = cell.thumbnail.image;
     if (selectedImage) {
         self.selectedImage = selectedImage;
         [self performSegueWithIdentifier:@"to Viewer" sender:self];
     }
 }
+
 
 
 - (void)startNewConversation {
@@ -232,7 +242,11 @@
     UIImage *image = [UIImage imageWithContentsOfFile:filePath];
     
     ownMessage.author = (username.length >= 3) ? username : @"You";
-    ownMessage.avatar = image ?: [UIImage imageNamed:@"defaultUserAvatar"];
+    if(VERSION_MIN(@"7.0")) {
+        ownMessage.avatar = image ?: [UIImage imageNamed:@"iOS7DefaultUserAvatar"];
+    } else {
+        ownMessage.avatar = image ?: [UIImage imageNamed:@"defaultUserAvatar"];
+    }
     ownMessage.role = @"user";
     ownMessage.content = trimmedText;
     ownMessage.type = 1; // User message type
@@ -493,16 +507,18 @@
 
                 [cell.authorLabel setText:message.author];
 
-                if(VERSION_MIN(@"7.0")) {
-                    [cell.contentView setBackgroundColor:[UIColor colorWithWhite:0.96 alpha:1.0]];
-                    [cell.separator setImage:nil];
-                }
                 if (VERSION_MIN(@"6.0")) {
                     [cell configureWithMessage:message.content];
                     cell.iOS7Separator.hidden = YES;
                 } else {
                     [cell.contentTextView setText:message.content];
-                    cell.iOS7Separator.hidden = YES;
+                }
+                
+                if(VERSION_MIN(@"7.0")) {
+                    [cell.contentView setBackgroundColor:[UIColor colorWithWhite:0.96 alpha:1.0]];
+                    [cell.separator setImage:nil];
+                    cell.iOS7Separator.hidden = NO;
+                    
                 }
                 
                 [cell.contentTextView setHeight:[cell.contentTextView sizeThatFits:CGSizeMake(cell.contentTextView.width, MAXFLOAT)].height];
@@ -550,27 +566,35 @@
                 if(message.type == 1) {
                     [tableView registerNib:[UINib nibWithNibName:@"CGImageAttachment" bundle:nil] forCellReuseIdentifier:@"Image Cell"];
                     CGImageAttachment *imageCell = [tableView dequeueReusableCellWithIdentifier:@"Image Cell"];
-                    imageCell.thumbnail.layer.cornerRadius = 10; // Adjust value as needed
+                    imageCell.thumbnail.layer.cornerRadius = 10;
                     imageCell.thumbnail.layer.masksToBounds = YES;
                     imageCell.thumbnail.clipsToBounds = YES;
                     imageCell.thumbnail.contentMode = UIViewContentModeScaleAspectFill;
-
-                    [imageCell.thumbnail setImage:message.imageAttachment];
                     
+                    if(VERSION_MIN(@"7.0")) {
+                        [imageCell.thumbMask setImage:[UIImage imageNamed:@"iOS7AttachmentCellMask"]];
+                    }
+                    
+                    [imageCell.thumbnail setImage:message.imageAttachment];
                     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedImage:)];
                     singleTap.numberOfTapsRequired = 1;
                     imageCell.totalThumbView.userInteractionEnabled = YES;
-                    
+                    [imageCell.contentView setBackgroundColor:[UIColor colorWithWhite:0.98 alpha:1.0]];
                     [imageCell.totalThumbView addGestureRecognizer:singleTap];
                     return imageCell;
                 } else if(message.type == 2) {
                     [tableView registerNib:[UINib nibWithNibName:@"CGAImageAttachment" bundle:nil] forCellReuseIdentifier:@"AImage Cell"];
                     CGAImageAttachment *imageCell = [tableView dequeueReusableCellWithIdentifier:@"AImage Cell"];
-                    imageCell.thumbnail.layer.cornerRadius = 10; // Adjust value as needed
+                    
+                    
+                    if(VERSION_MIN(@"7.0")) {
+                        [imageCell.thumbMask setImage:[UIImage imageNamed:@"iOS7AttachmentCellMask"]];
+                    }
+                    imageCell.thumbnail.layer.cornerRadius = 10;
                     imageCell.thumbnail.layer.masksToBounds = YES;
                     imageCell.thumbnail.clipsToBounds = YES;
                     imageCell.thumbnail.contentMode = UIViewContentModeScaleAspectFill;
-
+                    [imageCell.contentView setBackgroundColor:[UIColor colorWithWhite:0.96 alpha:1.0]];
                     [imageCell.thumbnail setImage:message.imageAttachment];
                     
                     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedImage:)];

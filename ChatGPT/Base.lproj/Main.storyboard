@@ -290,6 +290,7 @@
                         <outlet property="mainView" destination="FPR-po-b6i" id="Hf2-aX-HPe"/>
                         <outlet property="pickThumbnailView" destination="9AV-u3-FgR" id="b1x-ig-Diq"/>
                         <outlet property="realWELSlideIcon" destination="UzT-cE-AGh" id="BbF-Qn-GFS"/>
+                        <outlet property="realWELSlideLabel" destination="0BF-eC-raa" id="u2Z-NS-mGv"/>
                         <outlet property="secondaryView1" destination="W22-J4-rOi" id="km5-yb-cJw"/>
                         <outlet property="secondaryView2" destination="d00-qF-xuF" id="g5C-6W-mpt"/>
                         <outlet property="secondaryView3" destination="yqa-GS-gAV" id="VKq-5T-IDt"/>
@@ -350,6 +351,10 @@
                                             <rect key="frame" x="0.0" y="55" width="320" height="2"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iOS7SBSeparator.png" id="KJq-TF-ObW">
+                                            <rect key="frame" x="0.0" y="56" width="320" height="1"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.062745098039215685" green="0.062745098039215685" blue="0.062745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
@@ -357,6 +362,8 @@
                                 <connections>
                                     <outlet property="accessoryLabel" destination="kTH-Be-HDO" id="rfs-QZ-B10"/>
                                     <outlet property="conversationName" destination="Cc8-3W-7d7" id="ph6-is-BHV"/>
+                                    <outlet property="iOS7Separator" destination="KJq-TF-ObW" id="Hpb-Kb-41f"/>
+                                    <outlet property="separator" destination="FTx-Fr-9RM" id="1rI-mo-y0N"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NewChat" rowHeight="57" id="5Ni-y4-Ndb" customClass="CGConversationElementCell">
@@ -392,11 +399,22 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="2"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iOS7SBSeparator.png" id="fT1-QL-1LK">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.062745098040000002" green="0.062745098040000002" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="accessoryLabel" destination="D51-4R-zyn" id="l4M-Ru-ON0"/>
+                                    <outlet property="conversationName" destination="ZKw-9v-UbM" id="cdd-CV-656"/>
+                                    <outlet property="iOS7Separator" destination="fT1-QL-1LK" id="MbR-9J-qBl"/>
+                                    <outlet property="separator" destination="SiD-OL-ff3" id="A15-wC-rrV"/>
+                                    <outlet property="thumbnail" destination="ga7-Vp-PRe" id="Ppg-zF-AW6"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Nothing" rowHeight="57" id="gbu-cS-t4B">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Nothing" rowHeight="57" id="gbu-cS-t4B" customClass="CGConversationElementCell">
                                 <rect key="frame" x="0.0" y="136" width="320" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gbu-cS-t4B" id="GyG-xb-5Ra">
@@ -425,9 +443,19 @@
                                             <rect key="frame" x="0.0" y="55" width="320" height="2"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iOS7SBSeparator.png" id="Qsi-lJ-RVC">
+                                            <rect key="frame" x="0.0" y="56" width="320" height="1"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.062745098040000002" green="0.062745098040000002" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="accessoryLabel" destination="SWN-dO-PV8" id="BC6-yf-7gy"/>
+                                    <outlet property="conversationName" destination="dV7-0f-5Xb" id="k3F-Q0-nbn"/>
+                                    <outlet property="iOS7Separator" destination="Qsi-lJ-RVC" id="KrI-gr-QGV"/>
+                                    <outlet property="separator" destination="nAy-xI-io4" id="FBi-K3-FrL"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -521,7 +549,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to ChatGPT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" id="mBF-dg-ldd">
-                                        <rect key="frame" x="54" y="108" width="212" height="28"/>
+                                        <rect key="frame" x="54" y="108" width="212" height="33"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                         <color key="textColor" red="0.2901960784" green="0.49019607840000001" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -530,7 +558,7 @@
                                         <size key="shadowOffset" width="0.0" height="2"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can ask me anything, to start, simply type something in, or resume your conversation." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aLg-4I-lDh">
-                                        <rect key="frame" x="22" y="144" width="277" height="65"/>
+                                        <rect key="frame" x="22" y="144" width="277" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -656,6 +684,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="IVOverlayImage" destination="wWz-xe-Tkk" id="BEZ-Er-a5d"/>
+                        <outlet property="LAvatar" destination="rAh-3E-PSH" id="zT7-Cm-EtY"/>
+                        <outlet property="LThinkLabel" destination="AQv-dM-M3l" id="4Ai-5Y-wbQ"/>
+                        <outlet property="LUserLabel" destination="feO-2S-BmZ" id="YW5-Pc-RQe"/>
+                        <outlet property="LoadingToast" destination="GvX-1p-ZoG" id="D0D-xo-5lx"/>
+                        <outlet property="WelcomeHead" destination="mBF-dg-ldd" id="GeD-cn-KmC"/>
+                        <outlet property="WelcomeImage" destination="j2M-vX-LuZ" id="Fox-Pk-fLp"/>
                         <outlet property="attachmentImage" destination="K0H-VS-ect" id="FXh-ef-Q9D"/>
                         <outlet property="attachmentMask" destination="MCJ-zb-As4" id="Mlc-1c-sML"/>
                         <outlet property="attachmentView" destination="pFJ-qF-G2Y" id="dcc-fX-pFI"/>
@@ -761,6 +795,7 @@
         <image name="big-icon.png" width="160" height="160"/>
         <image name="defaultAssistantAvatar.png" width="55" height="55"/>
         <image name="hamburgerButton.png" width="19" height="16"/>
+        <image name="iOS7SBSeparator.png" width="2" height="2"/>
         <image name="iOS7Separator.png" width="1" height="1"/>
         <image name="inputOverlay.png" width="206" height="30"/>
         <image name="loadingToast.png" width="320" height="30"/>
