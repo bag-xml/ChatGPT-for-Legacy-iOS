@@ -67,7 +67,8 @@
     if([[NSUserDefaults standardUserDefaults] boolForKey:@"aFL"] == YES) {
         [self displayWelcomeLaunchView];
     }
-
+    
+    [CGAPIHelper checkForAppUpdate];
     [self.inputField setDelegate:self];
     [[self.inputView layer] setMasksToBounds:YES];
     

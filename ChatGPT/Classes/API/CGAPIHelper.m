@@ -28,15 +28,20 @@
             
             if(data) {
                 NSDictionary *response = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                bool update = [response objectForKey:@"outdated"];
-                NSString *message = [response objectForKey:@"message"];
+                NSLog(@"%@", response);
                 
-                if(update) {
+                NSNumber *update = response[@"outdated"];
+                NSString *message = response[@"message"];
+                
+                if ([update intValue] == 1) {
                     [CGAPIHelper alert:@"Good news!" withMessage:message];
+                } else {
+                    return;
                 }
             } else {
                 return;
             }
+
         });
     }
     return;
