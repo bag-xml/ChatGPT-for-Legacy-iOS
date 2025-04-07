@@ -18,6 +18,9 @@ Logging into ChatGPT for Legacy iOS is only possible via an API key. That API ke
 If you're encountering issues you should always take note of what happens, how you triggered it, what your iOS version is, what device type (iPads aren't supported) you're using ChatGPT for Legacy iOS on and then open a new issue on the [issues tab](https://github.com/bag-xml/ChatGPT-for-Legacy-iOS/issues).
 
 Additionally to that, you can join the bag.xml community discord on https://discord.gg/eE3XTCEMqr. This is the project server of ChatGPT for Legacy iOS, and you can get real-time help at any time if you're having issues regarding the app or more. 
+
+# Support
+If you like the work I do you can support me on [Ko-fi](https://ko-fi.com/bagxml). It would mean the world to me and really motivate me.
 # Credits
 
 ### Contributors
