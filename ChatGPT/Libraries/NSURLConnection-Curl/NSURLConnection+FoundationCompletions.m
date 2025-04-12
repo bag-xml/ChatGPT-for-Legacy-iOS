@@ -95,16 +95,16 @@ ReadMemoryCallback(void* ptr, size_t size, size_t nitems, void* data) {
 @implementation NSURLConnection (FoundationCompletions)
 
 + (NSData *)sendSynchronousRequest:(NSURLRequest *)request returningResponse:(NSURLResponse **)responsep error:(NSError **)errorp {
-	NSLog(@"Starting!");
+	//NSLog(@"Starting!");
 	struct MemoryStruct response;
 	response.memory = NULL;
 	response.size = 0;
-	NSLog(@"called");
+	//NSLog(@"called");
 	struct curl_slist *slist = NULL;
 	
 	CURL* chandle = curl_easy_init();
 	curl_easy_setopt(chandle, CURLOPT_URL, [[[request URL] absoluteString] UTF8String]);
-	NSLog(@"itadakimasu = %@", [[request URL] absoluteString]);
+	//NSLog(@"itadakimasu = %@", [[request URL] absoluteString]);
 	curl_easy_setopt(chandle, CURLOPT_FOLLOWLOCATION, 1);
 	curl_easy_setopt(chandle, CURLOPT_SSL_VERIFYPEER, 0);
     curl_easy_setopt(chandle, CURLOPT_NOSIGNAL, 1);
@@ -163,7 +163,7 @@ ReadMemoryCallback(void* ptr, size_t size, size_t nitems, void* data) {
 		curl_slist_free_all(slist);
 		int code;
 		curl_easy_getinfo(chandle, CURLINFO_RESPONSE_CODE, &code);
-		NSLog(@"response code:%i",code);
+		//NSLog(@"response code:%i",code);
 		
 		//Simple response based on status code.
 		///--- Does not work...

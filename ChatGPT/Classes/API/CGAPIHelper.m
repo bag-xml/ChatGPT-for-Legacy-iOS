@@ -28,7 +28,6 @@
             
             if(data) {
                 NSDictionary *response = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                NSLog(@"%@", response);
                 
                 NSNumber *update = response[@"outdated"];
                 NSString *message = response[@"message"];
@@ -121,18 +120,22 @@
             [[NSUserDefaults standardUserDefaults] setObject:parsedResponse[@"name"] forKey:@"username"];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
-            NSURL *imageURL = [NSURL URLWithString:parsedResponse[@"picture"]];
-            NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-            if (imageData) {
-                // Get the temporary directory path
-                NSString *tmpDirectory = NSTemporaryDirectory();
-                NSString *filePath = [tmpDirectory stringByAppendingPathComponent:@"avatar.png"];
-                BOOL success = [imageData writeToFile:filePath options:NSDataWritingAtomic error:&error];
-                if (success) {
-                } else {
-                    [self alert:@"Error" withMessage:@"An error occured when trying to download the user avatar."];
+            id pictureValue = parsedResponse[@"picture"];
+            if (pictureValue && pictureValue != [NSNull null]) {
+                NSURL *imageURL = [NSURL URLWithString:pictureValue];
+                if (imageURL) {
+                    NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+                    if (imageData) {
+                        NSString *tmpDirectory = NSTemporaryDirectory();
+                        NSString *filePath = [tmpDirectory stringByAppendingPathComponent:@"avatar.png"];
+                        BOOL success = [imageData writeToFile:filePath options:NSDataWritingAtomic error:&error];
+                        if (!success) {
+                            [self alert:@"Error" withMessage:@"An error occured when trying to download the user avatar."];
+                        }
+                    }
                 }
             }
+
             
             [[NSUserDefaults standardUserDefaults] setObject:key forKey:@"apiKey"];
             [NSNotificationCenter.defaultCenter postNotificationName:@"LOG-IN VALID" object:nil];

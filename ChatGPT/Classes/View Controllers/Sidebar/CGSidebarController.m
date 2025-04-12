@@ -135,7 +135,6 @@
             [NSNotificationCenter.defaultCenter postNotificationName:@"SAVE CHAT" object:nil];
             [self recheckandReload:nil];
         } else if(buttonIndex == 2) {
-            NSLog(@"2");
             BOOL success = [CGAPIHelper deleteAllConversations];
             if(success) {
                 [NSNotificationCenter.defaultCenter postNotificationName:@"RE-CHECK CONVOS" object:nil];

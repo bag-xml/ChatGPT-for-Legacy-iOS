@@ -56,7 +56,7 @@
         }
 
         NSString *model = [[NSUserDefaults standardUserDefaults] objectForKey:@"c-aiModel"];
-        NSLog(@"%@", model);
+
         if (!model || [model length] == 0) {
             [CGAPIHelper alert:@"Missing Model" withMessage:@"Please re-check your model settings. Your model was set back to 'gpt-4o-mini' for this session."];
             model = @"gpt-4o-mini";
@@ -67,7 +67,6 @@
                                @"messages": messagesArray
                                };
 
-        NSLog(@"%@", body);
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:body options:0 error:nil];
         
         [request setURL:chatCompletionEndpoint];
@@ -125,7 +124,7 @@
         
         
         NSString *model = [[NSUserDefaults standardUserDefaults] objectForKey:@"c-aiModel"];
-        NSLog(@"%@", model);
+
         if (!model || [model length] == 0) {
             [CGAPIHelper alert:@"Missing Model" withMessage:@"Please re-check your model settings. Your model was set back to 'gpt-4o-mini' for this session."];
             model = @"gpt-4o-mini";
