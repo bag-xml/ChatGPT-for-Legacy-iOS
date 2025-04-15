@@ -14,12 +14,22 @@
 
 @implementation CGImageViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+
+- (void)viewDidLoad{
+	[super viewDidLoad];
+
+    self.scrollView.delegate = self;
+    self.scrollView.minimumZoomScale = 1.0;
+    self.scrollView.maximumZoomScale = 4.0;
+    self.scrollView.zoomScale = 1.0;
     
     UIImage *clearImage = [UIImage new]; // Blank image
     [self.navigationController.navigationBar setBackgroundImage:clearImage forBarMetrics:UIBarMetricsDefault];
 
+    
+}
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return self.imageView;
 }
 
 - (void)viewDidUnload {
