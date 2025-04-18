@@ -49,6 +49,14 @@
 			<string>i-aiModel</string>
 		</dict>
 		<dict>
+			<key>FooterText</key>
+			<string>This option allows you to use a proxy service. Please note that this option is experimental, and you can encounter bugs. Change your Completion and Image Model after enabling this option to &quot;openrouter/auto&quot; to yield the best results. Also make sure to use an OpenRouter API key.</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string></string>
+		</dict>
+		<dict>
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
