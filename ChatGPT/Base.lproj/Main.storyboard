@@ -301,7 +301,6 @@
                         <outlet property="slideLabel" destination="0BF-eC-raa" id="g9z-rk-Lfg"/>
                         <outlet property="slideicon" destination="d00-qF-xuF" id="bAc-ng-8wr"/>
                         <outlet property="tableView" destination="Wqr-8A-Fbl" id="w6T-In-ADY"/>
-                        <outlet property="versatileTextView" destination="sfA-nM-1Kk" id="Hs9-Yc-4hk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bIS-N4-ad4" userLabel="First Responder" sceneMemberID="firstResponder"/>

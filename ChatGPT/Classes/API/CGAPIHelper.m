@@ -67,9 +67,7 @@
         if(data) {
             NSDictionary* parsedResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
             if(!parsedResponse) {
-                NSLog(@"NO NO NO");
-            } else {
-                NSLog(@"%@", parsedResponse);
+                [CGAPIHelper alert:@"Warning" withMessage:@"Please check your API key and your internet connection."];
             }
             NSDictionary *errorDict = [parsedResponse objectForKey:@"error"];
             if(errorDict) {
@@ -386,18 +384,50 @@
 }
 
 + (CGMessage*)convertImageGenerationResponse:(NSDictionary*)jsonMessage {
-    NSDictionary *firstData = jsonMessage[@"data"][0];
+    NSLog(@"jsonmes %@", jsonMessage);
+    bool alternative = [[NSUserDefaults standardUserDefaults] boolForKey:@"alternative"];
     
     
     CGMessage *newAssistantResponseMessage = CGMessage.new;
     
+    if(alternative == YES) {
+        NSDictionary *messageDict = jsonMessage[@"choices"][0][@"message"];
+        
+        id contentRaw = messageDict[@"content"];
+
+        
+        if ([contentRaw isKindOfClass:[NSArray class]]) {
+            NSArray *contentArray = (NSArray *)contentRaw;
+            for (NSDictionary *item in contentArray) {
+                if ([item[@"type"] isEqualToString:@"text"]) {
+                    newAssistantResponseMessage.content = item[@"text"];
+                } else if ([item[@"type"] isEqualToString:@"image_url"]) {
+                    NSString *urlString = item[@"image_url"][@"url"];
+                    if ([urlString hasPrefix:@"data:image"]) {
+                        NSArray *components = [urlString componentsSeparatedByString:@","];
+                        if (components.count == 2) {
+                            newAssistantResponseMessage.imageHash = components[1];
+                            NSData *imageData = [[NSData alloc] initWithBase64EncodedString:components[1] options:0];
+                            newAssistantResponseMessage.imageAttachment = [UIImage imageWithData:imageData];
+                        }
+                    }
+                }
+            }
+        } else if ([contentRaw isKindOfClass:[NSString class]]) {
+            newAssistantResponseMessage.content = contentRaw;
+        }
+        
+        newAssistantResponseMessage.author = @"ChatGPT";
+        
+    } else {
+        NSDictionary *firstData = jsonMessage[@"data"][0];
+        newAssistantResponseMessage.content = firstData[@"revised_prompt"];
+        newAssistantResponseMessage.imageHash = firstData[@"b64_json"];
+        NSData *imageData = [NSData dataWithBase64EncodedString:firstData[@"b64_json"]];
+        newAssistantResponseMessage.imageAttachment = [UIImage imageWithData:imageData];
+    }
+    
     newAssistantResponseMessage.author = @"ChatGPT";
-    newAssistantResponseMessage.content = firstData[@"revised_prompt"];
-    newAssistantResponseMessage.imageHash = firstData[@"b64_json"];
-    
-    NSData *imageData = [NSData dataWithBase64EncodedString:firstData[@"b64_json"]];
-    newAssistantResponseMessage.imageAttachment = [UIImage imageWithData:imageData];
-    
     newAssistantResponseMessage.role = @"assistant";
     if(VERSION_MIN(@"7.0")) {
         newAssistantResponseMessage.avatar = [UIImage imageNamed:@"iOS7AssistantAvatar"];

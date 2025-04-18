@@ -47,6 +47,5 @@
 @property (weak, nonatomic) IBOutlet UIView *SCThumbnailView;
 @property (weak, nonatomic) IBOutlet UIView *CONVThumbnailView;
 @property (weak, nonatomic) IBOutlet UIView *pickThumbnailView;
-@property (weak, nonatomic) IBOutlet UITextView *versatileTextView;
 @property (weak, nonatomic) IBOutlet UITextField *KeyInputField;
 @end

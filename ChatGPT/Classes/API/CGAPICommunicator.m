@@ -60,8 +60,13 @@
         NSString *model = [[NSUserDefaults standardUserDefaults] objectForKey:@"c-aiModel"];
 
         if (!model || [model length] == 0) {
-            [CGAPIHelper alert:@"Missing Model" withMessage:@"Please re-check your model settings. Your model was set back to 'gpt-4o-mini' for this session."];
-            model = @"gpt-4o-mini";
+            if(alternative == YES) {
+                [CGAPIHelper alert:@"Missing Model" withMessage:@"Please re-check your model settings. Your model was set back to 'openrouter/auto' for this session."];
+                model = @"openrouter/auto";
+            } else {
+                [CGAPIHelper alert:@"Missing Model" withMessage:@"Please re-check your model settings. Your model was set back to 'gpt-4o-mini' for this session."];
+                model = @"gpt-4o-mini";
+            }
         }
         
         NSDictionary *body = @{
@@ -124,10 +129,17 @@
 
 + (void)createImageGenerationWithContent:(NSString *)content {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        bool alternative = [[NSUserDefaults standardUserDefaults] boolForKey:@"alternative"];
+        
         [NSNotificationCenter.defaultCenter postNotificationName:@"THINK STATUS" object:nil];
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         
+        
         NSURL *chatCompletionEndpoint = [NSURL URLWithString:[NSString stringWithFormat:@"%@/v1/images/generations", domain]];
+        
+        if(alternative == YES) {
+            chatCompletionEndpoint = [NSURL URLWithString:[NSString stringWithFormat:@"%@/api/v1/chat/completions", altDomain]];
+        }
         NSURLResponse *response;
         NSError *error;
         
@@ -137,8 +149,13 @@
         NSString *model = [[NSUserDefaults standardUserDefaults] objectForKey:@"i-aiModel"];
 
         if (!model || [model length] == 0) {
-            [CGAPIHelper alert:@"Missing Model" withMessage:@"Please re-check your model settings. Your model was set back to 'dall-e-3' for this session."];
-            model = @"dall-e-3";
+            if(alternative == YES) {
+                [CGAPIHelper alert:@"Missing Model" withMessage:@"Please re-check your model settings. Your model was set back to 'openrouter/auto' for this session."];
+                model = @"openrouter/auto";
+            } else {
+                [CGAPIHelper alert:@"Missing Model" withMessage:@"Please re-check your model settings. Your model was set back to 'dall-e-3' for this session."];
+                model = @"dall-e-3";
+            }
         }
         
         NSDictionary *body = @{
@@ -149,9 +166,22 @@
                                @"response_format": @"b64_json"
                                };
         
+        if(alternative == YES) {
+            NSDictionary *message = @{
+                                      @"role": @"user",
+                                      @"content": content
+                                      };
+            NSArray *messagesArray = @[message]; //Usually it'd be like the chat completion function above but i feel lazy today so its just ONE
+            body = @{
+                     @"model": model,
+                     @"messages": messagesArray,
+                     @"modalities": @[@"image", @"text"]
+                     };
+        }
+        
         
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:body options:0 error:nil];
-        
+        NSLog(@"bo %@", body);
         [request setURL:chatCompletionEndpoint];
         [request setHTTPMethod:@"POST"];
         [request setHTTPBody:jsonData];
@@ -166,7 +196,11 @@
             
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             NSDictionary* parsedResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-            
+            NSLog(@"p %@", parsedResponse);
+            if(!parsedResponse) {
+                [CGAPIHelper alert:@"Warning" withMessage:@"An error has occured."];
+                return;
+            }
             //error handling
             NSDictionary *errorDict = [parsedResponse objectForKey:@"error"];
             if(errorDict) {
