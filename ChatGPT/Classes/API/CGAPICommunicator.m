@@ -123,11 +123,11 @@
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         
         
-        NSString *model = [[NSUserDefaults standardUserDefaults] objectForKey:@"c-aiModel"];
+        NSString *model = [[NSUserDefaults standardUserDefaults] objectForKey:@"i-aiModel"];
 
         if (!model || [model length] == 0) {
-            [CGAPIHelper alert:@"Missing Model" withMessage:@"Please re-check your model settings. Your model was set back to 'gpt-4o-mini' for this session."];
-            model = @"gpt-4o-mini";
+            [CGAPIHelper alert:@"Missing Model" withMessage:@"Please re-check your model settings. Your model was set back to 'dall-e-3' for this session."];
+            model = @"dall-e-3";
         }
         
         NSDictionary *body = @{
