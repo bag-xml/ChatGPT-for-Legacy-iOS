@@ -1,5 +1,5 @@
 # Note
-This fork of ChatGPT for Legacy iOS has support for the OpenRouter API, allowing you to use many models to their full potential. If you want to get started with that, read through https://openrouter.ai/docs/quickstart and build familiarity in order for you to know which model to use. If you're starting this app for the first time, please go into the settings and enable "Use OpenRouter API", and follow the instructions below the toggle field.
+This fork of ChatGPT for Legacy iOS has support for the OpenRouter API, allowing you to use many models to their full potential. If you want to get started with that, read through [https://openrouter.ai/docs/quickstart](https://openrouter.ai/docs/quickstart) and build familiarity in order for you to know which model to use. If you're starting this app for the first time, please go into the settings and enable "Use OpenRouter API", and follow the instructions below the toggle field.
 
 This is only experimental though, and it's functionality is not planned to be added into the official app due to me questioning it's legality regarding the OpenAI API and this being in a third party client conveniently branded as "ChatGPT" for Legacy iOS. https://openai.com/policies/business-terms/
 
@@ -17,7 +17,7 @@ ChatGPT for Legacy iOS is a client for older versions of iOS that allow you to i
 | Compatible  | 7.x  | None |
 | Compatible  | 8+  | Not optimized for iPhone 6 and 6+ |
 # How do I log in?
-Logging into ChatGPT for Legacy iOS is only possible via an API key. That API key can be obtained from [https://platform.openai.com/](https://openrouter.ai/docs/quickstart) and depending on what you want to do, or if you're doing this for the first time it can cost money. Please read through OpenAI's API platform for more information.
+Logging into ChatGPT for Legacy iOS is only possible via an API key. That API key can be obtained from [[https://platform.openai.com/](https://openrouter.ai/docs/quickstart)](https://openrouter.ai/docs/quickstart) and depending on what you want to do, or if you're doing this for the first time it can cost money. Please read through OpenAI's API platform for more information.
 
 # Encountering issues, or need support?
 If you're encountering issues you should always take note of what happens, how you triggered it, what your iOS version is, what device type (iPads aren't supported) you're using ChatGPT for Legacy iOS on and then open a new issue on the [issues tab](https://github.com/bag-xml/ChatGPT-for-Legacy-iOS/issues).
