@@ -48,10 +48,13 @@
 
 + (void)checkForAPIKeyValidity {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        bool alternative = [[NSUserDefaults standardUserDefaults] boolForKey:@"alternative"];
         NSURL *randomEndpoint = [NSURL URLWithString:[NSString stringWithFormat:@"%@/v1/models", domain]];
+        if(alternative == YES) {
+            randomEndpoint = [NSURL URLWithString:[NSString stringWithFormat:@"%@/api/v1/key", altDomain]];
+        }
         NSURLResponse *response;
         NSError *error;
-
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         [request setURL:randomEndpoint];
         [request setHTTPMethod:@"GET"];
@@ -63,6 +66,11 @@
         
         if(data) {
             NSDictionary* parsedResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+            if(!parsedResponse) {
+                NSLog(@"NO NO NO");
+            } else {
+                NSLog(@"%@", parsedResponse);
+            }
             NSDictionary *errorDict = [parsedResponse objectForKey:@"error"];
             if(errorDict) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -89,9 +97,14 @@
     });
 }
 
-+ (void)logInUserwithKey:(NSString*)key {
+/*+ (void)logInUserwithKey:(NSString*)key {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        bool alternative = [[NSUserDefaults standardUserDefaults] boolForKey:@"alternative"];
         NSURL *randomEndpoint = [NSURL URLWithString:[NSString stringWithFormat:@"%@/v1/me", domain]];
+        if(alternative == YES) {
+            randomEndpoint = [NSURL URLWithString:[NSString stringWithFormat:@"%@/api/v1/key", altDomain]];
+        }
+        NSLog(@"%@", randomEndpoint);
         NSURLResponse *response;
         NSError *error;
         
@@ -105,6 +118,49 @@
         
         if(data) {
             NSDictionary* parsedResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+            if(!parsedResponse) {
+                [NSNotificationCenter.defaultCenter postNotificationName:@"LOG-IN FAILURE" object:nil];
+                return;
+            } else {
+                NSLog(@"%@", parsedResponse);
+            }
+            
+            //[NSNotificationCenter.defaultCenter postNotificationName:@"LOG-IN VALID" object:nil];
+        } else if(!data) {
+            [NSNotificationCenter.defaultCenter postNotificationName:@"LOG-IN FAILURE" object:nil];
+            return;
+        }
+            
+    });
+}
+*/
+
++ (void)logInUserwithKey:(NSString*)key {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        bool alternative = [[NSUserDefaults standardUserDefaults] boolForKey:@"alternative"];
+        NSURL *randomEndpoint = [NSURL URLWithString:[NSString stringWithFormat:@"%@/v1/me", domain]];
+        if(alternative == YES) {
+            randomEndpoint = [NSURL URLWithString:[NSString stringWithFormat:@"%@/api/v1/key", altDomain]];
+        }
+        NSLog(@"%@", randomEndpoint);
+        NSURLResponse *response;
+        NSError *error;
+        
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        [request setURL:randomEndpoint];
+        [request setHTTPMethod:@"GET"];
+        [request setHTTPBody:nil];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setValue:[NSString stringWithFormat:@"Bearer %@", key] forHTTPHeaderField:@"Authorization"];
+        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        
+        if(data) {
+            NSDictionary* parsedResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+            if(!parsedResponse) {
+                [NSNotificationCenter.defaultCenter postNotificationName:@"LOG-IN FAILURE" object:nil];
+                return;
+            }
+            
             NSDictionary *errorDict = [parsedResponse objectForKey:@"error"];
             if(errorDict) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -114,38 +170,43 @@
                 
                 return;
             }
+            
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasLoggedInUser"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"You" forKey:@"username"];
+            [[NSUserDefaults standardUserDefaults] setObject:key forKey:@"apiKey"];
             
-            [[NSUserDefaults standardUserDefaults] setObject:parsedResponse[@"email"] forKey:@"email"];
-            [[NSUserDefaults standardUserDefaults] setObject:parsedResponse[@"name"] forKey:@"username"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
             
-            id pictureValue = parsedResponse[@"picture"];
-            if (pictureValue && pictureValue != [NSNull null]) {
-                NSURL *imageURL = [NSURL URLWithString:pictureValue];
-                if (imageURL) {
-                    NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-                    if (imageData) {
-                        NSString *tmpDirectory = NSTemporaryDirectory();
-                        NSString *filePath = [tmpDirectory stringByAppendingPathComponent:@"avatar.png"];
-                        BOOL success = [imageData writeToFile:filePath options:NSDataWritingAtomic error:&error];
-                        if (!success) {
-                            [self alert:@"Error" withMessage:@"An error occured when trying to download the user avatar."];
+            if(alternative == NO) {
+                [[NSUserDefaults standardUserDefaults] setObject:parsedResponse[@"email"] forKey:@"email"];
+                [[NSUserDefaults standardUserDefaults] setObject:parsedResponse[@"name"] forKey:@"username"];
+                
+                id pictureValue = parsedResponse[@"picture"];
+                if (pictureValue && pictureValue != [NSNull null]) {
+                    NSURL *imageURL = [NSURL URLWithString:pictureValue];
+                    if (imageURL) {
+                        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+                        if (imageData) {
+                            NSString *tmpDirectory = NSTemporaryDirectory();
+                            NSString *filePath = [tmpDirectory stringByAppendingPathComponent:@"avatar.png"];
+                            BOOL success = [imageData writeToFile:filePath options:NSDataWritingAtomic error:&error];
+                            if (!success) {
+                                [self alert:@"Error" withMessage:@"An error occured when trying to download the user avatar."];
+                            }
                         }
                     }
                 }
             }
-
+            [[NSUserDefaults standardUserDefaults] synchronize];
             
-            [[NSUserDefaults standardUserDefaults] setObject:key forKey:@"apiKey"];
             [NSNotificationCenter.defaultCenter postNotificationName:@"LOG-IN VALID" object:nil];
         } else if(!data) {
             [NSNotificationCenter.defaultCenter postNotificationName:@"LOG-IN FAILURE" object:nil];
             return;
         }
-            
+        
     });
 }
+
 
 + (void)saveConversationWithArray:(NSMutableArray *)conversationArray withID:(NSString *)uuid withTitle:(NSString *)title{
     NSMutableArray *messagesArray = [NSMutableArray array];
@@ -387,6 +448,72 @@
 }
 
 
-
+/*
++ (void)logInUserwithKey:(NSString*)key {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        bool alternative = [[NSUserDefaults standardUserDefaults] boolForKey:@"alternative"];
+        NSURL *randomEndpoint = [NSURL URLWithString:[NSString stringWithFormat:@"%@/v1/me", domain]];
+        if(alternative == YES) {
+            randomEndpoint = [NSURL URLWithString:[NSString stringWithFormat:@"%@/api/v1/user", altDomain]];
+        }
+        NSLog(@"%@", randomEndpoint);
+        NSURLResponse *response;
+        NSError *error;
+        
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        [request setURL:randomEndpoint];
+        [request setHTTPMethod:@"GET"];
+        [request setHTTPBody:nil];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setValue:[NSString stringWithFormat:@"Bearer %@", key] forHTTPHeaderField:@"Authorization"];
+        NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        
+        if(data) {
+            NSDictionary* parsedResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+            if(!parsedResponse) {
+                [NSNotificationCenter.defaultCenter postNotificationName:@"LOG-IN FAILURE" object:nil];
+                return;
+            }
+            NSDictionary *errorDict = [parsedResponse objectForKey:@"error"];
+            if(errorDict) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [CGAPIHelper alert:@"Warning" withMessage:[NSString stringWithFormat:@"%@", [errorDict objectForKey:@"message"]]];
+                    [NSNotificationCenter.defaultCenter postNotificationName:@"LOG-IN FAILURE" object:nil];
+                });
+                
+                return;
+            }
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasLoggedInUser"];
+            
+            [[NSUserDefaults standardUserDefaults] setObject:parsedResponse[@"email"] forKey:@"email"];
+            [[NSUserDefaults standardUserDefaults] setObject:parsedResponse[@"name"] forKey:@"username"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            id pictureValue = parsedResponse[@"picture"];
+            if (pictureValue && pictureValue != [NSNull null]) {
+                NSURL *imageURL = [NSURL URLWithString:pictureValue];
+                if (imageURL) {
+                    NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+                    if (imageData) {
+                        NSString *tmpDirectory = NSTemporaryDirectory();
+                        NSString *filePath = [tmpDirectory stringByAppendingPathComponent:@"avatar.png"];
+                        BOOL success = [imageData writeToFile:filePath options:NSDataWritingAtomic error:&error];
+                        if (!success) {
+                            [self alert:@"Error" withMessage:@"An error occured when trying to download the user avatar."];
+                        }
+                    }
+                }
+            }
+            
+            
+            [[NSUserDefaults standardUserDefaults] setObject:key forKey:@"apiKey"];
+            [NSNotificationCenter.defaultCenter postNotificationName:@"LOG-IN VALID" object:nil];
+        } else if(!data) {
+            [NSNotificationCenter.defaultCenter postNotificationName:@"LOG-IN FAILURE" object:nil];
+            return;
+        }
+        
+    });
+}*/
 
 @end

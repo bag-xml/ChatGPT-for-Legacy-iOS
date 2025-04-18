@@ -66,6 +66,11 @@
     self.WLBoxView.alpha = 0.0;
     self.KeyInputField.delegate = self;
     
+    
+    bool alternative = [[NSUserDefaults standardUserDefaults] boolForKey:@"alternative"];
+    if(alternative)
+        [self.versatileTextView setText:@"If you don't know how to create your own API key, or you're having issues, please refer to https://openrouter.ai/docs"];
+    
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(endOOBE:) name:@"LOG-IN VALID" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(abruptFailure:) name:@"LOG-IN FAILURE" object:nil];
     // Do any additional setup after loading the view.

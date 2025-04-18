@@ -18,12 +18,10 @@
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         NSURL *chatCompletionEndpoint = [NSURL URLWithString:[NSString stringWithFormat:@"%@/v1/chat/completions", domain]];
         if(alternative == YES) {
-            chatCompletionEndpoint = [NSURL URLWithString:[NSString stringWithFormat:@"%@/v1/chat/completions", altDomain]];
+            chatCompletionEndpoint = [NSURL URLWithString:[NSString stringWithFormat:@"%@/api/v1/chat/completions", altDomain]];
         }
         NSURLResponse *response;
         NSError *error;
-        NSLog(@"%@", chatCompletionEndpoint);
-        [CGAPIHelper alert:[NSString stringWithFormat:@"%i", alternative] withMessage:nil];
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         
         NSMutableArray *messagesArray = [NSMutableArray array];
@@ -58,7 +56,6 @@
             
             [messagesArray addObject:messageDict];
         }
-        NSLog(@"%@", messagesArray);
 
         NSString *model = [[NSUserDefaults standardUserDefaults] objectForKey:@"c-aiModel"];
 
@@ -74,8 +71,6 @@
 
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:body options:0 error:nil];
         
-        NSLog(@"%@", body);
-        
         [request setURL:chatCompletionEndpoint];
         [request setHTTPMethod:@"POST"];
         [request setHTTPBody:jsonData];
@@ -85,12 +80,20 @@
 
         
         NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-        NSLog(@"fr");
         if(data) {
             
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             NSDictionary* parsedResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-            NSLog(@"------ YES");
+
+            if (!parsedResponse) {
+                [NSNotificationCenter.defaultCenter postNotificationName:@"CANCEL LOAD" object:nil];
+                [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                CGMessage *visualEM = [CGAPIHelper loopErrorBack:@"Something went wrong and the response came back **empty**. This message is shown to you as a preventative measure to stop potential crashes. Please make sure you're properly connected to the intenret, re-check your API options and your API key and make sure a proxy isn't interfering"];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [NSNotificationCenter.defaultCenter postNotificationName:@"AI RESPONSE" object:visualEM];
+                });
+                return;
+            }
             //error handling
             NSDictionary *errorDict = [parsedResponse objectForKey:@"error"];
             if(errorDict) {
