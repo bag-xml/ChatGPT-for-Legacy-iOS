@@ -14,7 +14,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="missingAvatar.png" id="99">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="defaultUserAvatar.png" id="99">
                         <rect key="frame" x="258" y="7" width="55" height="55"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.2643008181" green="0.20473077819999999" blue="0.3885722258" alpha="1" colorSpace="calibratedRGB"/>
@@ -67,8 +67,8 @@
     </objects>
     <resources>
         <image name="avatarOverlay.png" width="57" height="57"/>
+        <image name="defaultUserAvatar.png" width="57" height="57"/>
         <image name="iOS7Separator.png" width="1" height="1"/>
-        <image name="missingAvatar.png" width="160" height="123"/>
         <image name="separator2.png" width="2" height="4"/>
     </resources>
 </document>
