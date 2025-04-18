@@ -13,17 +13,12 @@
 + (void)createChatCompletionwithContent:(NSMutableArray *)content {
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        bool alternative = [[NSUserDefaults standardUserDefaults] boolForKey:@"alternative"];
         [NSNotificationCenter.defaultCenter postNotificationName:@"THINK STATUS" object:nil];
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         NSURL *chatCompletionEndpoint = [NSURL URLWithString:[NSString stringWithFormat:@"%@/v1/chat/completions", domain]];
-        if(alternative == YES) {
-            chatCompletionEndpoint = [NSURL URLWithString:[NSString stringWithFormat:@"%@/v1/chat/completions", altDomain]];
-        }
+
         NSURLResponse *response;
         NSError *error;
-        NSLog(@"%@", chatCompletionEndpoint);
-        [CGAPIHelper alert:[NSString stringWithFormat:@"%i", alternative] withMessage:nil];
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         
         NSMutableArray *messagesArray = [NSMutableArray array];
@@ -58,7 +53,6 @@
             
             [messagesArray addObject:messageDict];
         }
-        NSLog(@"%@", messagesArray);
 
         NSString *model = [[NSUserDefaults standardUserDefaults] objectForKey:@"c-aiModel"];
 
@@ -74,8 +68,6 @@
 
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:body options:0 error:nil];
         
-        NSLog(@"%@", body);
-        
         [request setURL:chatCompletionEndpoint];
         [request setHTTPMethod:@"POST"];
         [request setHTTPBody:jsonData];
@@ -85,12 +77,10 @@
 
         
         NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-        NSLog(@"fr");
         if(data) {
             
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             NSDictionary* parsedResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-            NSLog(@"------ YES");
             //error handling
             NSDictionary *errorDict = [parsedResponse objectForKey:@"error"];
             if(errorDict) {

@@ -48,16 +48,6 @@
 			<key>Key</key>
 			<string>i-aiModel</string>
 		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
-			<string>Use OpenRouter AI</string>
-			<key>Key</key>
-			<string>alternative</string>
-			<key>DefaultValue</key>
-			<false/>
-		</dict>
 	</array>
 	<key>StringsTable</key>
 	<string>Root</string>

@@ -45,15 +45,13 @@
     self.chatTableView.delegate = self;
     self.chatTableView.dataSource = self;
     self.messages = [NSMutableArray array];
-    /*
+
     bool firstLaunch = [[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"];
     if(firstLaunch == NO) {
         [self prepareFirstLaunch];
     } else {
-        bool yougetwhatimean = [[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"];
-        if(yougetwhatimean == YES)
-            [self checkAPICredentials];
-    }*/
+        [self checkAPICredentials];
+    }
      
     self.attachmentView.hidden = YES;
     self.attachmentImage.image = nil;

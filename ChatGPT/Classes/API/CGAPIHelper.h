@@ -13,7 +13,6 @@
 #import "CGMessage.h"
 #import "CGConversation.h"
 
-#define altDomain @"https://openrouter.ai"
 #define domain @"https://api.openai.com"
 #define apiKey [[NSUserDefaults standardUserDefaults] objectForKey:@"apiKey"]
 

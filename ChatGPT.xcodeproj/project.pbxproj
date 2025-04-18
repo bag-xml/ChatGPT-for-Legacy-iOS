@@ -84,6 +84,11 @@
 		5B203AD92D3C4ABA004EEA20 /* BarButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B203AD52D3C4ABA004EEA20 /* BarButton@2x.png */; };
 		5B203ADA2D3C4ABA004EEA20 /* BarButtonPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B203AD62D3C4ABA004EEA20 /* BarButtonPressed.png */; };
 		5B203ADB2D3C4ABA004EEA20 /* BarButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B203AD72D3C4ABA004EEA20 /* BarButtonPressed@2x.png */; };
+		5B25FC0E2DB2425400876480 /* NSURLConnection+FoundationCompletions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B25FBFE2DB2425400876480 /* NSURLConnection+FoundationCompletions.m */; };
+		5B25FC0F2DB2425400876480 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B25FC0A2DB2425400876480 /* libcrypto.a */; };
+		5B25FC102DB2425400876480 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B25FC0B2DB2425400876480 /* libcurl.a */; };
+		5B25FC112DB2425400876480 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B25FC0C2DB2425400876480 /* libssl.a */; };
+		5B25FC122DB2425400876480 /* libz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B25FC0D2DB2425400876480 /* libz.a */; };
 		5B2E21CB2D354DEC0085E7BB /* TRMalleableFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2E21CA2D354DEC0085E7BB /* TRMalleableFrameView.m */; };
 		5B6296652D711517001D3C63 /* CGWelcomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6296642D711517001D3C63 /* CGWelcomeController.m */; };
 		5B6BAE2D2D69DDAE00B5E63B /* loadingToast.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B6BAE2C2D69DDAE00B5E63B /* loadingToast.png */; };
@@ -224,6 +229,21 @@
 		5B203AD52D3C4ABA004EEA20 /* BarButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BarButton@2x.png"; sourceTree = "<group>"; };
 		5B203AD62D3C4ABA004EEA20 /* BarButtonPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BarButtonPressed.png; sourceTree = "<group>"; };
 		5B203AD72D3C4ABA004EEA20 /* BarButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BarButtonPressed@2x.png"; sourceTree = "<group>"; };
+		5B25FBFD2DB2425400876480 /* NSURLConnection+FoundationCompletions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLConnection+FoundationCompletions.h"; sourceTree = "<group>"; };
+		5B25FBFE2DB2425400876480 /* NSURLConnection+FoundationCompletions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLConnection+FoundationCompletions.m"; sourceTree = "<group>"; };
+		5B25FC012DB2425400876480 /* curl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curl.h; sourceTree = "<group>"; };
+		5B25FC022DB2425400876480 /* curlver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlver.h; sourceTree = "<group>"; };
+		5B25FC032DB2425400876480 /* easy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = easy.h; sourceTree = "<group>"; };
+		5B25FC042DB2425400876480 /* mprintf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mprintf.h; sourceTree = "<group>"; };
+		5B25FC052DB2425400876480 /* multi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = multi.h; sourceTree = "<group>"; };
+		5B25FC062DB2425400876480 /* stdcheaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdcheaders.h; sourceTree = "<group>"; };
+		5B25FC072DB2425400876480 /* system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system.h; sourceTree = "<group>"; };
+		5B25FC082DB2425400876480 /* typecheck-gcc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "typecheck-gcc.h"; sourceTree = "<group>"; };
+		5B25FC092DB2425400876480 /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
+		5B25FC0A2DB2425400876480 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		5B25FC0B2DB2425400876480 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcurl.a; sourceTree = "<group>"; };
+		5B25FC0C2DB2425400876480 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
+		5B25FC0D2DB2425400876480 /* libz.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libz.a; sourceTree = "<group>"; };
 		5B2E21C92D354DEC0085E7BB /* TRMalleableFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRMalleableFrameView.h; sourceTree = "<group>"; };
 		5B2E21CA2D354DEC0085E7BB /* TRMalleableFrameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRMalleableFrameView.m; sourceTree = "<group>"; };
 		5B6296632D711517001D3C63 /* CGWelcomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGWelcomeController.h; sourceTree = "<group>"; };
@@ -276,8 +296,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B25FC102DB2425400876480 /* libcurl.a in Frameworks */,
 				49A1BBC92D351874002D9D00 /* CoreGraphics.framework in Frameworks */,
+				5B25FC112DB2425400876480 /* libssl.a in Frameworks */,
 				49A1BBCB2D351874002D9D00 /* UIKit.framework in Frameworks */,
+				5B25FC0F2DB2425400876480 /* libcrypto.a in Frameworks */,
+				5B25FC122DB2425400876480 /* libz.a in Frameworks */,
 				49A1BBC72D351874002D9D00 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,6 +401,8 @@
 		49A1BC012D3519DD002D9D00 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				5B25FBFC2DB2425400876480 /* NSURLConnection-Curl */,
+				5B25FBFF2DB2425400876480 /* SSL */,
 				0ABEF9A62D873D3200A5ADA9 /* TSMarkdownParser */,
 				5B7FCE372D6B077100DF4899 /* APLSlideMenu */,
 				5B1AA2262D6A6AA700FC07D5 /* SVProgressHUD */,
@@ -559,6 +585,43 @@
 				5B203AD72D3C4ABA004EEA20 /* BarButtonPressed@2x.png */,
 			);
 			path = "Bar Button";
+			sourceTree = "<group>";
+		};
+		5B25FBFC2DB2425400876480 /* NSURLConnection-Curl */ = {
+			isa = PBXGroup;
+			children = (
+				5B25FBFD2DB2425400876480 /* NSURLConnection+FoundationCompletions.h */,
+				5B25FBFE2DB2425400876480 /* NSURLConnection+FoundationCompletions.m */,
+			);
+			path = "NSURLConnection-Curl";
+			sourceTree = "<group>";
+		};
+		5B25FBFF2DB2425400876480 /* SSL */ = {
+			isa = PBXGroup;
+			children = (
+				5B25FC002DB2425400876480 /* curl */,
+				5B25FC0A2DB2425400876480 /* libcrypto.a */,
+				5B25FC0B2DB2425400876480 /* libcurl.a */,
+				5B25FC0C2DB2425400876480 /* libssl.a */,
+				5B25FC0D2DB2425400876480 /* libz.a */,
+			);
+			path = SSL;
+			sourceTree = "<group>";
+		};
+		5B25FC002DB2425400876480 /* curl */ = {
+			isa = PBXGroup;
+			children = (
+				5B25FC012DB2425400876480 /* curl.h */,
+				5B25FC022DB2425400876480 /* curlver.h */,
+				5B25FC032DB2425400876480 /* easy.h */,
+				5B25FC042DB2425400876480 /* mprintf.h */,
+				5B25FC052DB2425400876480 /* multi.h */,
+				5B25FC062DB2425400876480 /* stdcheaders.h */,
+				5B25FC072DB2425400876480 /* system.h */,
+				5B25FC082DB2425400876480 /* typecheck-gcc.h */,
+				5B25FC092DB2425400876480 /* types.h */,
+			);
+			path = curl;
 			sourceTree = "<group>";
 		};
 		5B2E21C82D354DEC0085E7BB /* TRMalleableFrameView */ = {
@@ -902,6 +965,7 @@
 				5B7FCE3D2D6B077100DF4899 /* APLSlideMenuViewController.m in Sources */,
 				5B6296652D711517001D3C63 /* CGWelcomeController.m in Sources */,
 				0AF6A7392D8CBF070060F3F8 /* CGAImageAttachment.m in Sources */,
+				5B25FC0E2DB2425400876480 /* NSURLConnection+FoundationCompletions.m in Sources */,
 				5B0D4FE52D50019D0042D50A /* Base64.m in Sources */,
 				49A1BC272D352569002D9D00 /* CGAPICommunicator.m in Sources */,
 				5B7FCE452D6B6C0600DF4899 /* CGConversationElementCell.m in Sources */,
